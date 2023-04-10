@@ -407,6 +407,17 @@ plants[c(1, 2)]
 plants[c(3, 2)]
 ```
 
+You can also remove a given element by adding a minus (`-`) symbol before the
+index:
+
+```{r}
+# Get all elements, except the 1st
+plants[-1]
+
+# Get all elements, except the 1st and 3rd
+plants[-c(1, 3)]
+```
+
 Another very common way to subset vectors is by using **logical vectors**.
 When using logical vectors, `TRUE` and `FALSE` will indicate whether to
 **extract** or **not extract** the element. For example, let's use logical
@@ -451,7 +462,7 @@ one of the conditions is true).
 
 ```{r}
 # Extract elements with number of genes between 20000 and 40000
-ngenes[number_of_genes > 20000 & ngenes < 40000]
+ngenes[ngenes > 20000 & ngenes < 40000]
 
 # Extract elements with 13000 or 11000 genes
 ngenes[ngenes == 13000 | ngenes == 11000]
@@ -485,7 +496,7 @@ head(airquality)
 # Extract the element in row 1, column 2
 airquality[1, 2]
 
-# Extract rows 1 to 5, column 1
+# Extract rows 1 to 5, column 1 - note: `1:5` is the same as `c(1, 2, 3, 4, 5)`
 airquality[1:5, 1]
 ```
 
@@ -515,4 +526,41 @@ airquality[airquality$Month == 5, ]
 # Extract rows with "Temp" >90, then show only columns "Month" and "Day"
 airquality[airquality$Temp > 90, c("Month", "Day")]
 ```
+
+
+
+::: {.callout-tip}
+
+### Exercises
+
+Subset the `airquality` data set to answer the following questions:
+
+1. How many days (rows) observations have ozone levels >40 ppb?
+2. How many days have wind speed between 10 and 15 mph?
+3. What are the minimum and maximum temperature?
+4. How many days have solar radiation <100 Langleys?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+# Q1: Ozone levels >40 ppb
+nrow(airquality[airquality$Ozone > 40, ])
+
+# Q2: Wind speed between 10 and 15 mph
+nrow(airquality[airquality$Wind >= 10 & airquality$Wind <=15, ])
+
+# Q3: Minimum and maximum temperature
+summary(airquality)
+
+# Q4: Solar radiation <100 Langleys
+nrow(airquality[airquality$Solar.R < 100, ])
+```
+
+:::
+
+:::
+
+
 
