@@ -32,6 +32,7 @@ jobs:
             any::downlit
             any::xml2
             any::treeio
+            any::ggtree
             any::ape
             
 
