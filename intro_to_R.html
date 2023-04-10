@@ -319,6 +319,53 @@ Naming objects
 </div>
 </div>
 <p>As you can see, the object <code>genome_size</code> now contains the value <code>2000</code>.</p>
+</section>
+<section id="functions-and-arguments" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="functions-and-arguments"><span class="header-section-number">1.3</span> Functions and arguments</h2>
+<p>Functions are scripts that automate a particular task, and they typically have verbs in their names. They are made available to users as part of <em>packages</em>, and there are several R packages with specialized functions for each field. When you download and install R, it already comes with some packages installed, such as <strong>base</strong> and <strong>utils</strong>, but you can also install other packages depending on your needs.</p>
+<p>A function takes one or many arguments as input and return something as output. To execute a function in R, you need to write the function name followed by the arguments inside parenthesis. For example, let’s execute the function <code>sqrt()</code>, which takes a numeric value as input and return its square root:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<p>You can also pass objects as input to functions. For example, let’s pass our object <code>genome_size</code> to the <code>sqrt()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(genome_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 44.72136</code></pre>
+</div>
+</div>
+<p>To see all the possible arguments a function takes, use the function <code>args()</code> with the function name as input. For example, let’s see all possible arguments for the <code>round()</code> function (which rounds up numbers):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">args</span>(round)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>function (x, digits = 0) 
+NULL</code></pre>
+</div>
+</div>
+<p>We can see that the <code>round()</code> function can take two arguments as input: <code>x</code>, which is a numeric value, and <code>digits</code>, which indicates how many digits should be used when rounding values. Let’s try to execute the <code>round()</code> function with different options to <code>digits</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pi <span class="ot">&lt;-</span> <span class="fl">3.14159</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pi, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.14</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pi, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.142</code></pre>
+</div>
+</div>
+<p>Finally, if you want to learn more about what a function does and how to use it, you can type the function name preceded by a question mark. For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>?round</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will open up a help page with detailed information on what the function does, its arguments, and examples.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -349,25 +396,25 @@ Solution
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store values in objects</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ath_genes <span class="ot">&lt;-</span> <span class="dv">33768</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>n_coding <span class="ot">&lt;-</span> <span class="dv">27655</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>n_noncoding <span class="ot">&lt;-</span> <span class="dv">6113</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Get percentages</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>perc_coding <span class="ot">&lt;-</span> n_coding <span class="sc">/</span> ath_genes</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>perc_noncoding <span class="ot">&lt;-</span> n_noncoding <span class="sc">/</span> ath_genes</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Update objects with actual percentages</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>perc_coding <span class="ot">&lt;-</span> <span class="fu">round</span>(perc_coding <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>perc_noncoding <span class="ot">&lt;-</span> <span class="fu">round</span>(perc_noncoding <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show contents of the objects</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>perc_coding</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store values in objects</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>ath_genes <span class="ot">&lt;-</span> <span class="dv">33768</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>n_coding <span class="ot">&lt;-</span> <span class="dv">27655</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>n_noncoding <span class="ot">&lt;-</span> <span class="dv">6113</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Get percentages</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>perc_coding <span class="ot">&lt;-</span> n_coding <span class="sc">/</span> ath_genes</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>perc_noncoding <span class="ot">&lt;-</span> n_noncoding <span class="sc">/</span> ath_genes</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Update objects with actual percentages</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>perc_coding <span class="ot">&lt;-</span> <span class="fu">round</span>(perc_coding <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>perc_noncoding <span class="ot">&lt;-</span> <span class="fu">round</span>(perc_noncoding <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show contents of the objects</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>perc_coding</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 81.9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>perc_noncoding</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>perc_noncoding</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18.1</code></pre>
 </div>
@@ -378,60 +425,215 @@ Solution
 </div>
 </div>
 </section>
-<section id="functions-and-arguments" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="functions-and-arguments"><span class="header-section-number">1.3</span> Functions and arguments</h2>
-<p>Functions are scripts that automate a particular task, and they typically have verbs in their names. They are made available to users as part of <em>packages</em>, and there are several R packages with specialized functions for each field. When you download and install R, it already comes with some packages installed, such as <strong>base</strong> and <strong>utils</strong>, but you can also install other packages depending on your needs.</p>
-<p>A function takes one or many arguments as input and return something as output. To execute a function in R, you need to write the function name followed by the arguments inside parenthesis. For example, let’s execute the function <code>sqrt()</code>, which takes a numeric value as input and return its square root:</p>
+<section id="data-structures" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="data-structures"><span class="header-section-number">1.4</span> Data structures</h2>
+<p>Now, we will explore two data structures in R that we will use all the time throughout the lessons (and in our research routine): vectors and data frames.</p>
+<section id="vectors" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="vectors"><span class="header-section-number">1.4.1</span> Vectors</h3>
+<p>Vector are the most common data structures in R, and they are used to <strong>store multiple values</strong>. There are 6 kinds of values that can be stored in a vector, but the ones we typically use are:</p>
+<ol type="1">
+<li><code>numeric</code>: numbers.</li>
+<li><code>character</code>: text strings.</li>
+<li><code>logical</code>: either <code>TRUE</code> or <code>FALSE</code>.</li>
+</ol>
+<p>The other types are <code>integer</code>, <code>complex</code>, and <code>raw</code>, but they are not important here.</p>
+<p>To create a vector, you will use the <code>c()</code> function to <strong>combine</strong> values. For example:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a numeric vector</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>genome_sizes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">33768</span>, <span class="dv">52872</span>, <span class="dv">39756</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>genome_sizes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10</code></pre>
+<pre><code>[1] 33768 52872 39756</code></pre>
 </div>
-</div>
-<p>You can also pass objects as input to functions. For example, let’s pass our object <code>genome_size</code> to the <code>sqrt()</code> function:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(genome_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a character vector</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>species <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Arabidopsis"</span>, <span class="st">"soybean"</span>, <span class="st">"maize"</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>species</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 44.72136</code></pre>
+<pre><code>[1] "Arabidopsis" "soybean"     "maize"      </code></pre>
 </div>
 </div>
-<p>To see all the possible arguments a function takes, use the function <code>args()</code> with the function name as input. For example, let’s see all possible arguments for the <code>round()</code> function (which rounds up numbers):</p>
+<p>You can inspect vectors with the functions:</p>
+<ul>
+<li><code>class()</code>: shows the class of a vector.</li>
+<li><code>length()</code>: shows the number of elements in a vector.</li>
+<li><code>str()</code>: summarizes the structure of a vector.</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">args</span>(round)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(genome_sizes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>function (x, digits = 0) 
-NULL</code></pre>
+<pre><code>[1] "numeric"</code></pre>
 </div>
-</div>
-<p>We can see that the <code>round()</code> function can take two arguments as input: <code>x</code>, which is a numeric value, and <code>digits</code>, which indicates how many digits should be used when rounding values. Let’s try to execute the <code>round()</code> function with different options to <code>digits</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pi <span class="ot">&lt;-</span> <span class="fl">3.14159</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(genome_sizes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pi, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(genome_sizes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.14</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pi, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.142</code></pre>
+<pre><code> num [1:3] 33768 52872 39756</code></pre>
 </div>
 </div>
-<p>Finally, if you want to learn more about what a function does and how to use it, you can type the function name preceded by a question mark. For example:</p>
+<p>You can also combine two vectors:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>?round</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>species1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"soybean"</span>, <span class="st">"maize"</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>species2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"cotton"</span>, <span class="st">"bean"</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>combined_species <span class="ot">&lt;-</span> <span class="fu">c</span>(species1, species2)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>combined_species</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "soybean" "maize"   "cotton"  "bean"   </code></pre>
 </div>
-<p>This will open up a help page with detailed information on what the function does, its arguments, and examples.</p>
-</section>
-<section id="data-structures" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="data-structures"><span class="header-section-number">1.4</span> Data structures</h2>
-<section id="vectors" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="vectors"><span class="header-section-number">1.4.1</span> Vectors</h3>
+</div>
+<p><strong>NOTE:</strong> Vectors can only store values of the same type (i.e., character, numeric, etc). If you try to create a vector that contains values of different types, R converts them to all be the same type. This conversion of one class to another is called <em>coercion</em>. For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a vector with numeric and character values</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>c_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="dv">1</span>, <span class="st">"d"</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>c_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "a" "b" "1" "d"</code></pre>
+</div>
+</div>
+<p>In the example above, R converted the numeric value <em>1</em> to a character.</p>
 </section>
 <section id="data-frames" class="level3" data-number="1.4.2">
 <h3 data-number="1.4.2" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">1.4.2</span> Data frames</h3>
+<p>Data frames is the name R uses to call <strong>tables</strong>. To create a new data frame, you will use the <code>data.frame()</code> function. Each column of a data frame is a vector, so you can create a data frame by passing each vector to each column. For example, let’s recreate the <code>genome_sizes</code> and <code>species</code> vectors we created in the previous section and store them in columns <strong>genome_size</strong> and <strong>species</strong> of a data frame:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create vectors again</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>genome_sizes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">33768</span>, <span class="dv">52872</span>, <span class="dv">39756</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>species <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Arabidopsis"</span>, <span class="st">"soybean"</span>, <span class="st">"maize"</span>)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame with columns `genome_size` and `species`</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>genome_size_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">genome_size =</span> genome_sizes,</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> species</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>genome_size_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  genome_size     species
+1       33768 Arabidopsis
+2       52872     soybean
+3       39756       maize</code></pre>
+</div>
+</div>
+<p>We can also create the vectors inside the <code>data.frame()</code> function itself:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>genome_size_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">genome_size =</span> <span class="fu">c</span>(<span class="dv">33768</span>, <span class="dv">52872</span>, <span class="dv">39756</span>),</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Arabidopsis"</span>, <span class="st">"soybean"</span>, <span class="st">"maize"</span>)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>genome_size_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  genome_size     species
+1       33768 Arabidopsis
+2       52872     soybean
+3       39756       maize</code></pre>
+</div>
+</div>
+<p>To add a column to an existing data frame, you have to add <code>$</code> followed by the new column name in front of the object name. For example, let’s add a column named <code>is_model</code> to the <code>genome_size_df</code> data frame that indicates whether or not a species is a model species:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add `is_model` column</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>genome_size_df<span class="sc">$</span>is_model <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>genome_size_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  genome_size     species is_model
+1       33768 Arabidopsis     TRUE
+2       52872     soybean    FALSE
+3       39756       maize    FALSE</code></pre>
+</div>
+</div>
+<p>Finally, to inspect a data frame, you can use the following functions:</p>
+<ul>
+<li><code>dim()</code>: shows the dimensions of the data frame (i.e., number of rows and columns, respectively).</li>
+<li><code>nrow()</code>: shows the number of rows in a data frame.</li>
+<li><code>ncol()</code>: shows the number of columns in a data frame.</li>
+<li><code>head()</code>: shows the first 6 rows of a data frame.</li>
+<li><code>tail()</code>: shows the last 6 rows of a data frame.</li>
+<li><code>names()</code>: shows the column names.</li>
+<li><code>rownames()</code>: shows the row names</li>
+<li><code>str()</code>: summarizes the structure of a data frame.</li>
+<li><code>summary()</code>: shows summary statistics for each column.</li>
+</ul>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercises
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>The plants Brussels sprout, grapevine and apple belong to the families Brassicaceae, Vitaceae, and Rosaceae. Create a data frame named <code>species_families</code> with 2 columns named <strong>species</strong> and <strong>family</strong> representing such information.</li>
+</ol>
+<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>species_families <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Brussels sprout"</span>, <span class="st">"grapevine"</span>, <span class="st">"apple"</span>),</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="fu">c</span>(<span class="st">"Brassicaceae"</span>, <span class="st">"Vitaceae"</span>, <span class="st">"Rosaceae"</span>)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>species_families</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          species       family
+1 Brussels sprout Brassicaceae
+2       grapevine     Vitaceae
+3           apple     Rosaceae</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li><p>When you install R, it already comes with some example data sets. One of them is <code>airquality</code>, a data frame containing New York air quality measurements from May to September 1973. Inspect this data frame and answer the following questions:</p>
+<ul>
+<li>How many rows are there?</li>
+<li>How many columns are there?</li>
+<li>What are the column names?</li>
+<li>What are the classes of each column?</li>
+</ul></li>
+</ol>
+<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   153 obs. of  6 variables:
+ $ Ozone  : int  41 36 12 18 NA 28 23 19 8 NA ...
+ $ Solar.R: int  190 118 149 313 NA NA 299 99 19 194 ...
+ $ Wind   : num  7.4 8 12.6 11.5 14.3 14.9 8.6 13.8 20.1 8.6 ...
+ $ Temp   : int  67 72 74 62 56 66 65 59 61 69 ...
+ $ Month  : int  5 5 5 5 5 5 5 5 5 5 ...
+ $ Day    : int  1 2 3 4 5 6 7 8 9 10 ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="subsetting" class="level2" data-number="1.5">
