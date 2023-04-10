@@ -34,6 +34,7 @@ jobs:
             any::treeio
             any::ggtree
             any::ape
+            any::here
             
 
       # add software dependencies here
