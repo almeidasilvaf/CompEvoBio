@@ -1,0 +1,128 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction to Computational Evolutionary Biology",
+    "section": "",
+    "text": "Preface\nThis book aims to provide learners with a hands-on introduction to Computational Evolutionary Biology, and the materials here are used in the practical lessons of the courses C003709A - Evolutionary Biology and C000500A - Bioinformatics 2 at Universiteit Gent, taught by Dr. Yves Van de Peer and Fabricio Almeida-Silva.\nEach book chapter represents the contents of a practical lesson from the UGent courses, and they serve both as a guide during the lessons and as a reference to go back later.\nThe book will cover:\n\nIntroduction to the R programming language\nMultiple Sequence Alignment\nPhylogenetic inference with maximum-likelihood\nAnalyses of gene and genome duplication"
+  },
+  {
+    "objectID": "intro_to_R.html#goals-of-this-lesson",
+    "href": "intro_to_R.html#goals-of-this-lesson",
+    "title": "1  Introduction to R",
+    "section": "1.1 Goals of this lesson",
+    "text": "1.1 Goals of this lesson\nThis lesson was designed to be a gentle introduction to R for evolutionary genomics. Thus, we will only cover the basics of the language. An alternative name for this lesson could be “all you need to know about R to start your evolutionary analyses”. At the end of this lesson, you will be able to:\n\nperform simple mathematical operations in R\ncreate and modify objects\nuse functions and look for help\ncreate vectors and understand the difference between vector types\ncreate data frames\nsubset vectors and data frames"
+  },
+  {
+    "objectID": "intro_to_R.html#creating-objects",
+    "href": "intro_to_R.html#creating-objects",
+    "title": "1  Introduction to R",
+    "section": "1.2 Creating objects",
+    "text": "1.2 Creating objects\nThe simplest use of R is to perform mathematical operations, which can be simply typed in the console:\n\n2 + 2\n\n[1] 4\n\n4 * 5\n\n[1] 20\n\n20 / 10\n\n[1] 2\n\n5 - 3\n\n[1] 2\n\n\nHowever, simple mathematical operations are not very useful. Typically, you would want to assign values to R objects. R objects can be created by using object_name + <- + value. The <- symbol is called the “assignment operator”, and it assigns values to objects. Example:\n\ngenome_size <- 2000000\n\nNote that when you assign a value to an object, nothing happens on the screen. In the example above, we created an object named genome_size that contains the value 2000000, but the value is not printed to screen. To show the contents of an object, you must type its name and execute it. For example:\n\ngenome_size\n\n[1] 2e+06\n\n\nAlternatively, we can assign values to objects AND print them at the same time by surrounding the assignment code with parentheses. For example:\n\n(genome_size <- 2000000)\n\n[1] 2e+06\n\n\n\n\n\n\n\n\nNaming objects\n\n\n\nAlthough you can give your objects whatever name you want, some general best practices include:\n\nChoose a descriptive name, but not too long.\nDo not use dots (.).\nUse nouns.\nBe consistent with your styling. Styles include snake case (e.g., phylo_tree) and camel case (e.g., phyloTree.)\n\nNote that object names cannot start with numbers.\n\n\nNow that we have an object genome_size with a value, we can use the object to perform mathematical operations. For example, let’s suppose we want to see the genome size in many thousands of base pairs (i.e., kbp, which stands for kilobase pairs):\n\ngenome_size / 1000\n\n[1] 2000\n\n\nWe can also change the value of an object by assigning a new value to it. For instance, let’s update the genome_size object with the size in kbp:\n\ngenome_size # original object\n\n[1] 2e+06\n\ngenome_size <- genome_size / 1000 # modifying the object\ngenome_size\n\n[1] 2000\n\n\nAs you can see, the object genome_size now contains the value 2000.\n\n\n\n\n\n\nExercises\n\n\n\nThe genome of the plant Arabidopsis thaliana contains 33768 genes, of which 27655 are protein-coding and 6113 encode non-coding RNAs. Calculate the percentage of coding and non-coding genes in this genome using the following steps:\n\nCreate a variable named ath_genes that stores the numeric value 33768.\nCreate 2 objects named n_coding and n_noncoding that store the numeric values 27655 and 6113, respectively.\nCreate 2 objects named perc_coding and perc_noncoding by dividing n_coding and n_noncoding by ath_genes.\nUpdate the objects by multiplying their contents by 100 (to represent in percentages, from 0 to 100) and rounding the percentages to 1 significant digit only.\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n# Store values in objects\nath_genes <- 33768\nn_coding <- 27655\nn_noncoding <- 6113\n\n# Get percentages\nperc_coding <- n_coding / ath_genes\nperc_noncoding <- n_noncoding / ath_genes\n\n# Update objects with actual percentages\nperc_coding <- round(perc_coding * 100, 1)\nperc_noncoding <- round(perc_noncoding * 100, 1)\n\n# Show contents of the objects\nperc_coding\n\n[1] 81.9\n\nperc_noncoding\n\n[1] 18.1"
+  },
+  {
+    "objectID": "intro_to_R.html#functions-and-arguments",
+    "href": "intro_to_R.html#functions-and-arguments",
+    "title": "1  Introduction to R",
+    "section": "1.3 Functions and arguments",
+    "text": "1.3 Functions and arguments\nFunctions are scripts that automate a particular task, and they typically have verbs in their names. They are made available to users as part of packages, and there are several R packages with specialized functions for each field. When you download and install R, it already comes with some packages installed, such as base and utils, but you can also install other packages depending on your needs.\nA function takes one or many arguments as input and return something as output. To execute a function in R, you need to write the function name followed by the arguments inside parenthesis. For example, let’s execute the function sqrt(), which takes a numeric value as input and return its square root:\n\nsqrt(100)\n\n[1] 10\n\n\nYou can also pass objects as input to functions. For example, let’s pass our object genome_size to the sqrt() function:\n\nsqrt(genome_size)\n\n[1] 44.72136\n\n\nTo see all the possible arguments a function takes, use the function args() with the function name as input. For example, let’s see all possible arguments for the round() function (which rounds up numbers):\n\nargs(round)\n\nfunction (x, digits = 0) \nNULL\n\n\nWe can see that the round() function can take two arguments as input: x, which is a numeric value, and digits, which indicates how many digits should be used when rounding values. Let’s try to execute the round() function with different options to digits.\n\npi <- 3.14159\nround(pi)\n\n[1] 3\n\nround(pi, digits = 2)\n\n[1] 3.14\n\nround(pi, digits = 3)\n\n[1] 3.142\n\n\nFinally, if you want to learn more about what a function does and how to use it, you can type the function name preceded by a question mark. For example:\n\n?round\n\nThis will open up a help page with detailed information on what the function does, its arguments, and examples."
+  },
+  {
+    "objectID": "intro_to_R.html#data-structures",
+    "href": "intro_to_R.html#data-structures",
+    "title": "1  Introduction to R",
+    "section": "1.4 Data structures",
+    "text": "1.4 Data structures\n\n1.4.1 Vectors\n\n\n1.4.2 Data frames"
+  },
+  {
+    "objectID": "intro_to_R.html#subsetting",
+    "href": "intro_to_R.html#subsetting",
+    "title": "1  Introduction to R",
+    "section": "1.5 Subsetting",
+    "text": "1.5 Subsetting"
+  },
+  {
+    "objectID": "data_structures_genomics.html#the-bioconductor-ecosystem",
+    "href": "data_structures_genomics.html#the-bioconductor-ecosystem",
+    "title": "2  R for evolutionary biology: data structures",
+    "section": "2.1 The Bioconductor ecosystem",
+    "text": "2.1 The Bioconductor ecosystem"
+  },
+  {
+    "objectID": "data_structures_genomics.html#dnarnaaastringset-objects",
+    "href": "data_structures_genomics.html#dnarnaaastringset-objects",
+    "title": "2  R for evolutionary biology: data structures",
+    "section": "2.2 DNA/RNA/AAStringSet objects",
+    "text": "2.2 DNA/RNA/AAStringSet objects"
+  },
+  {
+    "objectID": "data_structures_genomics.html#dnarnaaamultiplealignment-objects",
+    "href": "data_structures_genomics.html#dnarnaaamultiplealignment-objects",
+    "title": "2  R for evolutionary biology: data structures",
+    "section": "2.3 DNA/RNA/AAMultipleAlignment objects",
+    "text": "2.3 DNA/RNA/AAMultipleAlignment objects"
+  },
+  {
+    "objectID": "data_structures_genomics.html#the-ape-package-and-phylo-objects",
+    "href": "data_structures_genomics.html#the-ape-package-and-phylo-objects",
+    "title": "2  R for evolutionary biology: data structures",
+    "section": "2.4 The {ape} package and phylo objects",
+    "text": "2.4 The {ape} package and phylo objects"
+  },
+  {
+    "objectID": "phylogeny_inference_distance.html",
+    "href": "phylogeny_inference_distance.html",
+    "title": "3  Distance-based phylogeny inference",
+    "section": "",
+    "text": "TBA."
+  },
+  {
+    "objectID": "phylogeny_inference_ml.html#goals-of-this-lesson",
+    "href": "phylogeny_inference_ml.html#goals-of-this-lesson",
+    "title": "4  Maximum likelihood-based phylogeny inference",
+    "section": "4.1 Goals of this lesson",
+    "text": "4.1 Goals of this lesson\nTo demonstrate how to use IQ-TREE, we will use an example data set to explore a question that used to be hotly debated years ago:\n\nAre turtles more closely-related to birds or to crocodiles?\n\nThere are 3 hypotheses to test, and here we will use maximum-likelihood-based methods to find out which one is true:\n\n\n\n\n\nIn this lesson, you will learn to:\n\nInfer a maximum likelihood tree\nApply partition models and choose the best partitioning schemes\nPerform tree topology tests\nIdentify and remove influential genes\nCalculate concordance factors"
+  },
+  {
+    "objectID": "phylogeny_inference_ml.html#data-description",
+    "href": "phylogeny_inference_ml.html#data-description",
+    "title": "4  Maximum likelihood-based phylogeny inference",
+    "section": "4.2 Data description",
+    "text": "4.2 Data description\nThe data we will use in this lesson were obtained from Chiari et al. (2012), and they are stored in the data/ directory associated with this course. The files we will use are:\n\nturtle.fa: a multiple sequence alignment (in FASTA) of a subset of the genes used in the original publication.\nturtle.nex: a partition file (in NEXUS) defining a subset of 29 genes."
+  },
+  {
+    "objectID": "phylogeny_inference_ml.html#inferring-a-maximum-likelihood-tree",
+    "href": "phylogeny_inference_ml.html#inferring-a-maximum-likelihood-tree",
+    "title": "4  Maximum likelihood-based phylogeny inference",
+    "section": "4.3 Inferring a maximum likelihood tree",
+    "text": "4.3 Inferring a maximum likelihood tree\nTo run IQ-TREE, use the command below:\n\niqtree2 -s data/turtle.fa -B 1000 -T 2\n\n\n\n\n\n\n\nUnderstanding the command-line arguments\n\n\n\nThe argument -s is mandatory, and this is where you indicate where the file containing the MSA is. In our previous command, iqtree2 -s data/turtle.fa means “run IQ-TREE using the MSA in the file data/turtle.fa”.\nThe other arguments and their meanings are:\n\n-B: number of replicates for the ultrafast bootstrap (see Minh, Nguyen, and Von Haeseler (2013) for details). Here, we used 1000 replicates.\n-T: number of CPU cores to use. Here, we’re using 2 cores, because IQ-TREE defaults to using all available cores.\n\nFor a complete list of arguments and the possible values they take, run iqtree2 -h.\n\n\nThe main IQ-TREE report will be stored in a file ending in .iqtree, and the maximum likelihood tree (in Newick format) will be stored in a file ending in .treefile.\n\n\n\n\n\n\nExercises\n\n\n\nLook at the report file in data/turtle.fa.iqtree and answer the following questions:\n\nWhat is the best-fit model name?\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ngrep \"Best-fit model\" data/turtle.fa.iqtree\n\nBest-fit model according to BIC: GTR+F+R3\n\n\n\n\n\n\nWhat are the AIC/AICc/BIC scores of this model and tree?\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ngrep \"^Model  \\|^GTR+F+R3\" data/turtle.fa.iqtree\n\nModel                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC\nGTR+F+R3        -116218.179  232518.358 - 0.000395  232518.524 - 0.000398  232844.049 +    0.527\n\n\n\n\n\n\nVisualise the tree in data/turtle.fa.treefile. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ntree <- read.tree(here(\"data\", \"turtle.fa.treefile\"))\n\nggtree(tree) +\n    geom_tiplab() +\n    xlim(0, 0.4) +\n    geom_nodelab(hjust = 1.3, vjust = -0.4)\n\n\n\n\nThis tree supports the “C” hypothesis, which positions turtles as a sister group to crocodiles. i.e., ((Turtle, Crocodile), Bird). The branch showing that turtles are a sister group to crocodiles has a bootstrap support of 82%.\n\n\n\n\nIn the figure below, you can see the tree published by Chiari et al. (2012). Does the inferred tree agree with the published tree?\n\n\n\n\nSpecies tree inferred by Chiari et al, 2012\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nNo. The published tree shows turtles are a sister group to birds and crocodiles (hypothesis A), while the inferred shows turtles as a sister group to crocodiles (hypothesis C)."
+  },
+  {
+    "objectID": "phylogeny_inference_ml.html#applying-partition-models",
+    "href": "phylogeny_inference_ml.html#applying-partition-models",
+    "title": "4  Maximum likelihood-based phylogeny inference",
+    "section": "4.4 Applying partition models",
+    "text": "4.4 Applying partition models\nNow, we will infer a ML tree applying a partition model (Chernomor, Von Haeseler, and Minh 2016), which means that each partition (specified in the turtle.nex file) will be allowed to have its own model.\n\niqtree2 -s data/turtle.fa -p data/turtle.nex -B 1000 -T 2\n\n\n\n\n\n\n\nUnderstanding the command-line arguments\n\n\n\nThe only new argument here is -p turtle.nex, which is used to specify an edge-linked proportional partition model, so that each partition can have shorter or longer tree length (i.e., slower or faster evolutionary rates, respectively).\n\n\nAs in the simpler IQ-TREE run, the main report is in a file ending in .nex.iqtree, and the tree is in a file named .nex.treefile.\n\n\n\n\n\n\nExercises\n\n\n\n\nLook at the report file in data/turtle.nex.iqtree. What are the AIC/AICc/BIC scores of the partition model? Is it better than the previous model?\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n# Take a look at the best models per partition\ngrep \"Best-fit model\" data/turtle.nex.iqtree\n\n# See the AIC/AICc/BIC scores per partition\ngrep -A 30 \"List of best-fit models per partition\" data/turtle.nex.iqtree\n\nBest-fit model according to BIC: K2P+I+G4:ENSGALG00000000223.macse_DNA_gb,K2P+G4:ENSGALG00000001529.macse_DNA_gb,TN+F+G4:ENSGALG00000002002.macse_DNA_gb,TVM+F+I+G4:ENSGALG00000002514.macse_DNA_gb,TIM2e+I+G4:ENSGALG00000003337.macse_DNA_gb,TIM2+F+G4:ENSGALG00000003700.macse_DNA_gb,TN+F+G4:ENSGALG00000003702.macse_DNA_gb,K2P+I+G4:ENSGALG00000003907.macse_DNA_gb,TNe+I:ENSGALG00000005820.macse_DNA_gb,TIM2+F+G4:ENSGALG00000005834.macse_DNA_gb,TNe+G4:ENSGALG00000005902.macse_DNA_gb,TIM3e+G4:ENSGALG00000008338.macse_DNA_gb,TPM2+F+G4:ENSGALG00000008517.macse_DNA_gb,TPM2+F+I+G4:ENSGALG00000008916.macse_DNA_gb,TIM2+F+R3:ENSGALG00000009085.macse_DNA_gb,TN+F+G4:ENSGALG00000009879.macse_DNA_gb,TPM3+F+G4:ENSGALG00000011323.macse_DNA_gb,TIM3e+I+G4:ENSGALG00000011434.macse_DNA_gb,TIM3+F+G4:ENSGALG00000011917.macse_DNA_gb,K2P+G4:ENSGALG00000011966.macse_DNA_gb,SYM+G4:ENSGALG00000012244.macse_DNA_gb,TN+F+G4:ENSGALG00000012379.macse_DNA_gb,TNe+G4:ENSGALG00000012568.macse_DNA_gb,TPM2+F+G4:ENSGALG00000013227.macse_DNA_gb,TN+F+G4:ENSGALG00000014038.macse_DNA_gb,TN+F+G4:ENSGALG00000014648.macse_DNA_gb,TIM+F+G4:ENSGALG00000015326.macse_DNA_gb,TIM2+F+G4:ENSGALG00000015397.macse_DNA_gb,TPM2+F+I+G4:ENSGALG00000016241.macse_DNA_gb\nList of best-fit models per partition:\n\n  ID  Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC\n   1  K2P+I+G4          -5095.247   10198.494 + 1.42e-316   10198.541 + 5.45e-317   10217.456 + 1.24e-316\n   2  K2P+G4            -3419.486    6844.972 + 1.42e-316    6845.018 + 5.45e-317    6857.745 + 1.24e-316\n   3  TN+F+G4           -3609.176    7232.351 + 1.42e-316    7232.520 + 5.45e-317    7263.923 + 1.24e-316\n   4  TVM+F+I+G4        -4289.021    8598.043 + 1.42e-316    8598.348 + 5.45e-317    8644.001 + 1.24e-316\n   5  TIM2e+I+G4        -6224.713   12461.426 + 1.42e-316   12461.514 + 5.45e-317   12490.665 + 1.24e-316\n   6  TIM2+F+G4         -4719.062    9454.125 + 1.42e-316    9454.289 + 5.45e-317    9492.409 + 1.24e-316\n   7  TN+F+G4           -7633.586   15281.172 + 1.42e-316   15281.244 + 5.45e-317   15318.571 + 1.24e-316\n   8  K2P+I+G4          -2959.348    5926.696 + 1.42e-316    5926.780 + 5.45e-317    5943.391 + 1.24e-316\n   9  TNe+I             -3109.902    6227.805 + 1.42e-316    6227.875 + 5.45e-317    6245.229 + 1.24e-316\n  10  TIM2+F+G4         -3040.697    6097.394 + 1.42e-316    6097.604 + 5.45e-317    6133.757 + 1.24e-316\n  11  TNe+G4            -2864.568    5737.135 + 1.42e-316    5737.206 + 5.45e-317    5754.518 + 1.24e-316\n  12  TIM3e+G4          -5169.589   10349.179 + 1.42e-316   10349.255 + 5.45e-317   10372.552 + 1.24e-316\n  13  TPM2+F+G4         -2702.092    5418.183 + 1.42e-316    5418.394 + 5.45e-317    5448.224 + 1.24e-316\n  14  TPM2+F+I+G4       -3667.885    7351.771 + 1.42e-316    7352.039 + 5.45e-317    7386.192 + 1.24e-316\n  15  TIM2+F+R3         -4532.069    9086.138 + 1.42e-316    9086.426 + 5.45e-317    9139.325 + 1.24e-316\n  16  TN+F+G4           -4173.396    8360.792 + 1.42e-316    8360.982 + 5.45e-317    8391.535 + 1.24e-316\n  17  TPM3+F+G4         -5262.146   10538.293 + 1.42e-316   10538.418 + 5.45e-317   10571.909 + 1.24e-316\n  18  TIM3e+I+G4        -3036.049    6084.098 + 1.42e-316    6084.289 + 5.45e-317    6108.713 + 1.24e-316\n  19  TIM3+F+G4         -4092.671    8201.341 + 1.42e-316    8201.490 + 5.45e-317    8240.450 + 1.24e-316\n  20  K2P+G4            -2968.726    5943.452 + 1.42e-316    5943.504 + 5.45e-317    5955.897 + 1.24e-316\n  21  SYM+G4            -4372.436    8758.871 + 1.42e-316    8759.022 + 5.45e-317    8791.240 + 1.24e-316\n  22  TN+F+G4           -2870.272    5754.543 + 1.42e-316    5754.763 + 5.45e-317    5784.307 + 1.24e-316\n  23  TNe+G4            -2919.575    5847.149 + 1.42e-316    5847.213 + 5.45e-317    5864.932 + 1.24e-316\n  24  TPM2+F+G4         -5568.175   11150.350 + 1.42e-316   11150.437 + 5.45e-317   11186.552 + 1.24e-316\n  25  TN+F+G4           -3315.859    6645.717 + 1.42e-316    6645.920 + 5.45e-317    6676.025 + 1.24e-316\n  26  TN+F+G4           -2097.847    4209.693 + 1.42e-316    4209.922 + 5.45e-317    4239.168 + 1.24e-316\n  27  TIM+F+G4          -3743.957    7503.913 + 1.42e-316    7504.158 + 5.45e-317    7539.049 + 1.24e-316\n  28  TIM2+F+G4         -3634.194    7284.388 + 1.42e-316    7284.634 + 5.45e-317    7319.483 + 1.24e-316\n\n\nScores are better (lower BIC scores, for instance).\n\n\n\n\nVisualize the tree in data/turtle.nex.treefile. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ntree <- read.tree(here(\"data\", \"turtle.nex.treefile\"))\n\nggtree(tree) +\n    geom_tiplab() +\n    xlim(0, 0.4) +\n    geom_nodelab(hjust = 1.3, vjust = -0.4)\n\n\n\n\nThe tree supports the “A” hypothesis, which positions turtles as a sister group to birds and crocodiles. The branch showing that turtles are a sister group to crocodiles has a bootstrap support of 100%.\n\n\n\n\nDoes the inferred tree agree with the published tree (Chiari et al. 2012)?\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nYes. Both trees agree on the “A” hypothesis."
+  },
+  {
+    "objectID": "phylogeny_inference_ml.html#selecting-the-best-partitioning-scheme-with-partitionfinder",
+    "href": "phylogeny_inference_ml.html#selecting-the-best-partitioning-scheme-with-partitionfinder",
+    "title": "4  Maximum likelihood-based phylogeny inference",
+    "section": "4.5 Selecting the best partitioning scheme with PartitionFinder",
+    "text": "4.5 Selecting the best partitioning scheme with PartitionFinder\nNow, we will use PartitionFinder (Lanfear et al. 2012) to merge partitions and reduce the potential over-parameterization.\n\niqtree2 -s data/turtle.fa -p data/turtle.nex -B 1000 -T 2 -m MFP+MERGE -rcluster 10 --prefix data/turtle.merge\n\n\n\n\n\n\n\nUnderstanding the command-line arguments\n\n\n\nBesides the arguments we’ve already seen, the new arguments and their meanings are:\n\n-m: specifies the model to use. Here, MFP+MERGE indicates running PartitionFinder followed by tree reconstruction.\n-rcluster: to reduce computations by only examining the top n% (here, 10%) partitioning schemes using the relaxed clustering algorithm (Lanfear et al. 2014).\n--prefix: specifies the prefix for all output files to avoid overwriting the output of previous runs.\n\n\n\nThe main report is a file ending in .merge.iqtree, and the tree is in a file ending in .merge.treefile.\n\n\n\n\n\n\nExercises\n\n\n\n\nLook at the report file data/turtle.merge.iqtree. How many partitions do we have now?\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ngrep \"Input data:\" data/turtle.merge.iqtree\n\nInput data: 16 taxa with 7 partitions and 20820 total sites (2.55764% missing data)\n\n\n\n\n\n\nLook at the AIC/AICc/BIC scores. Compared with two previous models, is this model better or worse?\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ngrep -A 10 \"List of best-fit models per partition\" data/turtle.merge.iqtree\n\nList of best-fit models per partition:\n\n  ID  Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC\n   1  TPM3+F+I+G4      -33463.275   66942.550 + 3.38e-316   66942.577 + 5.45e-317   66995.241 + 2.19e-316\n   2  TIM3+F+I+G4      -28588.305   57194.610 + 3.38e-316   57194.643 + 5.45e-317   57254.076 + 2.19e-316\n   3  GTR+F+I+G4       -19434.040   38890.081 + 3.38e-316   38890.158 + 5.45e-317   38957.582 + 2.19e-316\n   4  TIM2e+I+G4        -6224.893   12461.787 + 3.38e-316   12461.874 + 5.45e-317   12491.026 + 2.19e-316\n   5  TIM2+F+G4        -17553.560   35123.120 + 3.38e-316   35123.156 + 5.45e-317   35173.507 + 2.19e-316\n   6  TVMe+I+G4         -6727.848   13469.695 + 3.38e-316   13469.809 + 5.45e-317   13504.000 + 2.19e-316\n   7  TIM+F+G4          -3743.955    7503.910 + 3.38e-316    7504.155 + 5.45e-317    7539.045 + 2.19e-316\n\n\n\n\n\n\nVisualize the tree in data/turtle.merge.treefile. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\ntree <- read.tree(here(\"data\", \"turtle.merge.treefile\"))\n\nggtree(tree) +\n    geom_tiplab() +\n    xlim(0, 0.4) +\n    geom_nodelab(hjust = 1.3, vjust = -0.4)\n\n\n\n\nThe tree supports the hypothesis A, which positions turtles as a sister group to birds and crocodiles. The relevant clade has a bootstrap support of 99%.\n\n\n\n\nDoes this tree agree with the published tree (Chiari et al. 2012)?\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nYes. Both trees agree on the “A” hypothesis, i.e., (Turtle, (Bird, Crocodile))."
+  },
+  {
+    "objectID": "phylogeny_inference_ml.html#references",
+    "href": "phylogeny_inference_ml.html#references",
+    "title": "4  Maximum likelihood-based phylogeny inference",
+    "section": "References",
+    "text": "References\n\n\n\n\nChernomor, Olga, Arndt Von Haeseler, and Bui Quang Minh. 2016. “Terrace Aware Data Structure for Phylogenomic Inference from Supermatrices.” Systematic Biology 65 (6): 997–1008.\n\n\nChiari, Ylenia, Vincent Cahais, Nicolas Galtier, and Frédéric Delsuc. 2012. “Phylogenomic Analyses Support the Position of Turtles as the Sister Group of Birds and Crocodiles (Archosauria).” Bmc Biology 10: 1–15.\n\n\nLanfear, Robert, Brett Calcott, Simon YW Ho, and Stephane Guindon. 2012. “PartitionFinder: Combined Selection of Partitioning Schemes and Substitution Models for Phylogenetic Analyses.” Molecular Biology and Evolution 29 (6): 1695–1701.\n\n\nLanfear, Robert, Brett Calcott, David Kainer, Christoph Mayer, and Alexandros Stamatakis. 2014. “Selecting Optimal Partitioning Schemes for Phylogenomic Datasets.” BMC Evolutionary Biology 14: 1–14.\n\n\nMinh, Bui Quang, Minh Anh Thi Nguyen, and Arndt Von Haeseler. 2013. “Ultrafast Approximation for Phylogenetic Bootstrap.” Molecular Biology and Evolution 30 (5): 1188–95.\n\n\nMinh, Bui Quang, Heiko A Schmidt, Olga Chernomor, Dominik Schrempf, Michael D Woodhams, Arndt Von Haeseler, and Robert Lanfear. 2020. “IQ-TREE 2: New Models and Efficient Methods for Phylogenetic Inference in the Genomic Era.” Molecular Biology and Evolution 37 (5): 1530–34."
+  },
+  {
+    "objectID": "gene_genome_duplication.html",
+    "href": "gene_genome_duplication.html",
+    "title": "5  Analysis of gene and genome duplication",
+    "section": "",
+    "text": "TBA."
+  }
+]
