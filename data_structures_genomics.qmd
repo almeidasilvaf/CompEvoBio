@@ -1,0 +1,11 @@
+
+# R for evolutionary biology: data structures
+
+## The Bioconductor ecosystem
+
+## DNA/RNA/AAStringSet objects
+
+## DNA/RNA/AAMultipleAlignment objects
+
+## The {ape} package and `phylo` objects
+

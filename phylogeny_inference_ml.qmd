@@ -1,0 +1,416 @@
+
+# Maximum likelihood-based phylogeny inference
+
+In this chapter, we will use the IQ-TREE [@minh2020iq] program to infer phylogenetic trees 
+based on maximum-likelihood. 
+You can download IQ-TREE [here](https://github.com/iqtree/iqtree2/releases/tag/v2.1.2).
+
+Let's start by loading the required packages:
+
+```{r load-packages}
+#| message: false
+#| warning: false
+library(treeio)
+library(ggtree)
+library(patchwork)
+library(here)
+
+set.seed(123) # for reproducibility
+```
+
+## Goals of this lesson
+
+To demonstrate how to use IQ-TREE, we will use an example data set to
+explore a question that used to be hotly debated years ago:
+
+> Are turtles more closely-related to birds or to crocodiles?
+
+There are 3 hypotheses to test, and here we will use maximum-likelihood-based
+methods to find out which one is true:
+
+```{r hypotheses-to-test}
+#| echo: false
+#| fig-width: 12
+#| fig-height: 5
+#| fig-dpi: 200
+
+# Create tree options
+t1 <- "(((Crocodile,Bird),Turtle), (Lizard, Snake));"
+t2 <- "(((Turtle,Bird),Crocodile), (Lizard, Snake));"
+t3 <- "(((Turtle,Crocodile),Bird), (Lizard, Snake));"
+
+# Create `phylo` objects containing trees
+tree1 <- treeio::read.tree(text = t1)
+tree2 <- treeio::read.tree(text = t2)
+tree3 <- treeio::read.tree(text = t3)
+
+# Plot trees in panel
+p1 <- ggtree::ggtree(tree1, aes(
+    color = ifelse(label == "Turtle" & !is.na(label), "brown", "black"),
+    show.legend = FALSE
+)) + 
+    ggplot2::scale_color_identity() +
+    geom_tiplab() + 
+    xlim(0, 4)
+
+p2 <- ggtree::ggtree(tree2, aes(
+    color = ifelse(label == "Turtle" & !is.na(label), "brown", "black"),
+    show.legend = FALSE
+)) + 
+    ggplot2::scale_color_identity() +
+    geom_tiplab() + 
+    xlim(0, 4)
+
+p3 <- ggtree::ggtree(tree3, aes(
+    color = ifelse(label == "Turtle" & !is.na(label), "brown", "black"),
+    show.legend = FALSE
+)) + 
+    ggplot2::scale_color_identity() +
+    geom_tiplab() + 
+    xlim(0, 4)
+
+
+# Combine plots
+combined_trees <- patchwork::wrap_plots(p1, p2, p3, nrow = 1) +
+    patchwork::plot_annotation(tag_levels = "A")
+
+combined_trees
+```
+
+In this lesson, you will learn to:
+
+- Infer a maximum likelihood tree
+- Apply partition models and choose the best partitioning schemes
+- Perform tree topology tests
+- Identify and remove influential genes
+- Calculate concordance factors
+
+
+## Data description
+
+The data we will use in this lesson were obtained 
+from @chiari2012phylogenomic, and they are stored in the `data/` directory 
+associated with this course. The files we will use are:
+
+- `turtle.fa`: a multiple sequence alignment (in FASTA) of a subset of the
+genes used in the original publication.
+
+- `turtle.nex`: a partition file (in NEXUS) defining a subset of 29 genes. 
+
+
+## Inferring a maximum likelihood tree
+
+To run IQ-TREE, use the command below:
+
+```{bash}
+#| eval: false
+iqtree2 -s data/turtle.fa -B 1000 -T 2
+```
+
+
+::: {.callout-note}
+
+## Understanding the command-line arguments
+
+The argument `-s` is mandatory, and this is where you indicate where
+the file containing the MSA is. In our previous command, 
+`iqtree2 -s data/turtle.fa` means *"run IQ-TREE using the MSA in the file data/turtle.fa"*. 
+
+The other arguments and their meanings are:
+
+- `-B`: number of replicates for the ultrafast bootstrap 
+(see @minh2013ultrafast for details). Here, we used 1000 replicates.
+- `-T`: number of CPU cores to use. Here, we're using 2 cores, because
+IQ-TREE defaults to using all available cores.
+
+
+For a complete list of arguments and the possible values they take,
+run `iqtree2 -h`.
+
+:::
+
+The main IQ-TREE report will be stored in a file ending in `.iqtree`,
+and the maximum likelihood tree (in Newick format) will be stored in a file
+ending in `.treefile`.
+
+
+::: {.callout-tip}
+
+## Exercises
+
+Look at the report file in `data/turtle.fa.iqtree` and answer the following questions:
+
+1. What is the best-fit model name?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{bash q1_answer}
+grep "Best-fit model" data/turtle.fa.iqtree
+```
+
+:::
+
+2. What are the AIC/AICc/BIC scores of this model and tree?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{bash q2_answer}
+grep "^Model  \|^GTR+F+R3" data/turtle.fa.iqtree
+```
+
+:::
+
+
+3. Visualise the tree in `data/turtle.fa.treefile`. What relationship among 
+three trees does this tree support? What is the ultrafast bootstrap 
+support (%) for the relevant clade?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+#| fig-height: 6
+#| fig-width: 4
+tree <- read.tree(here("data", "turtle.fa.treefile"))
+
+ggtree(tree) +
+    geom_tiplab() +
+    xlim(0, 0.4) +
+    geom_nodelab(hjust = 1.3, vjust = -0.4)
+```
+
+This tree supports the "C" hypothesis, which positions turtles as a sister 
+group to crocodiles. i.e., ((Turtle, Crocodile), Bird). The branch showing 
+that turtles are a sister group to crocodiles has a bootstrap
+support of 82%.
+
+:::
+
+
+4. In the figure below, you can see the tree published 
+by @chiari2012phylogenomic. Does the inferred tree agree with the 
+published tree?
+
+![Species tree inferred by Chiari *et al*, 2012](figs/chiari_2012_species_tree.png)
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+No. The published tree shows turtles are a sister group to birds and 
+crocodiles (hypothesis A), while the inferred shows turtles as 
+a sister group to crocodiles (hypothesis C).
+
+:::
+
+:::
+
+
+## Applying partition models
+
+Now, we will infer a ML tree applying a partition model [@chernomor2016terrace], 
+which means that each partition (specified in the `turtle.nex` file) will be 
+allowed to have its own model.
+
+```{bash iqtree-partition}
+#| eval: false
+iqtree2 -s data/turtle.fa -p data/turtle.nex -B 1000 -T 2
+```
+
+
+::: {.callout-note}
+
+## Understanding the command-line arguments
+
+The only new argument here is `-p turtle.nex`, which is used to specify
+an *edge-linked proportional* partition model, so that each partition can
+have shorter or longer tree length (i.e., slower or faster evolutionary rates,
+respectively).
+
+:::
+
+
+As in the simpler IQ-TREE run, the main report is in a file ending in
+`.nex.iqtree`, and the tree is in a file named `.nex.treefile`.
+
+
+::: {.callout-tip}
+
+## Exercises
+
+1. Look at the report file in `data/turtle.nex.iqtree`. What are the 
+AIC/AICc/BIC scores of the partition model? Is it better than 
+the previous model?
+
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{bash}
+# Take a look at the best models per partition
+grep "Best-fit model" data/turtle.nex.iqtree
+
+# See the AIC/AICc/BIC scores per partition
+grep -A 30 "List of best-fit models per partition" data/turtle.nex.iqtree
+```
+
+Scores are better (lower BIC scores, for instance).
+
+:::
+
+2. Visualize the tree in `data/turtle.nex.treefile`. 
+What relationship among three trees does this tree support?
+What is the ultrafast bootstrap support (%) for the relevant clade?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+#| fig-height: 6
+#| fig-width: 4
+tree <- read.tree(here("data", "turtle.nex.treefile"))
+
+ggtree(tree) +
+    geom_tiplab() +
+    xlim(0, 0.4) +
+    geom_nodelab(hjust = 1.3, vjust = -0.4)
+```
+
+The tree supports the "A" hypothesis, which positions turtles as a sister
+group to birds and crocodiles.
+The branch showing that turtles are a sister group to crocodiles has a bootstrap
+support of 100%.
+
+:::
+
+
+3. Does the inferred tree agree with the 
+published tree [@chiari2012phylogenomic]?
+
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+Yes. Both trees agree on the "A" hypothesis.
+
+:::
+
+:::
+
+
+## Selecting the best partitioning scheme with PartitionFinder
+
+Now, we will use PartitionFinder [@lanfear2012partitionfinder] to merge
+partitions and reduce the potential over-parameterization.
+
+```{bash}
+#| eval: false
+iqtree2 -s data/turtle.fa -p data/turtle.nex -B 1000 -T 2 -m MFP+MERGE -rcluster 10 --prefix data/turtle.merge
+```
+
+::: {.callout-note}
+
+## Understanding the command-line arguments
+
+Besides the arguments we've already seen, the new arguments and 
+their meanings are:
+
+- `-m`: specifies the model to use. Here, `MFP+MERGE` indicates running
+PartitionFinder followed by tree reconstruction.
+
+- `-rcluster`: to reduce computations by only examining the top n% (here, 10%)
+partitioning schemes using the 
+*relaxed clustering algorithm* [@lanfear2014selecting].
+
+- `--prefix`: specifies the prefix for all output files to avoid overwriting
+the output of previous runs.
+
+:::
+
+The main report is a file ending in `.merge.iqtree`, and the tree is in a
+file ending in `.merge.treefile`.
+
+
+::: {.callout-tip}
+
+## Exercises
+
+1. Look at the report file `data/turtle.merge.iqtree`. 
+How many partitions do we have now?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{bash}
+grep "Input data:" data/turtle.merge.iqtree
+```
+
+:::
+
+
+2. Look at the AIC/AICc/BIC scores. Compared with two previous models, 
+is this model better or worse?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{bash}
+grep -A 10 "List of best-fit models per partition" data/turtle.merge.iqtree
+```
+
+:::
+
+3. Visualize the tree in `data/turtle.merge.treefile`. What relationship 
+among three trees does this tree support? What is the ultrafast bootstrap 
+support (%) for the relevant clade?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+#| fig-height: 6
+#| fig-width: 4
+tree <- read.tree(here("data", "turtle.merge.treefile"))
+
+ggtree(tree) +
+    geom_tiplab() +
+    xlim(0, 0.4) +
+    geom_nodelab(hjust = 1.3, vjust = -0.4)
+```
+
+The tree supports the hypothesis A, which positions turtles as a sister
+group to birds and crocodiles. The relevant clade has a bootstrap support
+of 99%.
+
+:::
+
+
+4. Does this tree agree with the published tree [@chiari2012phylogenomic]?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+Yes. Both trees agree on the "A" hypothesis, i.e., (Turtle, (Bird, Crocodile)).
+
+:::
+
+:::
+
+
+
+
+
+## References {.unnumbered}
+

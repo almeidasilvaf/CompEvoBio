@@ -1,0 +1,25 @@
+project:
+  type: book
+
+book:
+  title: "Introduction to Computational Evolutionary Biology"
+  author: "Fabricio Almeida-Silva and Yves Van de Peer"
+  date: "2023"
+  chapters:
+    - index.qmd
+    - intro_to_R.qmd
+    - data_structures_genomics.qmd
+    - phylogeny_inference_distance.qmd
+    - phylogeny_inference_ml.qmd
+    - gene_genome_duplication.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

@@ -1,0 +1,18 @@
+# Preface {.unnumbered}
+
+This book aims to provide learners with a hands-on introduction to 
+Computational Evolutionary Biology, and the materials here are used
+in the practical lessons of the courses **C003709A - Evolutionary Biology**
+and **C000500A - Bioinformatics 2** at Universiteit Gent, taught by 
+Dr. Yves Van de Peer and Fabricio Almeida-Silva.
+
+Each book chapter represents the contents of a practical lesson from the UGent
+courses, and they serve both as a guide during the lessons and as a reference
+to go back later.
+
+The book will cover:
+
+1. Introduction to the R programming language
+2. Multiple Sequence Alignment
+3. Phylogenetic inference with maximum-likelihood
+4. Analyses of gene and genome duplication
