@@ -112,7 +112,44 @@ As you can see, the object `genome_size` now contains the value `2000`.
 
 ### Exercises
 
-1. Create an object named ``
+The genome of the plant *Arabidopsis thaliana* contains *33768* genes, of
+which *27655* are protein-coding and *6113* encode non-coding RNAs.
+Calculate the percentage of coding and non-coding genes in this genome
+using the following steps:
+
+1. Create a variable named `ath_genes` that stores the numeric value *33768*.
+2. Create 2 objects named `n_coding` and `n_noncoding` that store
+the numeric values *27655* and *6113*, respectively.
+3. Create 2 objects named `perc_coding` and `perc_noncoding` by 
+dividing `n_coding` and `n_noncoding` by `ath_genes`.
+4. Update the objects by multiplying their contents by 100 (to represent 
+in percentages, from 0 to 100) and rounding the percentages to 1 significant
+digit only.
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+# Store values in objects
+ath_genes <- 33768
+n_coding <- 27655
+n_noncoding <- 6113
+
+# Get percentages
+perc_coding <- n_coding / ath_genes
+perc_noncoding <- n_noncoding / ath_genes
+
+# Update objects with actual percentages
+perc_coding <- round(perc_coding * 100, 1)
+perc_noncoding <- round(perc_noncoding * 100, 1)
+
+# Show contents of the objects
+perc_coding
+perc_noncoding
+```
+
+:::
 
 :::
 
