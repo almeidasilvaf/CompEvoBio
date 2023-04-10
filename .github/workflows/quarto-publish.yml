@@ -35,6 +35,7 @@ jobs:
             any::ggtree
             any::ape
             any::here
+            any::Biostrings
             
 
       # add software dependencies here

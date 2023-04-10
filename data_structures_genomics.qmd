@@ -1,11 +1,171 @@
 
 # R for evolutionary biology: data structures
 
+R is a very flexible programming language, and it allows developers to
+create their own data structures (called **classes**) for their packages.
+Over the years, some packages have become so popular that the classes
+they use to store data are now used the "standard" representations for
+particular types of data. Here, we will show some common data classes in
+evolutionary biology and comparative genomics research.
+
 ## The Bioconductor ecosystem
 
-## DNA/RNA/AAStringSet objects
+[The Bioconductor project](https://bioconductor.org/) was created to develop,
+support, and disseminate free open source software to analyze biological data.
+It works as a repository of R packages for biological data analysis, with
+both "core packages" (developed and maintained by the Bioconductor Core Team),
+and community-contributed packages. We usually refer to Bioconductor as a
+"package ecosystem" because its packages are tightly integrated and designed
+for easy interoperation, such that different packages can be used together
+with minimal effort. An important facilitator of such interoperability is
+the existence of standardized data structures, such as `GRanges` objects
+for genomic coordinates, and `DNA/RNA/AAStringSet` objects for sequences.
 
-## DNA/RNA/AAMultipleAlignment objects
+### The {Biostrings} package and `XStringSet` objects
+
+The Biostrings package [@biostrings] allows efficient manipulation of 
+biological sequences, and its data classes are standard for all Bioconductor
+packages that involve sequence analyses. The data classes in Biostrings to
+represent sets of biological sequences are:
+
+1. `DNAStringSet`: for sets of DNA strings.
+2. `RNAStringSet`: for sets of RNA strings.
+3. `AAStringSet`: for sets of amino acid strings.
+
+For a single sequence, the each of the above has a correspoding `XString` class
+(i.e., `DNAString`, `RNAString`, `AAString`). For example, let's create some
+`XString` objects manually:
+
+```{r}
+library(Biostrings)
+
+# Create `DNAString` object
+dna_seq <- DNAString("ATGGCCGACTCA")
+dna_seq
+
+# Convert `DNAString` to `RNAString`
+rna_seq <- RNAString(dna_seq)
+rna_seq
+
+# Translate `RNAString` to create `AAString`
+aa_seq <- translate(rna_seq)
+aa_seq
+```
+
+In real-world data analyses, we would work with multiple sequences (e.g., 
+a whole genome or a whole proteome). Multiple sequences are stored 
+in `XStringSet` objects, which can be read from FASTA files 
+with `readXStringSet()` functions, namely:
+
+1. `readDNAStringSet()`: read FASTA file containing multiple DNA sequences.
+2. `readRNAStringSet()`: read FASTA file containing multiple RNA sequences. 
+3. `readAAStringSet()`: read FASTA file containing multiple AA sequences.
+
+For example, let's read an example FASTA file that come with the Biostrings
+package.
+
+```{r}
+# Path to FASTA file containing an ORF
+fasta_file <- system.file("extdata", "someORF.fa", package = "Biostrings")
+fasta_file
+
+# Read FASTA file as a DNAStringSet object
+dna_seqs <- readDNAStringSet(fasta_file)
+dna_seqs
+```
+
+Some examples of what you can do to explore `XStringSet` objects include:
+
+```{r}
+# width(): get sequence lengths
+width(dna_seqs)
+
+# names(): get sequence names
+names(dna_seqs)
+
+# subset DNAStringSet and create a DNAStringSet of length 1
+dna_seqs[1]
+
+# subset DNAStringSet and create a DNAString object
+dna_seqs[[1]]
+```
+
+All functions above would also work for `AAStringSet` objects 
+and `RNAStringSet` objects.
+
+### The {Biostrings} package and `XMultipleAlignment` objects
+
+Like `XStringSet` objects, `XMultipleAlignment` objects also store sequences,
+but sequences that were aligned using a Sequence Alignment algorithm.
+FASTA files containing aligned sequences can be read with 
+`XMultipleAlignment` functions, namely:
+
+1. `readDNAMultipleAlignment()`: read a FASTA file containing aligned DNA
+sequences.
+2. `readRNAMultipleAlignment()`: read a FASTA file containing aligned RNA
+sequences.
+3. `readAAMultipleAlignment()`: read a FASTA file containing aligned amino acid
+sequences.
+
+
+For example:
+
+```{r}
+# Path to FASTA file containing MSA of DNA sequences
+aln_path <- system.file("extdata", "msx2_mRNA.aln", package = "Biostrings")
+aln_path
+
+# Read MSA file
+dna_msa <- readDNAMultipleAlignment(aln_path)
+dna_msa
+```
+
 
 ## The {ape} package and `phylo` objects
+
+The ape package [@ape] is one of the most popular packages for Analyses
+of Phylogenetics and Evolution (from where the name comes), and it
+represents phylogenies as `phylo` objects. Because of ape's popularity,
+`phylo` objects have become the standard data structure for phylogenies in R.
+
+To create `phylo` objects, you will use the function `read.tree()`, which
+accepts both the path to a file containing the tree (in Newick format,
+for example), or a text representation of a phylogeny. To demonstrate
+the structure of a `phylo` object, let's create a phylogeny from text:
+
+```{r}
+library(ape)
+
+# Create tree from text
+text_tree <- "((((cow, pig),whale), (bat, (lemur, human))), iguana);"
+tree <- read.tree(text = text_tree)
+
+tree
+```
+
+This is what a `phylo` object looks like. In a sense, a `phylo` object is a 
+`list`, a standard R data structure, but with some standard elements. Let's
+explore them:
+
+```{r}
+# Structure of the `phylo` object
+str(tree)
+
+# Exploring each element individually
+tree$edge
+tree$Nnode
+tree$tip.label
+```
+
+As `phylo` objects have become standard, there are hundreds of functions
+(from dozens of packages) that were especially designed to work on
+`phylo` objects. For example, if you want to plot the tree, you would use
+the `plot()` function:
+
+```{r}
+# Plot tree
+plot(tree)
+```
+
+We will explore other examples in future lessons.
 
