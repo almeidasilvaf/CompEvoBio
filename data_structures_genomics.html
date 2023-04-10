@@ -20,6 +20,88 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -132,10 +214,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-bioconductor-ecosystem" id="toc-the-bioconductor-ecosystem" class="nav-link active" data-scroll-target="#the-bioconductor-ecosystem"><span class="toc-section-number">2.1</span>  The Bioconductor ecosystem</a></li>
-  <li><a href="#dnarnaaastringset-objects" id="toc-dnarnaaastringset-objects" class="nav-link" data-scroll-target="#dnarnaaastringset-objects"><span class="toc-section-number">2.2</span>  DNA/RNA/AAStringSet objects</a></li>
-  <li><a href="#dnarnaaamultiplealignment-objects" id="toc-dnarnaaamultiplealignment-objects" class="nav-link" data-scroll-target="#dnarnaaamultiplealignment-objects"><span class="toc-section-number">2.3</span>  DNA/RNA/AAMultipleAlignment objects</a></li>
-  <li><a href="#the-ape-package-and-phylo-objects" id="toc-the-ape-package-and-phylo-objects" class="nav-link" data-scroll-target="#the-ape-package-and-phylo-objects"><span class="toc-section-number">2.4</span>  The {ape} package and <code>phylo</code> objects</a></li>
+  <li><a href="#the-bioconductor-ecosystem" id="toc-the-bioconductor-ecosystem" class="nav-link active" data-scroll-target="#the-bioconductor-ecosystem"><span class="toc-section-number">2.1</span>  The Bioconductor ecosystem</a>
+  <ul class="collapse">
+  <li><a href="#the-biostrings-package-and-xstringset-objects" id="toc-the-biostrings-package-and-xstringset-objects" class="nav-link" data-scroll-target="#the-biostrings-package-and-xstringset-objects"><span class="toc-section-number">2.1.1</span>  The {Biostrings} package and <code>XStringSet</code> objects</a></li>
+  <li><a href="#the-biostrings-package-and-xmultiplealignment-objects" id="toc-the-biostrings-package-and-xmultiplealignment-objects" class="nav-link" data-scroll-target="#the-biostrings-package-and-xmultiplealignment-objects"><span class="toc-section-number">2.1.2</span>  The {Biostrings} package and <code>XMultipleAlignment</code> objects</a></li>
+  </ul></li>
+  <li><a href="#the-ape-package-and-phylo-objects" id="toc-the-ape-package-and-phylo-objects" class="nav-link" data-scroll-target="#the-ape-package-and-phylo-objects"><span class="toc-section-number">2.2</span>  The {ape} package and <code>phylo</code> objects</a></li>
   </ul>
 </nav>
     </div>
@@ -159,19 +243,282 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>R is a very flexible programming language, and it allows developers to create their own data structures (called <strong>classes</strong>) for their packages. Over the years, some packages have become so popular that the classes they use to store data are now used the “standard” representations for particular types of data. Here, we will show some common data classes in evolutionary biology and comparative genomics research.</p>
 <section id="the-bioconductor-ecosystem" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="the-bioconductor-ecosystem"><span class="header-section-number">2.1</span> The Bioconductor ecosystem</h2>
+<p><a href="https://bioconductor.org/">The Bioconductor project</a> was created to develop, support, and disseminate free open source software to analyze biological data. It works as a repository of R packages for biological data analysis, with both “core packages” (developed and maintained by the Bioconductor Core Team), and community-contributed packages. We usually refer to Bioconductor as a “package ecosystem” because its packages are tightly integrated and designed for easy interoperation, such that different packages can be used together with minimal effort. An important facilitator of such interoperability is the existence of standardized data structures, such as <code>GRanges</code> objects for genomic coordinates, and <code>DNA/RNA/AAStringSet</code> objects for sequences.</p>
+<section id="the-biostrings-package-and-xstringset-objects" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="the-biostrings-package-and-xstringset-objects"><span class="header-section-number">2.1.1</span> The {Biostrings} package and <code>XStringSet</code> objects</h3>
+<p>The Biostrings package <span class="citation" data-cites="biostrings">(<a href="#ref-biostrings" role="doc-biblioref">Pagès et al. 2022</a>)</span> allows efficient manipulation of biological sequences, and its data classes are standard for all Bioconductor packages that involve sequence analyses. The data classes in Biostrings to represent sets of biological sequences are:</p>
+<ol type="1">
+<li><code>DNAStringSet</code>: for sets of DNA strings.</li>
+<li><code>RNAStringSet</code>: for sets of RNA strings.</li>
+<li><code>AAStringSet</code>: for sets of amino acid strings.</li>
+</ol>
+<p>For a single sequence, the each of the above has a correspoding <code>XString</code> class (i.e., <code>DNAString</code>, <code>RNAString</code>, <code>AAString</code>). For example, let’s create some <code>XString</code> objects manually:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Biostrings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: BiocGenerics</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'BiocGenerics'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    IQR, mad, sd, var, xtabs</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+    Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort,
+    table, tapply, union, unique, unsplit, which.max, which.min</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: S4Vectors</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: stats4</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'S4Vectors'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    expand.grid, I, unname</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: IRanges</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: XVector</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: GenomeInfoDb</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'Biostrings'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:base':
+
+    strsplit</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create `DNAString` object</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>dna_seq <span class="ot">&lt;-</span> <span class="fu">DNAString</span>(<span class="st">"ATGGCCGACTCA"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>dna_seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>12-letter DNAString object
+seq: ATGGCCGACTCA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert `DNAString` to `RNAString`</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>rna_seq <span class="ot">&lt;-</span> <span class="fu">RNAString</span>(dna_seq)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>rna_seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>12-letter RNAString object
+seq: AUGGCCGACUCA</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Translate `RNAString` to create `AAString`</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>aa_seq <span class="ot">&lt;-</span> <span class="fu">translate</span>(rna_seq)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>aa_seq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4-letter AAString object
+seq: MADS</code></pre>
+</div>
+</div>
+<p>In real-world data analyses, we would work with multiple sequences (e.g., a whole genome or a whole proteome). Multiple sequences are stored in <code>XStringSet</code> objects, which can be read from FASTA files with <code>readXStringSet()</code> functions, namely:</p>
+<ol type="1">
+<li><code>readDNAStringSet()</code>: read FASTA file containing multiple DNA sequences.</li>
+<li><code>readRNAStringSet()</code>: read FASTA file containing multiple RNA sequences.</li>
+<li><code>readAAStringSet()</code>: read FASTA file containing multiple AA sequences.</li>
+</ol>
+<p>For example, let’s read an example FASTA file that come with the Biostrings package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Path to FASTA file containing an ORF</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>fasta_file <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"someORF.fa"</span>, <span class="at">package =</span> <span class="st">"Biostrings"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>fasta_file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/home/runner/work/_temp/Library/Biostrings/extdata/someORF.fa"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read FASTA file as a DNAStringSet object</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>dna_seqs <span class="ot">&lt;-</span> <span class="fu">readDNAStringSet</span>(fasta_file)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>dna_seqs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>DNAStringSet object of length 7:
+    width seq                                               names               
+[1]  5573 ACTTGTAAATATATCTTTTATTT...CTTATCGACCTTATTGTTGATAT YAL001C TFC3 SGDI...
+[2]  5825 TTCCAAGGCCGATGAATTCGACT...AGTAAATTTTTTTCTATTCTCTT YAL002W VPS8 SGDI...
+[3]  2987 CTTCATGTCAGCCTGCACTTCTG...TGGTACTCATGTAGCTGCCTCAT YAL003W EFB1 SGDI...
+[4]  3929 CACTCATATCGGGGGTCTTACTT...TGTCCCGAAACACGAAAAAGTAC YAL005C SSA1 SGDI...
+[5]  2648 AGAGAAAGAGTTTCACTTCTTGA...ATATAATTTATGTGTGAACATAG YAL007C ERP2 SGDI...
+[6]  2597 GTGTCCGGGCCTCGCAGGCGTTC...AAGTTTTGGCAGAATGTACTTTT YAL008W FUN14 SGD...
+[7]  2780 CAAGATAATGTCAAAGTTAGTGG...GCTAAGGAAGAAAAAAAAATCAC YAL009W SPO7 SGDI...</code></pre>
+</div>
+</div>
+<p>Some examples of what you can do to explore <code>XStringSet</code> objects include:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># width(): get sequence lengths</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">width</span>(dna_seqs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5573 5825 2987 3929 2648 2597 2780</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># names(): get sequence names</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dna_seqs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "YAL001C TFC3 SGDID:S0000001, Chr I from 152168-146596, reverse complement, Verified ORF"
+[2] "YAL002W VPS8 SGDID:S0000002, Chr I from 142709-148533, Verified ORF"                    
+[3] "YAL003W EFB1 SGDID:S0000003, Chr I from 141176-144162, Verified ORF"                    
+[4] "YAL005C SSA1 SGDID:S0000004, Chr I from 142433-138505, reverse complement, Verified ORF"
+[5] "YAL007C ERP2 SGDID:S0000005, Chr I from 139347-136700, reverse complement, Verified ORF"
+[6] "YAL008W FUN14 SGDID:S0000006, Chr I from 135916-138512, Verified ORF"                   
+[7] "YAL009W SPO7 SGDID:S0000007, Chr I from 134856-137635, Verified ORF"                    </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset DNAStringSet and create a DNAStringSet of length 1</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>dna_seqs[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>DNAStringSet object of length 1:
+    width seq                                               names               
+[1]  5573 ACTTGTAAATATATCTTTTATTT...CTTATCGACCTTATTGTTGATAT YAL001C TFC3 SGDI...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subset DNAStringSet and create a DNAString object</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>dna_seqs[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5573-letter DNAString object
+seq: ACTTGTAAATATATCTTTTATTTTCCGAGAGGAAAA...AATTTCTTAAACGCTTATCGACCTTATTGTTGATAT</code></pre>
+</div>
+</div>
+<p>All functions above would also work for <code>AAStringSet</code> objects and <code>RNAStringSet</code> objects.</p>
 </section>
-<section id="dnarnaaastringset-objects" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="dnarnaaastringset-objects"><span class="header-section-number">2.2</span> DNA/RNA/AAStringSet objects</h2>
+<section id="the-biostrings-package-and-xmultiplealignment-objects" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="the-biostrings-package-and-xmultiplealignment-objects"><span class="header-section-number">2.1.2</span> The {Biostrings} package and <code>XMultipleAlignment</code> objects</h3>
+<p>Like <code>XStringSet</code> objects, <code>XMultipleAlignment</code> objects also store sequences, but sequences that were aligned using a Sequence Alignment algorithm. FASTA files containing aligned sequences can be read with <code>XMultipleAlignment</code> functions, namely:</p>
+<ol type="1">
+<li><code>readDNAMultipleAlignment()</code>: read a FASTA file containing aligned DNA sequences.</li>
+<li><code>readRNAMultipleAlignment()</code>: read a FASTA file containing aligned RNA sequences.</li>
+<li><code>readAAMultipleAlignment()</code>: read a FASTA file containing aligned amino acid sequences.</li>
+</ol>
+<p>For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Path to FASTA file containing MSA of DNA sequences</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>aln_path <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"msx2_mRNA.aln"</span>, <span class="at">package =</span> <span class="st">"Biostrings"</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>aln_path</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/home/runner/work/_temp/Library/Biostrings/extdata/msx2_mRNA.aln"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read MSA file</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>dna_msa <span class="ot">&lt;-</span> <span class="fu">readDNAMultipleAlignment</span>(aln_path)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>dna_msa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>DNAMultipleAlignment with 8 rows and 2343 columns
+     aln                                                    names               
+[1] -----TCCCGTCTCCGCAGCAAAAAA...TCACAATTAAAAAAAAAAAAAAAAA gi|84452153|ref|N...
+[2] --------------------------...------------------------- gi|208431713|ref|...
+[3] --------------------------...------------------------- gi|118601823|ref|...
+[4] ----------------------AAAA...------------------------- gi|114326503|ref|...
+[5] --------------------------...------------------------- gi|119220589|ref|...
+[6] --------------------------...------------------------- gi|148540149|ref|...
+[7] --------------CGGCTCCGCAGC...------------------------- gi|45383056|ref|N...
+[8] GGGGGAGACTTCAGAAGTTGTTGTCC...------------------------- gi|213515133|ref|...</code></pre>
+</div>
+</div>
 </section>
-<section id="dnarnaaamultiplealignment-objects" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="dnarnaaamultiplealignment-objects"><span class="header-section-number">2.3</span> DNA/RNA/AAMultipleAlignment objects</h2>
 </section>
-<section id="the-ape-package-and-phylo-objects" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="the-ape-package-and-phylo-objects"><span class="header-section-number">2.4</span> The {ape} package and <code>phylo</code> objects</h2>
+<section id="the-ape-package-and-phylo-objects" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="the-ape-package-and-phylo-objects"><span class="header-section-number">2.2</span> The {ape} package and <code>phylo</code> objects</h2>
+<p>The ape package <span class="citation" data-cites="ape">(<a href="#ref-ape" role="doc-biblioref">Paradis and Schliep 2019</a>)</span> is one of the most popular packages for Analyses of Phylogenetics and Evolution (from where the name comes), and it represents phylogenies as <code>phylo</code> objects. Because of ape’s popularity, <code>phylo</code> objects have become the standard data structure for phylogenies in R.</p>
+<p>To create <code>phylo</code> objects, you will use the function <code>read.tree()</code>, which accepts both the path to a file containing the tree (in Newick format, for example), or a text representation of a phylogeny. To demonstrate the structure of a <code>phylo</code> object, let’s create a phylogeny from text:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'ape'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:Biostrings':
+
+    complement</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create tree from text</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>text_tree <span class="ot">&lt;-</span> <span class="st">"((((cow, pig),whale), (bat, (lemur, human))), iguana);"</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="at">text =</span> text_tree)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>tree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Phylogenetic tree with 7 tips and 6 internal nodes.
+
+Tip labels:
+  cow, pig, whale, bat, lemur, human, ...
+
+Rooted; no branch lengths.</code></pre>
+</div>
+</div>
+<p>This is what a <code>phylo</code> object looks like. In a sense, a <code>phylo</code> object is a <code>list</code>, a standard R data structure, but with some standard elements. Let’s explore them:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Structure of the `phylo` object</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 3
+ $ edge     : int [1:12, 1:2] 8 9 10 11 11 10 9 12 12 13 ...
+ $ Nnode    : int 6
+ $ tip.label: chr [1:7] "cow" "pig" "whale" "bat" ...
+ - attr(*, "class")= chr "phylo"
+ - attr(*, "order")= chr "cladewise"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploring each element individually</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>tree<span class="sc">$</span>edge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1] [,2]
+ [1,]    8    9
+ [2,]    9   10
+ [3,]   10   11
+ [4,]   11    1
+ [5,]   11    2
+ [6,]   10    3
+ [7,]    9   12
+ [8,]   12    4
+ [9,]   12   13
+[10,]   13    5
+[11,]   13    6
+[12,]    8    7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>tree<span class="sc">$</span>Nnode</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>tree<span class="sc">$</span>tip.label</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "cow"    "pig"    "whale"  "bat"    "lemur"  "human"  "iguana"</code></pre>
+</div>
+</div>
+<p>As <code>phylo</code> objects have become standard, there are hundreds of functions (from dozens of packages) that were especially designed to work on <code>phylo</code> objects. For example, if you want to plot the tree, you would use the <code>plot()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot tree</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="data_structures_genomics_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We will explore other examples in future lessons.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-biostrings" class="csl-entry" role="doc-biblioentry">
+Pagès, H., P. Aboyoun, R. Gentleman, and S. DebRoy. 2022. <em>Biostrings: Efficient Manipulation of Biological Strings</em>. <a href="https://bioconductor.org/packages/Biostrings">https://bioconductor.org/packages/Biostrings</a>.
+</div>
+<div id="ref-ape" class="csl-entry" role="doc-biblioentry">
+Paradis, Emmanuel, and Klaus Schliep. 2019. <span>“Ape 5.0: An Environment for Modern Phylogenetics and Evolutionary Analyses in <span>R</span>.”</span> <em>Bioinformatics</em> 35: 526–28. <a href="https://doi.org/10.1093/bioinformatics/bty633">https://doi.org/10.1093/bioinformatics/bty633</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
