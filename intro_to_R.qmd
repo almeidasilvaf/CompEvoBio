@@ -108,50 +108,6 @@ genome_size
 
 As you can see, the object `genome_size` now contains the value `2000`.
 
-::: {.callout-tip}
-
-### Exercises
-
-The genome of the plant *Arabidopsis thaliana* contains *33768* genes, of
-which *27655* are protein-coding and *6113* encode non-coding RNAs.
-Calculate the percentage of coding and non-coding genes in this genome
-using the following steps:
-
-1. Create a variable named `ath_genes` that stores the numeric value *33768*.
-2. Create 2 objects named `n_coding` and `n_noncoding` that store
-the numeric values *27655* and *6113*, respectively.
-3. Create 2 objects named `perc_coding` and `perc_noncoding` by 
-dividing `n_coding` and `n_noncoding` by `ath_genes`.
-4. Update the objects by multiplying their contents by 100 (to represent 
-in percentages, from 0 to 100) and rounding the percentages to 1 significant
-digit only.
-
-::: {.callout collapse="true" appearance="minimal"}
-
-### Solution
-
-```{r}
-# Store values in objects
-ath_genes <- 33768
-n_coding <- 27655
-n_noncoding <- 6113
-
-# Get percentages
-perc_coding <- n_coding / ath_genes
-perc_noncoding <- n_noncoding / ath_genes
-
-# Update objects with actual percentages
-perc_coding <- round(perc_coding * 100, 1)
-perc_noncoding <- round(perc_noncoding * 100, 1)
-
-# Show contents of the objects
-perc_coding
-perc_noncoding
-```
-
-:::
-
-:::
 
 ## Functions and arguments
 
@@ -209,10 +165,224 @@ you can type the function name preceded by a question mark. For example:
 This will open up a help page with detailed information on what the function 
 does, its arguments, and examples.
 
+::: {.callout-tip}
+
+### Exercises
+
+The genome of the plant *Arabidopsis thaliana* contains *33768* genes, of
+which *27655* are protein-coding and *6113* encode non-coding RNAs.
+Calculate the percentage of coding and non-coding genes in this genome
+using the following steps:
+
+1. Create a variable named `ath_genes` that stores the numeric value *33768*.
+2. Create 2 objects named `n_coding` and `n_noncoding` that store
+the numeric values *27655* and *6113*, respectively.
+3. Create 2 objects named `perc_coding` and `perc_noncoding` by 
+dividing `n_coding` and `n_noncoding` by `ath_genes`.
+4. Update the objects by multiplying their contents by 100 (to represent 
+in percentages, from 0 to 100) and rounding the percentages to 1 significant
+digit only.
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+# Store values in objects
+ath_genes <- 33768
+n_coding <- 27655
+n_noncoding <- 6113
+
+# Get percentages
+perc_coding <- n_coding / ath_genes
+perc_noncoding <- n_noncoding / ath_genes
+
+# Update objects with actual percentages
+perc_coding <- round(perc_coding * 100, 1)
+perc_noncoding <- round(perc_noncoding * 100, 1)
+
+# Show contents of the objects
+perc_coding
+perc_noncoding
+```
+
+:::
+
+:::
+
+
 ## Data structures
+
+Now, we will explore two data structures in R that we will use all the time
+throughout the lessons (and in our research routine): vectors and data frames.
 
 ### Vectors
 
+Vector are the most common data structures in R, and they are used
+to **store multiple values**. There are 6 kinds of values that can be stored
+in a vector, but the ones we typically use are:
+
+1. `numeric`: numbers.
+2. `character`: text strings.
+3. `logical`: either `TRUE` or `FALSE`.
+
+The other types are `integer`, `complex`, and `raw`, but they are not important
+here.
+
+To create a vector, you will use the `c()` function to **combine** values.
+For example:
+
+```{r}
+# Creating a numeric vector
+genome_sizes <- c(33768, 52872, 39756)
+genome_sizes
+
+# Creating a character vector
+species <- c("Arabidopsis", "soybean", "maize")
+species
+```
+
+You can inspect vectors with the functions:
+
+- `class()`: shows the class of a vector.
+- `length()`: shows the number of elements in a vector.
+- `str()`: summarizes the structure of a vector.
+
+```{r}
+class(genome_sizes)
+length(genome_sizes)
+str(genome_sizes)
+```
+
+You can also combine two vectors:
+
+```{r}
+species1 <- c("soybean", "maize")
+species2 <- c("cotton", "bean")
+combined_species <- c(species1, species2)
+combined_species
+```
+
+**NOTE:** Vectors can only store values of the same type (i.e., character, 
+numeric, etc). If you try to create a vector that contains values of different
+types, R converts them to all be the same type. This conversion of one class
+to another is called *coercion*. For example:
+
+```{r}
+# Creating a vector with numeric and character values
+c_vector <- c("a", "b", 1, "d")
+c_vector
+```
+
+In the example above, R converted the numeric value *1* to a character.
+
 ### Data frames
 
+Data frames is the name R uses to call **tables**. To create a new data frame, 
+you will use the `data.frame()` function. Each column of a data frame
+is a vector, so you can create a data frame by passing each vector to
+each column. For example, let's recreate the `genome_sizes` and `species` 
+vectors we created in the previous section and store them in columns 
+**genome_size** and **species** of a data frame:
+
+```{r}
+# Create vectors again
+genome_sizes <- c(33768, 52872, 39756)
+species <- c("Arabidopsis", "soybean", "maize")
+
+# Create a data frame with columns `genome_size` and `species`
+genome_size_df <- data.frame(
+    genome_size = genome_sizes,
+    species = species
+)
+
+genome_size_df
+```
+
+We can also create the vectors inside the `data.frame()` function itself:
+
+```{r}
+genome_size_df <- data.frame(
+    genome_size = c(33768, 52872, 39756),
+    species = c("Arabidopsis", "soybean", "maize")
+)
+
+genome_size_df
+```
+
+To add a column to an existing data frame, you have to add `$` followed by the
+new column name in front of the object name. For example, let's add a column
+named `is_model` to the `genome_size_df` data frame that indicates whether
+or not a species is a model species:
+
+```{r}
+# Add `is_model` column
+genome_size_df$is_model <- c(TRUE, FALSE, FALSE)
+genome_size_df
+```
+
+Finally, to inspect a data frame, you can use the following functions:
+
+- `dim()`: shows the dimensions of the data frame (i.e., number of rows and
+columns, respectively).
+- `nrow()`: shows the number of rows in a data frame.
+- `ncol()`: shows the number of columns in a data frame.
+- `head()`: shows the first 6 rows of a data frame.
+- `tail()`: shows the last 6 rows of a data frame.
+- `names()`: shows the column names.
+- `rownames()`: shows the row names
+- `str()`: summarizes the structure of a data frame.
+- `summary()`: shows summary statistics for each column.
+
+::: {.callout-tip}
+
+### Exercises
+
+1. The plants Brussels sprout, grapevine and apple belong to the 
+families Brassicaceae, Vitaceae, and Rosaceae. Create a data
+frame named `species_families` with 2 columns named **species** and **family**
+representing such information.
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+species_families <- data.frame(
+    species = c("Brussels sprout", "grapevine", "apple"),
+    family = c("Brassicaceae", "Vitaceae", "Rosaceae")
+)
+
+species_families
+```
+
+:::
+
+
+2. When you install R, it already comes with some example data sets. One of 
+them is `airquality`, a data frame containing New York air quality 
+measurements from May to September 1973. Inspect this data frame
+and answer the following questions:
+
+    - How many rows are there?
+    - How many columns are there?
+    - What are the column names?
+    - What are the classes of each column?
+
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+str(airquality)
+```
+
+:::
+
+:::
+
+
 ## Subsetting
+
+
