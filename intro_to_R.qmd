@@ -383,6 +383,136 @@ str(airquality)
 :::
 
 
-## Subsetting
+## Indexing and subsetting
 
+Here, you will learn how to extract specific elements of vectors and data 
+frames, which is called **subsetting**.
+
+### Vectors
+
+To subset vectors, you need to pass the index of the element you want to extract
+inside square brackets (`[]`). If you want to extract multiple elements,
+you have to pass a vector of indices inside the square brackets. For example:
+
+```{r}
+plants <- c("rice", "maize", "duckweed")
+
+# Extract 1st element
+plants[1]
+
+# Extract 1st and 2nd element
+plants[c(1, 2)]
+
+# Extract 3rd and 2nd element (in this order)
+plants[c(3, 2)]
+```
+
+Another very common way to subset vectors is by using **logical vectors**.
+When using logical vectors, `TRUE` and `FALSE` will indicate whether to
+**extract** or **not extract** the element. For example, let's use logical
+vectors to subset the `plants` vector we created above:
+
+```{r}
+plants
+
+# Extract 1st element, do not extract 2nd and 3rd elements
+plants[c(TRUE, FALSE, FALSE)]
+
+# Extract 1st and 3rd elements, do not extract 2nd
+plants[c(TRUE, FALSE, TRUE)]
+```
+
+Now, you might be thinking: 
+*using logical vectors seems complicated. Why would someone do this instead of using indices?*. The answer is **conditional subsetting**. In R, you can use logical
+expressions that return `TRUE` or `FALSE` to extract elements. For example,
+let's create a vector of genome sizes for fictional species and check
+if they more than 20,000 genes:
+
+```{r}
+ngenes <- c(52000, 35000, 18000, 17000, 22000, 11000, 13000)
+
+# Logical expression: is the element >= 20000?
+ngenes > 20000
+```
+
+You can see that the logical expression returns a vector of `TRUE`s 
+and `FALSE`s. Since `TRUE` means **extract** and `FALSE` means 
+**do not extract** when subsetting, we can use logical expressions to subset
+vectors as follows:
+
+```{r}
+# Extract elements with >=20000 genes
+ngenes[ngenes > 20000]
+```
+
+You can combine multiple tests in logical expressions using `&` (which means 
+**AND**, both conditions are true) and `|` (which means **OR**, at least
+one of the conditions is true).
+
+```{r}
+# Extract elements with number of genes between 20000 and 40000
+ngenes[number_of_genes > 20000 & ngenes < 40000]
+
+# Extract elements with 13000 or 11000 genes
+ngenes[ngenes == 13000 | ngenes == 11000]
+```
+
+You can also subset a vector based on the presence of some pre-defined
+elements using the `%in%` operator. For example:
+
+```{r}
+animals <- c("dog", "cat", "rat", "pig", "horse")
+
+animals[animals %in% c("cat", "dog")]
+```
+
+### Data frames
+
+Subsetting data frames in very similar to subsetting vectors. The only 
+difference is that data frames have 2 dimensions (rows and columns), while
+vectors have only 1 dimension. Thus, when you subset a data frame,
+you have to specify which dimension you want to use. For instance, if you
+execute `vec[2]`, you will extract the 2nd element of the vector `vec`. However,
+if you pass the index 2 to a data frame, you can mean either the 2nd row or the
+second column. To subset data frames, you will use commas (`,`) inside square
+brackets to distinguish rows (which come **before** the comma) from 
+columns (which come **after** the comma. For example:
+
+```{r}
+# See the first 6 rows the `airquality` data frame
+head(airquality)
+
+# Extract the element in row 1, column 2
+airquality[1, 2]
+
+# Extract rows 1 to 5, column 1
+airquality[1:5, 1]
+```
+
+To extract all rows or all columns, leave the corresponding field empty:
+
+```{r}
+# Extract row 2, all columns
+airquality[2, ]
+
+# Extract column 2, all rows
+airquality[, 2]
+```
+
+You can also subset columns based on their names:
+
+```{r}
+airquality$Month
+airquality[, "Month"] # same thing
+```
+
+As we did with vectors, we can subset the data frame using logical expressions:
+
+```{r}
+# Extract rows for which column "Month" is equal to 5
+airquality[airquality$Month == 5, ]
+
+# Extract rows with "Temp" >90, then show only columns "Month" and "Day"
+airquality[airquality$Temp > 90, c("Month", "Day")]
+```
 
