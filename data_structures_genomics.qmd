@@ -36,7 +36,7 @@ For a single sequence, the each of the above has a correspoding `XString` class
 (i.e., `DNAString`, `RNAString`, `AAString`). For example, let's create some
 `XString` objects manually:
 
-```{r}
+```{r message = FALSE, warning = FALSE}
 library(Biostrings)
 
 # Create `DNAString` object
@@ -93,6 +93,42 @@ dna_seqs[[1]]
 All functions above would also work for `AAStringSet` objects 
 and `RNAStringSet` objects.
 
+
+::: {.callout-tip}
+
+### Exercises
+
+Use the `dna_seqs` object created above to answer the following questions:
+
+1. What is the length of the 3rd sequence?
+2. What is the name of the 5th sequence?
+3. How many times does the **TTCC** sequence string occur in each sequence?
+Hint: use the function `vcountPattern()`.
+4. What are the first 3 nucleotides of each sequence? 
+Hint: use the `subseq()` function.
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+# Q1: Length of the 3rd sequence
+width(dna_seqs)[3]
+
+# Q2: Name of the 5th sequence
+names(dna_seqs)[5]
+
+# Q3: Minimum and maximum temperature
+vcountPattern("TTCC", dna_seqs)
+
+# Q4: First 3 nucleotides of each sequence
+subseq(dna_seqs, start = 1, end = 3)
+```
+
+:::
+:::
+
+
 ### The {Biostrings} package and `XMultipleAlignment` objects
 
 Like `XStringSet` objects, `XMultipleAlignment` objects also store sequences,
@@ -121,6 +157,26 @@ dna_msa
 ```
 
 
+::: {.callout-tip}
+
+### Exercises
+
+What is the consensus sequence of the multiple sequence alignment in `dna_msa`?
+Hint: use the `consensusString()` function.
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+consensusString(dna_msa)
+```
+
+:::
+:::
+
+
+
 ## The {ape} package and `phylo` objects
 
 The ape package [@ape] is one of the most popular packages for Analyses
@@ -133,7 +189,7 @@ accepts both the path to a file containing the tree (in Newick format,
 for example), or a text representation of a phylogeny. To demonstrate
 the structure of a `phylo` object, let's create a phylogeny from text:
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 library(ape)
 
 # Create tree from text
@@ -168,4 +224,39 @@ plot(tree)
 ```
 
 We will explore other examples in future lessons.
+
+
+::: {.callout-tip}
+
+### Exercises
+
+Use the following code to simulate a random tree and answer the questions below:
+
+```{r}
+set.seed(123) # for reproducibility
+sim_tree <- rtree(n = 20)
+```
+
+1. How many terminal taxa (i.e., tips) are there?
+2. What the the names of terminal taxa?
+3. What taxon is more closely-related to the taxon "t1"?
+
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+# Q1: Number of terminal taxa
+Ntip(sim_tree)
+
+# Q2: Names of terminal taxa
+sim_tree$tip.label
+
+# Q3: Visualizing the tree to check who is more closely-related to 't1'
+plot(sim_tree)
+```
+
+:::
+:::
 
