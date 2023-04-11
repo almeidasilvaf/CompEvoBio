@@ -397,6 +397,42 @@ Computing: [========================================] 100% (done)               
 </div>
 </div>
 <p>The two methods lead to different tree topologies. How do you know which one is “true”, then? This is the topic of the next lesson, where you will learn how to use maximum likelihood to assess trees.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercises
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the <code>dist_matrix1</code> object to infer a phylogeny using the <code>upgma()</code> function from the phangorn package <span class="citation" data-cites="phangorn">(<a href="#ref-phangorn" role="doc-biblioref">Schliep 2011</a>)</span>. Is the topology the same as the topology of <code>tree1</code>?</p>
+<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Infer UPGMA tree and compare topologies</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>tree_upgma <span class="ot">&lt;-</span> phangorn<span class="sc">::</span><span class="fu">upgma</span>(dist_matrix1)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree_upgma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="phylogeny_inference_distance_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
@@ -414,6 +450,9 @@ Grantham, Richard. 1974. <span>“Amino Acid Difference Formula to Help Explain 
 </div>
 <div id="ref-katoh2013mafft" class="csl-entry" role="doc-biblioentry">
 Katoh, Kazutaka, and Daron M Standley. 2013. <span>“MAFFT Multiple Sequence Alignment Software Version 7: Improvements in Performance and Usability.”</span> <em>Molecular Biology and Evolution</em> 30 (4): 772–80.
+</div>
+<div id="ref-phangorn" class="csl-entry" role="doc-biblioentry">
+Schliep, K. P. 2011. <span>“Phangorn: Phylogenetic Analysis in r.”</span> <em>Bioinformatics</em> 27 (4): 592–93. <a href="https://doi.org/10.1093/bioinformatics/btq706">https://doi.org/10.1093/bioinformatics/btq706</a>.
 </div>
 <div id="ref-sievers2011fast" class="csl-entry" role="doc-biblioentry">
 Sievers, Fabian, Andreas Wilm, David Dineen, Toby J Gibson, Kevin Karplus, Weizhong Li, Rodrigo Lopez, et al. 2011. <span>“Fast, Scalable Generation of High-Quality Protein Multiple Sequence Alignments Using Clustal Omega.”</span> <em>Molecular Systems Biology</em> 7 (1): 539.

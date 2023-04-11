@@ -214,12 +214,13 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-bioconductor-ecosystem" id="toc-the-bioconductor-ecosystem" class="nav-link active" data-scroll-target="#the-bioconductor-ecosystem"><span class="toc-section-number">2.1</span>  The Bioconductor ecosystem</a>
+  <li><a href="#goals-of-this-lesson" id="toc-goals-of-this-lesson" class="nav-link active" data-scroll-target="#goals-of-this-lesson"><span class="toc-section-number">2.1</span>  Goals of this lesson</a></li>
+  <li><a href="#the-bioconductor-ecosystem" id="toc-the-bioconductor-ecosystem" class="nav-link" data-scroll-target="#the-bioconductor-ecosystem"><span class="toc-section-number">2.2</span>  The Bioconductor ecosystem</a>
   <ul class="collapse">
-  <li><a href="#the-biostrings-package-and-xstringset-objects" id="toc-the-biostrings-package-and-xstringset-objects" class="nav-link" data-scroll-target="#the-biostrings-package-and-xstringset-objects"><span class="toc-section-number">2.1.1</span>  The {Biostrings} package and <code>XStringSet</code> objects</a></li>
-  <li><a href="#the-biostrings-package-and-xmultiplealignment-objects" id="toc-the-biostrings-package-and-xmultiplealignment-objects" class="nav-link" data-scroll-target="#the-biostrings-package-and-xmultiplealignment-objects"><span class="toc-section-number">2.1.2</span>  The {Biostrings} package and <code>XMultipleAlignment</code> objects</a></li>
+  <li><a href="#the-biostrings-package-and-xstringset-objects" id="toc-the-biostrings-package-and-xstringset-objects" class="nav-link" data-scroll-target="#the-biostrings-package-and-xstringset-objects"><span class="toc-section-number">2.2.1</span>  The {Biostrings} package and <code>XStringSet</code> objects</a></li>
+  <li><a href="#the-biostrings-package-and-xmultiplealignment-objects" id="toc-the-biostrings-package-and-xmultiplealignment-objects" class="nav-link" data-scroll-target="#the-biostrings-package-and-xmultiplealignment-objects"><span class="toc-section-number">2.2.2</span>  The {Biostrings} package and <code>XMultipleAlignment</code> objects</a></li>
   </ul></li>
-  <li><a href="#the-ape-package-and-phylo-objects" id="toc-the-ape-package-and-phylo-objects" class="nav-link" data-scroll-target="#the-ape-package-and-phylo-objects"><span class="toc-section-number">2.2</span>  The {ape} package and <code>phylo</code> objects</a></li>
+  <li><a href="#the-ape-package-and-phylo-objects" id="toc-the-ape-package-and-phylo-objects" class="nav-link" data-scroll-target="#the-ape-package-and-phylo-objects"><span class="toc-section-number">2.3</span>  The {ape} package and <code>phylo</code> objects</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -245,11 +246,20 @@ div.csl-indent {
 </header>
 
 <p>R is a very flexible programming language, and it allows developers to create their own data structures (called <strong>classes</strong>) for their packages. Over the years, some packages have become so popular that the classes they use to store data are now used the “standard” representations for particular types of data. Here, we will show some common data classes in evolutionary biology and comparative genomics research.</p>
-<section id="the-bioconductor-ecosystem" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="the-bioconductor-ecosystem"><span class="header-section-number">2.1</span> The Bioconductor ecosystem</h2>
+<section id="goals-of-this-lesson" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="goals-of-this-lesson"><span class="header-section-number">2.1</span> Goals of this lesson</h2>
+<p>In this lesson, you will learn to:</p>
+<ul>
+<li>represent and work with sequence data using <code>XString</code> and <code>XStringSet</code> objects</li>
+<li>represent and work with multiple sequence alignments using <code>XMultipleAlignment</code> objects</li>
+<li>represent and work with phylogenies using <code>phylo</code> objects</li>
+</ul>
+</section>
+<section id="the-bioconductor-ecosystem" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="the-bioconductor-ecosystem"><span class="header-section-number">2.2</span> The Bioconductor ecosystem</h2>
 <p><a href="https://bioconductor.org/">The Bioconductor project</a> was created to develop, support, and disseminate free open source software to analyze biological data. It works as a repository of R packages for biological data analysis, with both “core packages” (developed and maintained by the Bioconductor Core Team), and community-contributed packages. We usually refer to Bioconductor as a “package ecosystem” because its packages are tightly integrated and designed for easy interoperation, such that different packages can be used together with minimal effort. An important facilitator of such interoperability is the existence of standardized data structures, such as <code>GRanges</code> objects for genomic coordinates, and <code>DNA/RNA/AAStringSet</code> objects for sequences.</p>
-<section id="the-biostrings-package-and-xstringset-objects" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="the-biostrings-package-and-xstringset-objects"><span class="header-section-number">2.1.1</span> The {Biostrings} package and <code>XStringSet</code> objects</h3>
+<section id="the-biostrings-package-and-xstringset-objects" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="the-biostrings-package-and-xstringset-objects"><span class="header-section-number">2.2.1</span> The {Biostrings} package and <code>XStringSet</code> objects</h3>
 <p>The Biostrings package <span class="citation" data-cites="biostrings">(<a href="#ref-biostrings" role="doc-biblioref">Pagès et al. 2022</a>)</span> allows efficient manipulation of biological sequences, and its data classes are standard for all Bioconductor packages that involve sequence analyses. The data classes in Biostrings to represent sets of biological sequences are:</p>
 <ol type="1">
 <li><code>DNAStringSet</code>: for sets of DNA strings.</li>
@@ -409,8 +419,8 @@ Solution
 </div>
 </div>
 </section>
-<section id="the-biostrings-package-and-xmultiplealignment-objects" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="the-biostrings-package-and-xmultiplealignment-objects"><span class="header-section-number">2.1.2</span> The {Biostrings} package and <code>XMultipleAlignment</code> objects</h3>
+<section id="the-biostrings-package-and-xmultiplealignment-objects" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="the-biostrings-package-and-xmultiplealignment-objects"><span class="header-section-number">2.2.2</span> The {Biostrings} package and <code>XMultipleAlignment</code> objects</h3>
 <p>Like <code>XStringSet</code> objects, <code>XMultipleAlignment</code> objects also store sequences, but sequences that were aligned using a Sequence Alignment algorithm. FASTA files containing aligned sequences can be read with <code>XMultipleAlignment</code> functions, namely:</p>
 <ol type="1">
 <li><code>readDNAMultipleAlignment()</code>: read a FASTA file containing aligned DNA sequences.</li>
@@ -477,8 +487,8 @@ Solution
 </div>
 </section>
 </section>
-<section id="the-ape-package-and-phylo-objects" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="the-ape-package-and-phylo-objects"><span class="header-section-number">2.2</span> The {ape} package and <code>phylo</code> objects</h2>
+<section id="the-ape-package-and-phylo-objects" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="the-ape-package-and-phylo-objects"><span class="header-section-number">2.3</span> The {ape} package and <code>phylo</code> objects</h2>
 <p>The ape package <span class="citation" data-cites="ape">(<a href="#ref-ape" role="doc-biblioref">Paradis and Schliep 2019</a>)</span> is one of the most popular packages for Analyses of Phylogenetics and Evolution (from where the name comes), and it represents phylogenies as <code>phylo</code> objects. Because of ape’s popularity, <code>phylo</code> objects have become the standard data structure for phylogenies in R.</p>
 <p>To create <code>phylo</code> objects, you will use the function <code>read.tree()</code>, which accepts both the path to a file containing the tree (in Newick format, for example), or a text representation of a phylogeny. To demonstrate the structure of a <code>phylo</code> object, let’s create a phylogeny from text:</p>
 <div class="cell">
