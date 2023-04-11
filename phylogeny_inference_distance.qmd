@@ -127,5 +127,28 @@ The two methods lead to different tree topologies. How do you know which one
 is "true", then? This is the topic of the next lesson, where you will learn 
 how to use maximum likelihood to assess trees.
 
+
+::: {.callout-tip}
+
+### Exercises
+
+Use the `dist_matrix1` object to infer a phylogeny using the `upgma()` function
+from the phangorn package [@phangorn]. Is the topology the same as the 
+topology of `tree1`?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+# Infer UPGMA tree and compare topologies
+tree_upgma <- phangorn::upgma(dist_matrix1)
+plot(tree_upgma)
+```
+
+:::
+:::
+
+
 ## References {.unnumbered}
 

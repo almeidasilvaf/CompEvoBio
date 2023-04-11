@@ -8,6 +8,16 @@ they use to store data are now used the "standard" representations for
 particular types of data. Here, we will show some common data classes in
 evolutionary biology and comparative genomics research.
 
+## Goals of this lesson
+
+In this lesson, you will learn to:
+
+- represent and work with sequence data using `XString` and `XStringSet`
+objects
+- represent and work with multiple sequence alignments 
+using `XMultipleAlignment` objects
+- represent and work with phylogenies using `phylo` objects
+
 ## The Bioconductor ecosystem
 
 [The Bioconductor project](https://bioconductor.org/) was created to develop,
