@@ -36,6 +36,10 @@ jobs:
             any::ape
             any::here
             any::Biostrings
+            any::MSA2dist
+            any::msa
+            any::phangorn
+            any::seqinr
             
 
       # add software dependencies here

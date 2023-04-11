@@ -1,4 +1,130 @@
 
 # Distance-based phylogeny inference
 
-TBA.
+The simplest way to infer a phylogeny is to use pairwise distances between
+sequences, which are calculated from Multiple Sequence Alignments (MSA).
+Pairwise distances are typically stored in **distance matrices**, which
+are used to infer a phylogenetic tree using algorithms such as *UPGMA* or
+*neighbor-joining*. In this lesson, we will guide on you on how to
+infer a phylogeny from sequences.
+
+## Goals of this lesson
+
+In this lesson, you will learn to:
+
+- perform MSA
+- calculate distances from MSA
+- infer phylogenetic trees from distance matrices
+
+## Multiple Sequence Alignment (MSA)
+
+There are several algorithms to perform an MSA, such as 
+ClustalW [@thompson1994clustal], ClustalOmega [@sievers2011fast], 
+MUSCLE [@edgar2004muscle], and MAFFT [@katoh2013mafft]. Comparing them
+and deciding which one is the best is beyond the scope of this lesson. Here,
+we will perform MSA with the Bioconductor package msa [@bodenhofer2015msa],
+which provides native implementations of the ClustalW, ClustalOmega, and MUSCLE
+algorithms. 
+
+msa comes with an example FASTA file containing protein sequences
+of hemoglobin subunit alpha 1 in multiple species. Let's start by reading 
+the example file:
+
+```{r message = FALSE, warning = FALSE}
+library(msa)
+library(Biostrings)
+
+# Path to example file
+fasta_path <- system.file("examples", "HemoglobinAA.fasta", package="msa")
+fasta_path
+
+# Read example file
+hemoglobin_seqs <- readAAStringSet(fasta_path)
+hemoglobin_seqs
+```
+
+Now, we will use the function `msa()` to perform an MSA using the default
+algorithm (ClustalW). You can also use other algorithms by changing the 
+argument passed to the `method` parameter.
+
+```{r}
+# Perform MSA
+hemoglobin_aln <- msa(hemoglobin_seqs)
+hemoglobin_aln
+```
+
+Now that we have an MSA, we can calculate distances.
+
+## Calculating distance matrices
+
+Here, we will calculate distance matrices using 2 different methods:
+
+- the `aastring2dist()` function from
+[MSA2dist](https://bioconductor.org/packages/MSA2dist), which calculates 
+distances from `AAStringSet` objects using a score matrix. Here, we will
+use the Grantham matrix [@grantham1974amino].
+
+- the `dist.alignment()` function from [seqinr](https://cran.r-project.org/web/packages/seqinr/index.html), 
+which calculates distances from `alignment` objects using a similarity
+or identity matrix. Here, we will use the identity matrix.
+
+First, as these 2 functions take different data classes as input, we will
+have to convert the `hemoglobin_aln` object to the right classes for each 
+function.
+
+```{r}
+# Convert `MsaAAMultipleAlignment` to `AAStringSet` for MSA2dist
+aln_msa2dist <- as(hemoglobin_aln, "AAStringSet")
+
+# Convert `MsaAAMultipleAlignment` to `alignment` for seqinr
+aln_seqinr <- msaConvert(hemoglobin_aln, type = "seqinr::alignment")
+```
+
+Now, we can calculate the distance matrices.
+
+```{r message=FALSE, warning=FALSE}
+library(MSA2dist)
+library(seqinr)
+
+# Calculate distance matrix with `MSA2dist::aastring2dist()`
+dist_matrix1 <- aastring2dist(aa = aln_msa2dist, score = granthamMatrix())
+dist_matrix1 <- as.dist(dist_matrix1$distSTRING)
+
+
+# Calculate distance matrix with `seqinr::dist.alignment()`
+dist_matrix2 <- dist.alignment(aln_seqinr, matrix = "identity")
+
+
+# Inspect distance matrices
+head(dist_matrix1)
+head(dist_matrix2)
+
+class(dist_matrix1)
+class(dist_matrix2)
+```
+
+As you can see, distance matrices are stored in objects of class `dist`. This
+is the data class that we will use to infer phylogenetic trees.
+
+## Inferring trees
+
+Now, we will use the `bionjs()` function from ape to infer neighbor-joining
+trees using the two distance matrices we calculated in the previous section.
+
+```{r message = FALSE, warning = FALSE}
+library(ape)
+
+# Infer neighbor-joining trees
+tree1 <- bionjs(dist_matrix1)
+tree2 <- bionjs(dist_matrix2)
+
+# Plotting trees
+par(mfrow = c(1,2))
+plot(tree1)
+plot(tree2)
+```
+
+The two methods lead to different tree topologies. How do you know which one
+is "true", then? This is the topic of the next lesson, where you will learn 
+how to use maximum likelihood to assess trees.
+
