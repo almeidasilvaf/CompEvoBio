@@ -218,6 +218,7 @@ div.csl-indent {
   <li><a href="#multiple-sequence-alignment-msa" id="toc-multiple-sequence-alignment-msa" class="nav-link" data-scroll-target="#multiple-sequence-alignment-msa"><span class="toc-section-number">3.2</span>  Multiple Sequence Alignment (MSA)</a></li>
   <li><a href="#calculating-distance-matrices" id="toc-calculating-distance-matrices" class="nav-link" data-scroll-target="#calculating-distance-matrices"><span class="toc-section-number">3.3</span>  Calculating distance matrices</a></li>
   <li><a href="#inferring-trees" id="toc-inferring-trees" class="nav-link" data-scroll-target="#inferring-trees"><span class="toc-section-number">3.4</span>  Inferring trees</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -386,14 +387,19 @@ Computing: [========================================] 100% (done)               
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>tree2 <span class="ot">&lt;-</span> <span class="fu">bionjs</span>(dist_matrix2)</span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting trees</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree1)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="phylogeny_inference_distance_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="phylogeny_inference_distance_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 <p>The two methods lead to different tree topologies. How do you know which one is “true”, then? This is the topic of the next lesson, where you will learn how to use maximum likelihood to assess trees.</p>
+</section>
+<section id="references" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
