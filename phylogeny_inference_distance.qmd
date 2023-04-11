@@ -119,7 +119,6 @@ tree1 <- bionjs(dist_matrix1)
 tree2 <- bionjs(dist_matrix2)
 
 # Plotting trees
-par(mfrow = c(1,2))
 plot(tree1)
 plot(tree2)
 ```
@@ -127,4 +126,6 @@ plot(tree2)
 The two methods lead to different tree topologies. How do you know which one
 is "true", then? This is the topic of the next lesson, where you will learn 
 how to use maximum likelihood to assess trees.
+
+## References {.unnumbered}
 

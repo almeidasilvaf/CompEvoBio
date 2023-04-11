@@ -562,5 +562,3 @@ nrow(airquality[airquality$Solar.R < 100, ])
 
 :::
 
-
-
