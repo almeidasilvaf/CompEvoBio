@@ -10,10 +10,8 @@ Let's start by loading the required packages:
 ```{r load-packages}
 #| message: false
 #| warning: false
-library(treeio)
-library(ggtree)
-library(patchwork)
 library(here)
+library(ape)
 
 set.seed(123) # for reproducibility
 ```
@@ -34,15 +32,18 @@ methods to find out which one is true:
 #| fig-height: 5
 #| fig-dpi: 200
 
+suppressPackageStartupMessages(library(ggtree))
+suppressPackageStartupMessages(library(patchwork))
+
 # Create tree options
 t1 <- "(((Crocodile,Bird),Turtle), (Lizard, Snake));"
 t2 <- "(((Turtle,Bird),Crocodile), (Lizard, Snake));"
 t3 <- "(((Turtle,Crocodile),Bird), (Lizard, Snake));"
 
 # Create `phylo` objects containing trees
-tree1 <- treeio::read.tree(text = t1)
-tree2 <- treeio::read.tree(text = t2)
-tree3 <- treeio::read.tree(text = t3)
+tree1 <- ape::read.tree(text = t1)
+tree2 <- ape::read.tree(text = t2)
+tree3 <- ape::read.tree(text = t3)
 
 # Plot trees in panel
 p1 <- ggtree::ggtree(tree1, aes(
@@ -138,34 +139,30 @@ ending in `.treefile`.
 
 ## Exercises
 
-Look at the report file in `data/turtle.fa.iqtree` and answer the following questions:
+1. Look at the report file in `data/turtle.fa.iqtree` and answer the questions 
+below. Hint: you can use the `readLines()` function to read the output to
+the R session.
 
-1. What is the best-fit model name?
-
-::: {.callout collapse="true" appearance="minimal"}
-
-### Solution
-
-```{bash q1_answer}
-grep "Best-fit model" data/turtle.fa.iqtree
-```
-
-:::
-
-2. What are the AIC/AICc/BIC scores of this model and tree?
+    - What is the best-fit model name?
+    - What are the AIC/AICc/BIC scores of this model and tree?
 
 ::: {.callout collapse="true" appearance="minimal"}
 
 ### Solution
 
-```{bash q2_answer}
-grep "^Model  \|^GTR+F+R3" data/turtle.fa.iqtree
+```{r q1_answer}
+# Read file
+turtle_report <- readLines(here("data", "turtle.fa.iqtree"))
+
+# Q1: Best-fit model
+turtle_report[grepl("Best-fit model", turtle_report)]
+
+# Q2: AIC/AICc/BIC scores for the best model
+turtle_report[grepl("^Model  |^GTR\\+F\\+R3", turtle_report)]
 ```
 
-:::
 
-
-3. Visualise the tree in `data/turtle.fa.treefile`. What relationship among 
+2. Visualise the tree in `data/turtle.fa.treefile`. What relationship among 
 three trees does this tree support? What is the ultrafast bootstrap 
 support (%) for the relevant clade?
 
@@ -173,15 +170,12 @@ support (%) for the relevant clade?
 
 ### Solution
 
-```{r}
-#| fig-height: 6
-#| fig-width: 4
+```{r fig.height=5, fig.width=9}
+#| fig-height: 5
+#| fig-width: 9
 tree <- read.tree(here("data", "turtle.fa.treefile"))
 
-ggtree(tree) +
-    geom_tiplab() +
-    xlim(0, 0.4) +
-    geom_nodelab(hjust = 1.3, vjust = -0.4)
+plot(tree, show.node.label = TRUE)
 ```
 
 This tree supports the "C" hypothesis, which positions turtles as a sister 
@@ -202,7 +196,7 @@ published tree?
 
 ### Solution
 
-No. The published tree shows turtles are a sister group to birds and 
+No. The published tree shows turtles as a sister group to birds and 
 crocodiles (hypothesis A), while the inferred shows turtles as 
 a sister group to crocodiles (hypothesis C).
 
@@ -252,12 +246,18 @@ the previous model?
 
 ### Solution
 
-```{bash}
+```{r}
+# Read file
+part_report <- readLines(here("data", "turtle.nex.iqtree"))
+
 # Take a look at the best models per partition
-grep "Best-fit model" data/turtle.nex.iqtree
+part_report[grepl("Best-fit model", part_report)]
 
 # See the AIC/AICc/BIC scores per partition
-grep -A 30 "List of best-fit models per partition" data/turtle.nex.iqtree
+idx <- grep("List of best-fit models", part_report)
+idx <- seq(idx, idx + 30)
+
+part_report[idx]
 ```
 
 Scores are better (lower BIC scores, for instance).
@@ -272,15 +272,12 @@ What is the ultrafast bootstrap support (%) for the relevant clade?
 
 ### Solution
 
-```{r}
+```{r fig.height=6, fig.width=9}
 #| fig-height: 6
-#| fig-width: 4
+#| fig-width: 9
 tree <- read.tree(here("data", "turtle.nex.treefile"))
 
-ggtree(tree) +
-    geom_tiplab() +
-    xlim(0, 0.4) +
-    geom_nodelab(hjust = 1.3, vjust = -0.4)
+plot(tree, show.node.label = TRUE)
 ```
 
 The tree supports the "A" hypothesis, which positions turtles as a sister
@@ -291,8 +288,8 @@ support of 100%.
 :::
 
 
-3. Does the inferred tree agree with the 
-published tree [@chiari2012phylogenomic]?
+3. Does the inferred tree agree with the published 
+tree [@chiari2012phylogenomic]?
 
 
 ::: {.callout collapse="true" appearance="minimal"}
@@ -343,34 +340,33 @@ file ending in `.merge.treefile`.
 
 ## Exercises
 
-1. Look at the report file `data/turtle.merge.iqtree`. 
-How many partitions do we have now?
+1. Look at the report file `data/turtle.merge.iqtree` and answer the questions:
+
+    - How many partitions do we have now?
+    - Look at the AIC/AICc/BIC scores. Compared with two previous models, is this model better or worse?
 
 ::: {.callout collapse="true" appearance="minimal"}
 
 ### Solution
 
-```{bash}
-grep "Input data:" data/turtle.merge.iqtree
+```{r}
+# Read report
+merge_report <- readLines(here("data", "turtle.merge.iqtree"))
+
+# Q1: number of partitions
+merge_report[grepl("Input data:", merge_report)]
+
+# Q2: compare AIC/AICc/BIC scores
+idx <- grep("List of best-fit models per partition", merge_report)
+idx <- seq(idx, idx + 10)
+
+merge_report[idx]
 ```
 
 :::
 
 
-2. Look at the AIC/AICc/BIC scores. Compared with two previous models, 
-is this model better or worse?
-
-::: {.callout collapse="true" appearance="minimal"}
-
-### Solution
-
-```{bash}
-grep -A 10 "List of best-fit models per partition" data/turtle.merge.iqtree
-```
-
-:::
-
-3. Visualize the tree in `data/turtle.merge.treefile`. What relationship 
+2. Visualize the tree in `data/turtle.merge.treefile`. What relationship 
 among three trees does this tree support? What is the ultrafast bootstrap 
 support (%) for the relevant clade?
 
@@ -378,15 +374,12 @@ support (%) for the relevant clade?
 
 ### Solution
 
-```{r}
+```{r fig.height=6, fig.width=9}
 #| fig-height: 6
-#| fig-width: 4
+#| fig-width: 9
 tree <- read.tree(here("data", "turtle.merge.treefile"))
 
-ggtree(tree) +
-    geom_tiplab() +
-    xlim(0, 0.4) +
-    geom_nodelab(hjust = 1.3, vjust = -0.4)
+plot(tree, show.node.label = TRUE)
 ```
 
 The tree supports the hypothesis A, which positions turtles as a sister
@@ -396,7 +389,7 @@ of 99%.
 :::
 
 
-4. Does this tree agree with the published tree [@chiari2012phylogenomic]?
+3. Does this tree agree with the published tree [@chiari2012phylogenomic]?
 
 ::: {.callout collapse="true" appearance="minimal"}
 
@@ -407,7 +400,6 @@ Yes. Both trees agree on the "A" hypothesis, i.e., (Turtle, (Bird, Crocodile)).
 :::
 
 :::
-
 
 
 
