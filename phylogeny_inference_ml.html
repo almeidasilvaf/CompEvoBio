@@ -217,9 +217,9 @@ div.csl-indent {
   <li><a href="#goals-of-this-lesson" id="toc-goals-of-this-lesson" class="nav-link active" data-scroll-target="#goals-of-this-lesson"><span class="toc-section-number">4.1</span>  Goals of this lesson</a></li>
   <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description"><span class="toc-section-number">4.2</span>  Data description</a></li>
   <li><a href="#inferring-a-maximum-likelihood-tree" id="toc-inferring-a-maximum-likelihood-tree" class="nav-link" data-scroll-target="#inferring-a-maximum-likelihood-tree"><span class="toc-section-number">4.3</span>  Inferring a maximum likelihood tree</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">4.4</span>  Exercises</a></li>
-  <li><a href="#applying-partition-models" id="toc-applying-partition-models" class="nav-link" data-scroll-target="#applying-partition-models"><span class="toc-section-number">4.5</span>  Applying partition models</a></li>
-  <li><a href="#selecting-the-best-partitioning-scheme-with-partitionfinder" id="toc-selecting-the-best-partitioning-scheme-with-partitionfinder" class="nav-link" data-scroll-target="#selecting-the-best-partitioning-scheme-with-partitionfinder"><span class="toc-section-number">4.6</span>  Selecting the best partitioning scheme with PartitionFinder</a></li>
+  <li><a href="#applying-partition-models" id="toc-applying-partition-models" class="nav-link" data-scroll-target="#applying-partition-models"><span class="toc-section-number">4.4</span>  Applying partition models</a></li>
+  <li><a href="#selecting-the-best-partitioning-scheme-with-partitionfinder" id="toc-selecting-the-best-partitioning-scheme-with-partitionfinder" class="nav-link" data-scroll-target="#selecting-the-best-partitioning-scheme-with-partitionfinder"><span class="toc-section-number">4.5</span>  Selecting the best partitioning scheme with PartitionFinder</a></li>
+  <li><a href="#tree-topology-tests" id="toc-tree-topology-tests" class="nav-link" data-scroll-target="#tree-topology-tests"><span class="toc-section-number">4.6</span>  Tree topology tests</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -307,10 +307,16 @@ Understanding the command-line arguments
 </div>
 </div>
 <p>The main IQ-TREE report will be stored in a file ending in <code>.iqtree</code>, and the maximum likelihood tree (in Newick format) will be stored in a file ending in <code>.treefile</code>.</p>
-<p>::: {.callout-tip}</p>
-</section>
-<section id="exercises" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.4</span> Exercises</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercises
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li><p>Look at the report file in <code>data/turtle.fa.iqtree</code> and answer the questions below. Hint: you can use the <code>readLines()</code> function to read the output to the R session.</p>
 <ul>
@@ -319,7 +325,7 @@ Understanding the command-line arguments
 </ul></li>
 </ol>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -328,7 +334,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read file</span></span>
@@ -346,11 +352,14 @@ Solution
 [2] "GTR+F+R3        -116218.179  232518.358 - 0.000395  232518.524 - 0.000398  232844.049 +    0.527"</code></pre>
 </div>
 </div>
+</div>
+</div>
+</div>
 <ol start="2" type="1">
 <li>Visualise the tree in <code>data/turtle.fa.treefile</code>. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?</li>
 </ol>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -359,7 +368,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.fa.treefile"</span>))</span>
@@ -383,7 +392,7 @@ Solution
 </figure>
 </div>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -392,7 +401,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>No.&nbsp;The published tree shows turtles as a sister group to birds and crocodiles (hypothesis A), while the inferred shows turtles as a sister group to crocodiles (hypothesis C).</p>
 </div>
@@ -400,10 +409,9 @@ Solution
 </div>
 </div>
 </div>
-</div>
 </section>
-<section id="applying-partition-models" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="applying-partition-models"><span class="header-section-number">4.5</span> Applying partition models</h2>
+<section id="applying-partition-models" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="applying-partition-models"><span class="header-section-number">4.4</span> Applying partition models</h2>
 <p>Now, we will infer a ML tree applying a partition model <span class="citation" data-cites="chernomor2016terrace">(<a href="#ref-chernomor2016terrace" role="doc-biblioref">Chernomor, Von Haeseler, and Minh 2016</a>)</span>, which means that each partition (specified in the <code>turtle.nex</code> file) will be allowed to have its own model.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> data/turtle.fa <span class="at">-p</span> data/turtle.nex <span class="at">-B</span> 1000 <span class="at">-T</span> 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -436,7 +444,7 @@ Exercises
 <li>Look at the report file in <code>data/turtle.nex.iqtree</code>. What are the AIC/AICc/BIC scores of the partition model? Is it better than the previous model?</li>
 </ol>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -445,7 +453,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read file</span></span>
@@ -503,7 +511,7 @@ Solution
 <li>Visualize the tree in <code>data/turtle.nex.treefile</code>. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?</li>
 </ol>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -512,7 +520,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.nex.treefile"</span>))</span>
@@ -530,7 +538,7 @@ Solution
 <li>Does the inferred tree agree with the published tree <span class="citation" data-cites="chiari2012phylogenomic">(<a href="#ref-chiari2012phylogenomic" role="doc-biblioref">Chiari et al. 2012</a>)</span>?</li>
 </ol>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -539,7 +547,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Yes. Both trees agree on the “A” hypothesis.</p>
 </div>
@@ -548,8 +556,8 @@ Solution
 </div>
 </div>
 </section>
-<section id="selecting-the-best-partitioning-scheme-with-partitionfinder" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="selecting-the-best-partitioning-scheme-with-partitionfinder"><span class="header-section-number">4.6</span> Selecting the best partitioning scheme with PartitionFinder</h2>
+<section id="selecting-the-best-partitioning-scheme-with-partitionfinder" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="selecting-the-best-partitioning-scheme-with-partitionfinder"><span class="header-section-number">4.5</span> Selecting the best partitioning scheme with PartitionFinder</h2>
 <p>Now, we will use PartitionFinder <span class="citation" data-cites="lanfear2012partitionfinder">(<a href="#ref-lanfear2012partitionfinder" role="doc-biblioref">Lanfear et al. 2012</a>)</span> to merge partitions and reduce the potential over-parameterization.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> data/turtle.fa <span class="at">-p</span> data/turtle.nex <span class="at">-B</span> 1000 <span class="at">-T</span> 2 <span class="at">-m</span> MFP+MERGE <span class="at">-rcluster</span> 10 <span class="at">--prefix</span> data/turtle.merge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -591,7 +599,7 @@ Exercises
 </ul></li>
 </ol>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -600,7 +608,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read report</span></span>
@@ -637,7 +645,7 @@ Solution
 <li>Visualize the tree in <code>data/turtle.merge.treefile</code>. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?</li>
 </ol>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -646,7 +654,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.merge.treefile"</span>))</span>
@@ -664,7 +672,7 @@ Solution
 <li>Does this tree agree with the published tree <span class="citation" data-cites="chiari2012phylogenomic">(<a href="#ref-chiari2012phylogenomic" role="doc-biblioref">Chiari et al. 2012</a>)</span>?</li>
 </ol>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -673,9 +681,128 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Yes. Both trees agree on the “A” hypothesis, i.e., (Turtle, (Bird, Crocodile)).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="tree-topology-tests" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="tree-topology-tests"><span class="header-section-number">4.6</span> Tree topology tests</h2>
+<p>Tree topology tests can be used to find out if different trees have significant differences in log-likelihoods. To do that, you can use the SH test <span class="citation" data-cites="shimodaira1999multiple">(<a href="#ref-shimodaira1999multiple" role="doc-biblioref">Shimodaira and Hasegawa 1999</a>)</span> or expected likelihood weights <span class="citation" data-cites="strimmer2002inferring">(<a href="#ref-strimmer2002inferring" role="doc-biblioref">Strimmer and Rambaut 2002</a>)</span>.</p>
+<p>Before running the tests, we first need to concatenate the trees in a single file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read tree inferred with a single model as plain text</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>tree_single <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.fa.treefile"</span>))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read tree inferred with partition models as plain text</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>tree_partitioned <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.nex.treefile"</span>))</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine trees and export to file</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>tree_combined <span class="ot">&lt;-</span> <span class="fu">c</span>(tree_single, tree_partitioned)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(tree_combined, <span class="at">con =</span> <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.trees"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, we can pass the concatenated tree to IQ-TREE:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> data/turtle.fa <span class="at">-p</span> data/turtle.merge.best_scheme.nex <span class="at">-z</span> data/turtle.trees <span class="at">-zb</span> 10000 <span class="at">-au</span> <span class="at">-n</span> 0 <span class="at">--prefix</span> data/turtle.test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Understanding the command-line arguments
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Besides the arguments we’ve already seen, the new arguments and their meanings are:</p>
+<ul>
+<li><code>-z</code>: path to the file containing the concatenated trees.</li>
+<li><code>-zb</code>: number of replicates for <em>approximate</em> bootstrap for the tree topology tests (here, 10000).</li>
+<li><code>-au</code>: perform the Approximately Unbiased test.</li>
+<li><code>-n 0</code>: avoid tree search and just perform tree topology tests.</li>
+</ul>
+</div>
+</div>
+<p>The main report is a file ending in <code>.test.iqtree</code>, and the tree is in a file ending in <code>.test.treefile</code>.</p>
+<p>The KH, SH and AU tests return p-values. Thus, a tree is rejected if its p-value &lt;0.05 (marked with a <code>-</code> sign).</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercises
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Look at the “USER TREES” section in the report file <code>data/turtle.test.iqtree</code> and answer the questions:</p>
+<ul>
+<li>Which tree has the worst log-likelihood?</li>
+<li>Can you reject this tree according to the Shimodaira Hasegawa test, assuming a p-value cutoff of 0.05?</li>
+<li>Can you reject this tree according to the Approximately Unbiased test, assuming a p-value cutoff of 0.05?</li>
+</ul></li>
+</ol>
+<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read report and get the "USER TREES" section</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>test_report <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.test.iqtree"</span>))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">"USER TREES"</span>, test_report)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">seq</span>(idx, <span class="fu">length</span>(test_report))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>test_report[idx]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "USER TREES"                                                                  
+ [2] "----------"                                                                  
+ [3] ""                                                                            
+ [4] "See data/turtle.test.trees for trees with branch lengths."                   
+ [5] ""                                                                            
+ [6] "Tree      logL    deltaL  bp-RELL    p-KH     p-SH       c-ELW       p-AU"   
+ [7] "-------------------------------------------------------------------------"   
+ [8] "  1 -115741.0735  4.9507   0.424 +  0.426 +  0.426 +     0.424 +    0.412 + "
+ [9] "  2 -115736.1228       0   0.576 +  0.574 +      1 +     0.576 +    0.588 + "
+[10] ""                                                                            
+[11] "deltaL  : logL difference from the maximal logl in the set."                 
+[12] "bp-RELL : bootstrap proportion using RELL method (Kishino et al. 1990)."     
+[13] "p-KH    : p-value of one sided Kishino-Hasegawa test (1989)."                
+[14] "p-SH    : p-value of Shimodaira-Hasegawa test (2000)."                       
+[15] "c-ELW   : Expected Likelihood Weight (Strimmer &amp; Rambaut 2002)."             
+[16] "p-AU    : p-value of approximately unbiased (AU) test (Shimodaira, 2002)."   
+[17] ""                                                                            
+[18] "Plus signs denote the 95% confidence sets."                                  
+[19] "Minus signs denote significant exclusion."                                   
+[20] "All tests performed 10000 resamplings using the RELL method."                
+[21] ""                                                                            
+[22] "TIME STAMP"                                                                  
+[23] "----------"                                                                  
+[24] ""                                                                            
+[25] "Date and time: Wed Apr 12 10:10:34 2023"                                     
+[26] "Total CPU time used: 6.99 seconds (0h:0m:6s)"                                
+[27] "Total wall-clock time used: 17 seconds (0h:0m:17s)"                          
+[28] ""                                                                            </code></pre>
+</div>
+</div>
+<ol type="1">
+<li>The first tree has the worst log-likelihood.</li>
+<li>No, we cannot reject the tree (p = 0.426).</li>
+<li>No, we cannot reject the tree (p = 0.412).</li>
+</ol>
 </div>
 </div>
 </div>
@@ -704,6 +831,12 @@ Minh, Bui Quang, Minh Anh Thi Nguyen, and Arndt Von Haeseler. 2013. <span>“Ult
 </div>
 <div id="ref-minh2020iq" class="csl-entry" role="doc-biblioentry">
 Minh, Bui Quang, Heiko A Schmidt, Olga Chernomor, Dominik Schrempf, Michael D Woodhams, Arndt Von Haeseler, and Robert Lanfear. 2020. <span>“IQ-TREE 2: New Models and Efficient Methods for Phylogenetic Inference in the Genomic Era.”</span> <em>Molecular Biology and Evolution</em> 37 (5): 1530–34.
+</div>
+<div id="ref-shimodaira1999multiple" class="csl-entry" role="doc-biblioentry">
+Shimodaira, Hidetoshi, and Masami Hasegawa. 1999. <span>“Multiple Comparisons of Log-Likelihoods with Applications to Phylogenetic Inference.”</span> <em>Molecular Biology and Evolution</em> 16 (8): 1114.
+</div>
+<div id="ref-strimmer2002inferring" class="csl-entry" role="doc-biblioentry">
+Strimmer, Korbinian, and Andrew Rambaut. 2002. <span>“Inferring Confidence Sets of Possibly Misspecified Gene Trees.”</span> <em>Proceedings of the Royal Society of London. Series B: Biological Sciences</em> 269 (1487): 137–42.
 </div>
 </div>
 </section>
