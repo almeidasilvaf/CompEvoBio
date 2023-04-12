@@ -217,8 +217,9 @@ div.csl-indent {
   <li><a href="#goals-of-this-lesson" id="toc-goals-of-this-lesson" class="nav-link active" data-scroll-target="#goals-of-this-lesson"><span class="toc-section-number">4.1</span>  Goals of this lesson</a></li>
   <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description"><span class="toc-section-number">4.2</span>  Data description</a></li>
   <li><a href="#inferring-a-maximum-likelihood-tree" id="toc-inferring-a-maximum-likelihood-tree" class="nav-link" data-scroll-target="#inferring-a-maximum-likelihood-tree"><span class="toc-section-number">4.3</span>  Inferring a maximum likelihood tree</a></li>
-  <li><a href="#applying-partition-models" id="toc-applying-partition-models" class="nav-link" data-scroll-target="#applying-partition-models"><span class="toc-section-number">4.4</span>  Applying partition models</a></li>
-  <li><a href="#selecting-the-best-partitioning-scheme-with-partitionfinder" id="toc-selecting-the-best-partitioning-scheme-with-partitionfinder" class="nav-link" data-scroll-target="#selecting-the-best-partitioning-scheme-with-partitionfinder"><span class="toc-section-number">4.5</span>  Selecting the best partitioning scheme with PartitionFinder</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">4.4</span>  Exercises</a></li>
+  <li><a href="#applying-partition-models" id="toc-applying-partition-models" class="nav-link" data-scroll-target="#applying-partition-models"><span class="toc-section-number">4.5</span>  Applying partition models</a></li>
+  <li><a href="#selecting-the-best-partitioning-scheme-with-partitionfinder" id="toc-selecting-the-best-partitioning-scheme-with-partitionfinder" class="nav-link" data-scroll-target="#selecting-the-best-partitioning-scheme-with-partitionfinder"><span class="toc-section-number">4.6</span>  Selecting the best partitioning scheme with PartitionFinder</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -246,12 +247,10 @@ div.csl-indent {
 <p>In this chapter, we will use the IQ-TREE <span class="citation" data-cites="minh2020iq">(<a href="#ref-minh2020iq" role="doc-biblioref">Minh et al. 2020</a>)</span> program to infer phylogenetic trees based on maximum-likelihood. You can download IQ-TREE <a href="https://github.com/iqtree/iqtree2/releases/tag/v2.1.2">here</a>.</p>
 <p>Let’s start by loading the required packages:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(treeio)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtree)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># for reproducibility</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ape)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># for reproducibility</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="goals-of-this-lesson" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="goals-of-this-lesson"><span class="header-section-number">4.1</span> Goals of this lesson</h2>
@@ -308,68 +307,16 @@ Understanding the command-line arguments
 </div>
 </div>
 <p>The main IQ-TREE report will be stored in a file ending in <code>.iqtree</code>, and the maximum likelihood tree (in Newick format) will be stored in a file ending in <code>.treefile</code>.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Exercises
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Look at the report file in <code>data/turtle.fa.iqtree</code> and answer the following questions:</p>
+<p>::: {.callout-tip}</p>
+</section>
+<section id="exercises" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.4</span> Exercises</h2>
 <ol type="1">
+<li><p>Look at the report file in <code>data/turtle.fa.iqtree</code> and answer the questions below. Hint: you can use the <code>readLines()</code> function to read the output to the R session.</p>
+<ul>
 <li>What is the best-fit model name?</li>
-</ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"Best-fit model"</span> data/turtle.fa.iqtree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Best-fit model according to BIC: GTR+F+R3</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<ol start="2" type="1">
 <li>What are the AIC/AICc/BIC scores of this model and tree?</li>
-</ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"^Model  \|^GTR+F+R3"</span> data/turtle.fa.iqtree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC
-GTR+F+R3        -116218.179  232518.358 - 0.000395  232518.524 - 0.000398  232844.049 +    0.527</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Visualise the tree in <code>data/turtle.fa.treefile</code>. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?</li>
+</ul></li>
 </ol>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -384,14 +331,42 @@ Solution
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read file</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>turtle_report <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.fa.iqtree"</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Q1: Best-fit model</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>turtle_report[<span class="fu">grepl</span>(<span class="st">"Best-fit model"</span>, turtle_report)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Best-fit model according to BIC: GTR+F+R3"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Q2: AIC/AICc/BIC scores for the best model</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>turtle_report[<span class="fu">grepl</span>(<span class="st">"^Model  |^GTR</span><span class="sc">\\</span><span class="st">+F</span><span class="sc">\\</span><span class="st">+R3"</span>, turtle_report)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC"
+[2] "GTR+F+R3        -116218.179  232518.358 - 0.000395  232518.524 - 0.000398  232844.049 +    0.527"</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Visualise the tree in <code>data/turtle.fa.treefile</code>. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?</li>
+</ol>
+<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.fa.treefile"</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtree</span>(tree) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_tiplab</span>() <span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="fl">0.4</span>) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_nodelab</span>(<span class="at">hjust =</span> <span class="fl">1.3</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree, <span class="at">show.node.label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="phylogeny_inference_ml_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="384"></p>
+<p><img src="phylogeny_inference_ml_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="864"></p>
 </div>
 </div>
 <p>This tree supports the “C” hypothesis, which positions turtles as a sister group to crocodiles. i.e., ((Turtle, Crocodile), Bird). The branch showing that turtles are a sister group to crocodiles has a bootstrap support of 82%.</p>
@@ -408,7 +383,7 @@ Solution
 </figure>
 </div>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -417,17 +392,18 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>No.&nbsp;The published tree shows turtles are a sister group to birds and crocodiles (hypothesis A), while the inferred shows turtles as a sister group to crocodiles (hypothesis C).</p>
+<p>No.&nbsp;The published tree shows turtles as a sister group to birds and crocodiles (hypothesis A), while the inferred shows turtles as a sister group to crocodiles (hypothesis C).</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="applying-partition-models" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="applying-partition-models"><span class="header-section-number">4.4</span> Applying partition models</h2>
+<section id="applying-partition-models" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="applying-partition-models"><span class="header-section-number">4.5</span> Applying partition models</h2>
 <p>Now, we will infer a ML tree applying a partition model <span class="citation" data-cites="chernomor2016terrace">(<a href="#ref-chernomor2016terrace" role="doc-biblioref">Chernomor, Von Haeseler, and Minh 2016</a>)</span>, which means that each partition (specified in the <code>turtle.nex</code> file) will be allowed to have its own model.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> data/turtle.fa <span class="at">-p</span> data/turtle.nex <span class="at">-B</span> 1000 <span class="at">-T</span> 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -460,6 +436,100 @@ Exercises
 <li>Look at the report file in <code>data/turtle.nex.iqtree</code>. What are the AIC/AICc/BIC scores of the partition model? Is it better than the previous model?</li>
 </ol>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read file</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>part_report <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.nex.iqtree"</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look at the best models per partition</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>part_report[<span class="fu">grepl</span>(<span class="st">"Best-fit model"</span>, part_report)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Best-fit model according to BIC: K2P+I+G4:ENSGALG00000000223.macse_DNA_gb,K2P+G4:ENSGALG00000001529.macse_DNA_gb,TN+F+G4:ENSGALG00000002002.macse_DNA_gb,TVM+F+I+G4:ENSGALG00000002514.macse_DNA_gb,TIM2e+I+G4:ENSGALG00000003337.macse_DNA_gb,TIM2+F+G4:ENSGALG00000003700.macse_DNA_gb,TN+F+G4:ENSGALG00000003702.macse_DNA_gb,K2P+I+G4:ENSGALG00000003907.macse_DNA_gb,TNe+I:ENSGALG00000005820.macse_DNA_gb,TIM2+F+G4:ENSGALG00000005834.macse_DNA_gb,TNe+G4:ENSGALG00000005902.macse_DNA_gb,TIM3e+G4:ENSGALG00000008338.macse_DNA_gb,TPM2+F+G4:ENSGALG00000008517.macse_DNA_gb,TPM2+F+I+G4:ENSGALG00000008916.macse_DNA_gb,TIM2+F+R3:ENSGALG00000009085.macse_DNA_gb,TN+F+G4:ENSGALG00000009879.macse_DNA_gb,TPM3+F+G4:ENSGALG00000011323.macse_DNA_gb,TIM3e+I+G4:ENSGALG00000011434.macse_DNA_gb,TIM3+F+G4:ENSGALG00000011917.macse_DNA_gb,K2P+G4:ENSGALG00000011966.macse_DNA_gb,SYM+G4:ENSGALG00000012244.macse_DNA_gb,TN+F+G4:ENSGALG00000012379.macse_DNA_gb,TNe+G4:ENSGALG00000012568.macse_DNA_gb,TPM2+F+G4:ENSGALG00000013227.macse_DNA_gb,TN+F+G4:ENSGALG00000014038.macse_DNA_gb,TN+F+G4:ENSGALG00000014648.macse_DNA_gb,TIM+F+G4:ENSGALG00000015326.macse_DNA_gb,TIM2+F+G4:ENSGALG00000015397.macse_DNA_gb,TPM2+F+I+G4:ENSGALG00000016241.macse_DNA_gb"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See the AIC/AICc/BIC scores per partition</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">"List of best-fit models"</span>, part_report)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">seq</span>(idx, idx <span class="sc">+</span> <span class="dv">30</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>part_report[idx]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "List of best-fit models per partition:"                                                                   
+ [2] ""                                                                                                         
+ [3] "  ID  Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC"   
+ [4] "   1  K2P+I+G4          -5095.247   10198.494 + 1.42e-316   10198.541 + 5.45e-317   10217.456 + 1.24e-316"
+ [5] "   2  K2P+G4            -3419.486    6844.972 + 1.42e-316    6845.018 + 5.45e-317    6857.745 + 1.24e-316"
+ [6] "   3  TN+F+G4           -3609.176    7232.351 + 1.42e-316    7232.520 + 5.45e-317    7263.923 + 1.24e-316"
+ [7] "   4  TVM+F+I+G4        -4289.021    8598.043 + 1.42e-316    8598.348 + 5.45e-317    8644.001 + 1.24e-316"
+ [8] "   5  TIM2e+I+G4        -6224.713   12461.426 + 1.42e-316   12461.514 + 5.45e-317   12490.665 + 1.24e-316"
+ [9] "   6  TIM2+F+G4         -4719.062    9454.125 + 1.42e-316    9454.289 + 5.45e-317    9492.409 + 1.24e-316"
+[10] "   7  TN+F+G4           -7633.586   15281.172 + 1.42e-316   15281.244 + 5.45e-317   15318.571 + 1.24e-316"
+[11] "   8  K2P+I+G4          -2959.348    5926.696 + 1.42e-316    5926.780 + 5.45e-317    5943.391 + 1.24e-316"
+[12] "   9  TNe+I             -3109.902    6227.805 + 1.42e-316    6227.875 + 5.45e-317    6245.229 + 1.24e-316"
+[13] "  10  TIM2+F+G4         -3040.697    6097.394 + 1.42e-316    6097.604 + 5.45e-317    6133.757 + 1.24e-316"
+[14] "  11  TNe+G4            -2864.568    5737.135 + 1.42e-316    5737.206 + 5.45e-317    5754.518 + 1.24e-316"
+[15] "  12  TIM3e+G4          -5169.589   10349.179 + 1.42e-316   10349.255 + 5.45e-317   10372.552 + 1.24e-316"
+[16] "  13  TPM2+F+G4         -2702.092    5418.183 + 1.42e-316    5418.394 + 5.45e-317    5448.224 + 1.24e-316"
+[17] "  14  TPM2+F+I+G4       -3667.885    7351.771 + 1.42e-316    7352.039 + 5.45e-317    7386.192 + 1.24e-316"
+[18] "  15  TIM2+F+R3         -4532.069    9086.138 + 1.42e-316    9086.426 + 5.45e-317    9139.325 + 1.24e-316"
+[19] "  16  TN+F+G4           -4173.396    8360.792 + 1.42e-316    8360.982 + 5.45e-317    8391.535 + 1.24e-316"
+[20] "  17  TPM3+F+G4         -5262.146   10538.293 + 1.42e-316   10538.418 + 5.45e-317   10571.909 + 1.24e-316"
+[21] "  18  TIM3e+I+G4        -3036.049    6084.098 + 1.42e-316    6084.289 + 5.45e-317    6108.713 + 1.24e-316"
+[22] "  19  TIM3+F+G4         -4092.671    8201.341 + 1.42e-316    8201.490 + 5.45e-317    8240.450 + 1.24e-316"
+[23] "  20  K2P+G4            -2968.726    5943.452 + 1.42e-316    5943.504 + 5.45e-317    5955.897 + 1.24e-316"
+[24] "  21  SYM+G4            -4372.436    8758.871 + 1.42e-316    8759.022 + 5.45e-317    8791.240 + 1.24e-316"
+[25] "  22  TN+F+G4           -2870.272    5754.543 + 1.42e-316    5754.763 + 5.45e-317    5784.307 + 1.24e-316"
+[26] "  23  TNe+G4            -2919.575    5847.149 + 1.42e-316    5847.213 + 5.45e-317    5864.932 + 1.24e-316"
+[27] "  24  TPM2+F+G4         -5568.175   11150.350 + 1.42e-316   11150.437 + 5.45e-317   11186.552 + 1.24e-316"
+[28] "  25  TN+F+G4           -3315.859    6645.717 + 1.42e-316    6645.920 + 5.45e-317    6676.025 + 1.24e-316"
+[29] "  26  TN+F+G4           -2097.847    4209.693 + 1.42e-316    4209.922 + 5.45e-317    4239.168 + 1.24e-316"
+[30] "  27  TIM+F+G4          -3743.957    7503.913 + 1.42e-316    7504.158 + 5.45e-317    7539.049 + 1.24e-316"
+[31] "  28  TIM2+F+G4         -3634.194    7284.388 + 1.42e-316    7284.634 + 5.45e-317    7319.483 + 1.24e-316"</code></pre>
+</div>
+</div>
+<p>Scores are better (lower BIC scores, for instance).</p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Visualize the tree in <code>data/turtle.nex.treefile</code>. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?</li>
+</ol>
+<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.nex.treefile"</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree, <span class="at">show.node.label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="phylogeny_inference_ml_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="864"></p>
+</div>
+</div>
+<p>The tree supports the “A” hypothesis, which positions turtles as a sister group to birds and crocodiles. The branch showing that turtles are a sister group to crocodiles has a bootstrap support of 100%.</p>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Does the inferred tree agree with the published tree <span class="citation" data-cites="chiari2012phylogenomic">(<a href="#ref-chiari2012phylogenomic" role="doc-biblioref">Chiari et al. 2012</a>)</span>?</li>
+</ol>
+<div class="callout callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -471,96 +541,6 @@ Solution
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look at the best models per partition</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"Best-fit model"</span> data/turtle.nex.iqtree</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># See the AIC/AICc/BIC scores per partition</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-A</span> 30 <span class="st">"List of best-fit models per partition"</span> data/turtle.nex.iqtree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Best-fit model according to BIC: K2P+I+G4:ENSGALG00000000223.macse_DNA_gb,K2P+G4:ENSGALG00000001529.macse_DNA_gb,TN+F+G4:ENSGALG00000002002.macse_DNA_gb,TVM+F+I+G4:ENSGALG00000002514.macse_DNA_gb,TIM2e+I+G4:ENSGALG00000003337.macse_DNA_gb,TIM2+F+G4:ENSGALG00000003700.macse_DNA_gb,TN+F+G4:ENSGALG00000003702.macse_DNA_gb,K2P+I+G4:ENSGALG00000003907.macse_DNA_gb,TNe+I:ENSGALG00000005820.macse_DNA_gb,TIM2+F+G4:ENSGALG00000005834.macse_DNA_gb,TNe+G4:ENSGALG00000005902.macse_DNA_gb,TIM3e+G4:ENSGALG00000008338.macse_DNA_gb,TPM2+F+G4:ENSGALG00000008517.macse_DNA_gb,TPM2+F+I+G4:ENSGALG00000008916.macse_DNA_gb,TIM2+F+R3:ENSGALG00000009085.macse_DNA_gb,TN+F+G4:ENSGALG00000009879.macse_DNA_gb,TPM3+F+G4:ENSGALG00000011323.macse_DNA_gb,TIM3e+I+G4:ENSGALG00000011434.macse_DNA_gb,TIM3+F+G4:ENSGALG00000011917.macse_DNA_gb,K2P+G4:ENSGALG00000011966.macse_DNA_gb,SYM+G4:ENSGALG00000012244.macse_DNA_gb,TN+F+G4:ENSGALG00000012379.macse_DNA_gb,TNe+G4:ENSGALG00000012568.macse_DNA_gb,TPM2+F+G4:ENSGALG00000013227.macse_DNA_gb,TN+F+G4:ENSGALG00000014038.macse_DNA_gb,TN+F+G4:ENSGALG00000014648.macse_DNA_gb,TIM+F+G4:ENSGALG00000015326.macse_DNA_gb,TIM2+F+G4:ENSGALG00000015397.macse_DNA_gb,TPM2+F+I+G4:ENSGALG00000016241.macse_DNA_gb
-List of best-fit models per partition:
-
-  ID  Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC
-   1  K2P+I+G4          -5095.247   10198.494 + 1.42e-316   10198.541 + 5.45e-317   10217.456 + 1.24e-316
-   2  K2P+G4            -3419.486    6844.972 + 1.42e-316    6845.018 + 5.45e-317    6857.745 + 1.24e-316
-   3  TN+F+G4           -3609.176    7232.351 + 1.42e-316    7232.520 + 5.45e-317    7263.923 + 1.24e-316
-   4  TVM+F+I+G4        -4289.021    8598.043 + 1.42e-316    8598.348 + 5.45e-317    8644.001 + 1.24e-316
-   5  TIM2e+I+G4        -6224.713   12461.426 + 1.42e-316   12461.514 + 5.45e-317   12490.665 + 1.24e-316
-   6  TIM2+F+G4         -4719.062    9454.125 + 1.42e-316    9454.289 + 5.45e-317    9492.409 + 1.24e-316
-   7  TN+F+G4           -7633.586   15281.172 + 1.42e-316   15281.244 + 5.45e-317   15318.571 + 1.24e-316
-   8  K2P+I+G4          -2959.348    5926.696 + 1.42e-316    5926.780 + 5.45e-317    5943.391 + 1.24e-316
-   9  TNe+I             -3109.902    6227.805 + 1.42e-316    6227.875 + 5.45e-317    6245.229 + 1.24e-316
-  10  TIM2+F+G4         -3040.697    6097.394 + 1.42e-316    6097.604 + 5.45e-317    6133.757 + 1.24e-316
-  11  TNe+G4            -2864.568    5737.135 + 1.42e-316    5737.206 + 5.45e-317    5754.518 + 1.24e-316
-  12  TIM3e+G4          -5169.589   10349.179 + 1.42e-316   10349.255 + 5.45e-317   10372.552 + 1.24e-316
-  13  TPM2+F+G4         -2702.092    5418.183 + 1.42e-316    5418.394 + 5.45e-317    5448.224 + 1.24e-316
-  14  TPM2+F+I+G4       -3667.885    7351.771 + 1.42e-316    7352.039 + 5.45e-317    7386.192 + 1.24e-316
-  15  TIM2+F+R3         -4532.069    9086.138 + 1.42e-316    9086.426 + 5.45e-317    9139.325 + 1.24e-316
-  16  TN+F+G4           -4173.396    8360.792 + 1.42e-316    8360.982 + 5.45e-317    8391.535 + 1.24e-316
-  17  TPM3+F+G4         -5262.146   10538.293 + 1.42e-316   10538.418 + 5.45e-317   10571.909 + 1.24e-316
-  18  TIM3e+I+G4        -3036.049    6084.098 + 1.42e-316    6084.289 + 5.45e-317    6108.713 + 1.24e-316
-  19  TIM3+F+G4         -4092.671    8201.341 + 1.42e-316    8201.490 + 5.45e-317    8240.450 + 1.24e-316
-  20  K2P+G4            -2968.726    5943.452 + 1.42e-316    5943.504 + 5.45e-317    5955.897 + 1.24e-316
-  21  SYM+G4            -4372.436    8758.871 + 1.42e-316    8759.022 + 5.45e-317    8791.240 + 1.24e-316
-  22  TN+F+G4           -2870.272    5754.543 + 1.42e-316    5754.763 + 5.45e-317    5784.307 + 1.24e-316
-  23  TNe+G4            -2919.575    5847.149 + 1.42e-316    5847.213 + 5.45e-317    5864.932 + 1.24e-316
-  24  TPM2+F+G4         -5568.175   11150.350 + 1.42e-316   11150.437 + 5.45e-317   11186.552 + 1.24e-316
-  25  TN+F+G4           -3315.859    6645.717 + 1.42e-316    6645.920 + 5.45e-317    6676.025 + 1.24e-316
-  26  TN+F+G4           -2097.847    4209.693 + 1.42e-316    4209.922 + 5.45e-317    4239.168 + 1.24e-316
-  27  TIM+F+G4          -3743.957    7503.913 + 1.42e-316    7504.158 + 5.45e-317    7539.049 + 1.24e-316
-  28  TIM2+F+G4         -3634.194    7284.388 + 1.42e-316    7284.634 + 5.45e-317    7319.483 + 1.24e-316</code></pre>
-</div>
-</div>
-<p>Scores are better (lower BIC scores, for instance).</p>
-</div>
-</div>
-</div>
-<ol start="2" type="1">
-<li>Visualize the tree in <code>data/turtle.nex.treefile</code>. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?</li>
-</ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.nex.treefile"</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtree</span>(tree) <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_tiplab</span>() <span class="sc">+</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="fl">0.4</span>) <span class="sc">+</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_nodelab</span>(<span class="at">hjust =</span> <span class="fl">1.3</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="phylogeny_inference_ml_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="384"></p>
-</div>
-</div>
-<p>The tree supports the “A” hypothesis, which positions turtles as a sister group to birds and crocodiles. The branch showing that turtles are a sister group to crocodiles has a bootstrap support of 100%.</p>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Does the inferred tree agree with the published tree <span class="citation" data-cites="chiari2012phylogenomic">(<a href="#ref-chiari2012phylogenomic" role="doc-biblioref">Chiari et al. 2012</a>)</span>?</li>
-</ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <p>Yes. Both trees agree on the “A” hypothesis.</p>
 </div>
 </div>
@@ -568,11 +548,11 @@ Solution
 </div>
 </div>
 </section>
-<section id="selecting-the-best-partitioning-scheme-with-partitionfinder" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="selecting-the-best-partitioning-scheme-with-partitionfinder"><span class="header-section-number">4.5</span> Selecting the best partitioning scheme with PartitionFinder</h2>
+<section id="selecting-the-best-partitioning-scheme-with-partitionfinder" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="selecting-the-best-partitioning-scheme-with-partitionfinder"><span class="header-section-number">4.6</span> Selecting the best partitioning scheme with PartitionFinder</h2>
 <p>Now, we will use PartitionFinder <span class="citation" data-cites="lanfear2012partitionfinder">(<a href="#ref-lanfear2012partitionfinder" role="doc-biblioref">Lanfear et al. 2012</a>)</span> to merge partitions and reduce the potential over-parameterization.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> data/turtle.fa <span class="at">-p</span> data/turtle.nex <span class="at">-B</span> 1000 <span class="at">-T</span> 2 <span class="at">-m</span> MFP+MERGE <span class="at">-rcluster</span> 10 <span class="at">--prefix</span> data/turtle.merge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> data/turtle.fa <span class="at">-p</span> data/turtle.nex <span class="at">-B</span> 1000 <span class="at">-T</span> 2 <span class="at">-m</span> MFP+MERGE <span class="at">-rcluster</span> 10 <span class="at">--prefix</span> data/turtle.merge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -604,7 +584,84 @@ Exercises
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Look at the report file <code>data/turtle.merge.iqtree</code>. How many partitions do we have now?</li>
+<li><p>Look at the report file <code>data/turtle.merge.iqtree</code> and answer the questions:</p>
+<ul>
+<li>How many partitions do we have now?</li>
+<li>Look at the AIC/AICc/BIC scores. Compared with two previous models, is this model better or worse?</li>
+</ul></li>
+</ol>
+<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read report</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>merge_report <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.merge.iqtree"</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Q1: number of partitions</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>merge_report[<span class="fu">grepl</span>(<span class="st">"Input data:"</span>, merge_report)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Input data: 16 taxa with 7 partitions and 20820 total sites (2.55764% missing data)"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Q2: compare AIC/AICc/BIC scores</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">"List of best-fit models per partition"</span>, merge_report)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">seq</span>(idx, idx <span class="sc">+</span> <span class="dv">10</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>merge_report[idx]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "List of best-fit models per partition:"                                                                   
+ [2] ""                                                                                                         
+ [3] "  ID  Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC"   
+ [4] "   1  TPM3+F+I+G4      -33463.275   66942.550 + 3.38e-316   66942.577 + 5.45e-317   66995.241 + 2.19e-316"
+ [5] "   2  TIM3+F+I+G4      -28588.305   57194.610 + 3.38e-316   57194.643 + 5.45e-317   57254.076 + 2.19e-316"
+ [6] "   3  GTR+F+I+G4       -19434.040   38890.081 + 3.38e-316   38890.158 + 5.45e-317   38957.582 + 2.19e-316"
+ [7] "   4  TIM2e+I+G4        -6224.893   12461.787 + 3.38e-316   12461.874 + 5.45e-317   12491.026 + 2.19e-316"
+ [8] "   5  TIM2+F+G4        -17553.560   35123.120 + 3.38e-316   35123.156 + 5.45e-317   35173.507 + 2.19e-316"
+ [9] "   6  TVMe+I+G4         -6727.848   13469.695 + 3.38e-316   13469.809 + 5.45e-317   13504.000 + 2.19e-316"
+[10] "   7  TIM+F+G4          -3743.955    7503.910 + 3.38e-316    7504.155 + 5.45e-317    7539.045 + 2.19e-316"
+[11] ""                                                                                                         </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Visualize the tree in <code>data/turtle.merge.treefile</code>. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?</li>
+</ol>
+<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.merge.treefile"</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree, <span class="at">show.node.label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="phylogeny_inference_ml_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="864"></p>
+</div>
+</div>
+<p>The tree supports the hypothesis A, which positions turtles as a sister group to birds and crocodiles. The relevant clade has a bootstrap support of 99%.</p>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Does this tree agree with the published tree <span class="citation" data-cites="chiari2012phylogenomic">(<a href="#ref-chiari2012phylogenomic" role="doc-biblioref">Chiari et al. 2012</a>)</span>?</li>
 </ol>
 <div class="callout callout callout-style-simple no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
@@ -617,93 +674,6 @@ Solution
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"Input data:"</span> data/turtle.merge.iqtree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Input data: 16 taxa with 7 partitions and 20820 total sites (2.55764% missing data)</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<ol start="2" type="1">
-<li>Look at the AIC/AICc/BIC scores. Compared with two previous models, is this model better or worse?</li>
-</ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-A</span> 10 <span class="st">"List of best-fit models per partition"</span> data/turtle.merge.iqtree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>List of best-fit models per partition:
-
-  ID  Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC
-   1  TPM3+F+I+G4      -33463.275   66942.550 + 3.38e-316   66942.577 + 5.45e-317   66995.241 + 2.19e-316
-   2  TIM3+F+I+G4      -28588.305   57194.610 + 3.38e-316   57194.643 + 5.45e-317   57254.076 + 2.19e-316
-   3  GTR+F+I+G4       -19434.040   38890.081 + 3.38e-316   38890.158 + 5.45e-317   38957.582 + 2.19e-316
-   4  TIM2e+I+G4        -6224.893   12461.787 + 3.38e-316   12461.874 + 5.45e-317   12491.026 + 2.19e-316
-   5  TIM2+F+G4        -17553.560   35123.120 + 3.38e-316   35123.156 + 5.45e-317   35173.507 + 2.19e-316
-   6  TVMe+I+G4         -6727.848   13469.695 + 3.38e-316   13469.809 + 5.45e-317   13504.000 + 2.19e-316
-   7  TIM+F+G4          -3743.955    7503.910 + 3.38e-316    7504.155 + 5.45e-317    7539.045 + 2.19e-316</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Visualize the tree in <code>data/turtle.merge.treefile</code>. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?</li>
-</ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"turtle.merge.treefile"</span>))</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtree</span>(tree) <span class="sc">+</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_tiplab</span>() <span class="sc">+</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="fl">0.4</span>) <span class="sc">+</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_nodelab</span>(<span class="at">hjust =</span> <span class="fl">1.3</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="phylogeny_inference_ml_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="384"></p>
-</div>
-</div>
-<p>The tree supports the hypothesis A, which positions turtles as a sister group to birds and crocodiles. The relevant clade has a bootstrap support of 99%.</p>
-</div>
-</div>
-</div>
-<ol start="4" type="1">
-<li>Does this tree agree with the published tree <span class="citation" data-cites="chiari2012phylogenomic">(<a href="#ref-chiari2012phylogenomic" role="doc-biblioref">Chiari et al. 2012</a>)</span>?</li>
-</ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Yes. Both trees agree on the “A” hypothesis, i.e., (Turtle, (Bird, Crocodile)).</p>
 </div>
