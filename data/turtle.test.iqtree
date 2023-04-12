@@ -1,0 +1,146 @@
+IQ-TREE 2.1.2 COVID-edition built Oct 22 2020
+
+Partition file name: data/turtle.merge.best_scheme.nex
+Input file name: data/turtle.fa
+Type of analysis: ModelFinder + tree reconstruction
+Random seed number: 865420
+
+REFERENCES
+----------
+
+To cite IQ-TREE please use:
+
+Bui Quang Minh, Heiko A. Schmidt, Olga Chernomor, Dominik Schrempf,
+Michael D. Woodhams, Arndt von Haeseler, and Robert Lanfear (2020)
+IQ-TREE 2: New models and efficient methods for phylogenetic inference
+in the genomic era. Mol. Biol. Evol., in press.
+https://doi.org/10.1093/molbev/msaa015
+
+To cite ModelFinder please use: 
+
+Subha Kalyaanamoorthy, Bui Quang Minh, Thomas KF Wong, Arndt von Haeseler,
+and Lars S Jermiin (2017) ModelFinder: Fast model selection for
+accurate phylogenetic estimates. Nature Methods, 14:587–589.
+https://doi.org/10.1038/nmeth.4285
+
+Since you used partition models please also cite:
+
+Olga Chernomor, Arndt von Haeseler, and Bui Quang Minh (2016)
+Terrace aware data structure for phylogenomic inference from
+supermatrices. Syst. Biol., 65:997-1008.
+https://doi.org/10.1093/sysbio/syw037
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 16 taxa with 7 partitions and 20820 total sites (2.55764% missing data)
+
+  ID  Name                                                                                                                                                                                                                                                             Type	Seq	Site	Unique	Infor	Invar	Const
+   1  ENSGALG00000000223.macse_DNA_gb_ENSGALG00000001529.macse_DNA_gb_ENSGALG00000003907.macse_DNA_gb_ENSGALG00000008338.macse_DNA_gb_ENSGALG00000009879.macse_DNA_gb_ENSGALG00000011323.macse_DNA_gb_ENSGALG00000011966.macse_DNA_gb_ENSGALG00000012244.macse_DNA_gb  DNA	16	5358	2732	1865	2413	2413
+   2  ENSGALG00000002002.macse_DNA_gb_ENSGALG00000003700.macse_DNA_gb_ENSGALG00000003702.macse_DNA_gb_ENSGALG00000005820.macse_DNA_gb_ENSGALG00000005902.macse_DNA_gb_ENSGALG00000012568.macse_DNA_gb_ENSGALG00000015397.macse_DNA_gb                                  DNA	16	5472	2145	1443	3024	3024
+   3  ENSGALG00000002514.macse_DNA_gb_ENSGALG00000009085.macse_DNA_gb_ENSGALG00000012379.macse_DNA_gb_ENSGALG00000014038.macse_DNA_gb_ENSGALG00000016241.macse_DNA_gb                                                                                                  DNA	16	3417	1497	1039	1881	1881
+   4  ENSGALG00000003337.macse_DNA_gb                                                                                                                                                                                                                                  DNA	15	966	419	313	556	556
+   5  ENSGALG00000005834.macse_DNA_gb_ENSGALG00000008517.macse_DNA_gb_ENSGALG00000011917.macse_DNA_gb_ENSGALG00000013227.macse_DNA_gb_ENSGALG00000014648.macse_DNA_gb                                                                                                  DNA	16	4017	1271	805	2600	2600
+   6  ENSGALG00000008916.macse_DNA_gb_ENSGALG00000011434.macse_DNA_gb                                                                                                                                                                                                  DNA	12	993	497	432	473	473
+   7  ENSGALG00000015326.macse_DNA_gb                                                                                                                                                                                                                                  DNA	10	597	289	187	238	238
+
+Column meanings:
+  Unique: Number of unique site patterns
+  Infor:  Number of parsimony-informative sites
+  Invar:  Number of invariant sites
+  Const:  Number of constant sites (can be subset of invariant sites)
+
+SUBSTITUTION PROCESS
+--------------------
+
+Edge-linked-proportional partition model with separate substitution models and separate rates across sites
+
+  ID  Model           Speed  Parameters
+   1  TPM3+F+I+G4    1.1837  TPM3{1.42189,4.57652}+F{0.268759,0.234076,0.229432,0.267733}+I{0.280304}+G4{1.44378}
+   2  TIM3+F+I+G4    0.8717  TIM3{1.44101,3.88486,7.57159}+F{0.314348,0.210513,0.238697,0.236441}+I{0.332864}+G4{1.10728}
+   3  GTR+F+I+G4     1.0647  GTR{1.69502,4.32629,1.0403,0.69641,7.26153}+F{0.302168,0.196843,0.235292,0.265697}+I{0.382926}+G4{0.992422}
+   4  TIM2e+I+G4     1.2656  TIM2e{1.94324,6.26697,9.58273}+FQ+I{0.465526}+G4{0.860937}
+   5  TIM2+F+G4      0.6263  TIM2{1.82178,5.53156,9.40156}+F{0.31956,0.188342,0.235359,0.256739}+G4{0.272317}
+   6  TVMe+I+G4      1.6357  TVMe{5.42108,12.8939,2.92321,3.42151}+FQ+I{0.390889}+G4{1.62999}
+   7  TIM+F+G4       1.1849  TIM{3.28137,2.23739,7.19008}+F{0.290433,0.22574,0.31016,0.173666}+G4{0.816676}
+
+STARTING TREE
+-------------
+
+Log-likelihood of the tree: -115741.0734 (s.e. 649.9220)
+Unconstrained log-likelihood (without tree): -129024.3500
+Number of free parameters (#branches + #model parameters): 85
+Akaike information criterion (AIC) score: 231652.1467
+Corrected Akaike information criterion (AICc) score: 231652.8519
+Bayesian information criterion (BIC) score: 232327.3586
+
+Total tree length (sum of branch lengths): 1.9485
+Sum of internal branch lengths: 0.5347 (27.4425% of tree length)
+
+NOTE: Tree is UNROOTED although outgroup taxon 'protopterus' is drawn at root
+
++-----------------------------------------------------------protopterus
+|
+|                                          +---------------Anolis
+|                                       +--|
+|                                       |  +---------podarcis
+|                      +----------------|
+|                      |                +-----------------python
+|                +-----|
+|                |     |              +-------Gallus
+|                |     |  +-----------|
+|                |     |  |           +-----------Taeniopygia
+|                |     +--|
+|                |        |              +--alligator
+|                |        |  +-----------|
+|                |        |  |           +--caiman
+|                |        +--|
+|                |           |           +--emys_orbicularis
+|                |           |        +--|
+|                |           |        |  +--chelonoidis_nigra
+|                |           |     +--|
+|                |           |     |  +--caretta
+|                |           +-----|
+|                |                 +---phrynops
++----------------|
+|                |              +------------------Homo
+|                |         +----|
+|                |         |    +--------------------Monodelphis
+|                +---------|
+|                          +-----------------------Ornithorhynchus
+|
++---------------------------------------------------------Xenopus
+
+Tree in newick format:
+
+(protopterus:0.3212294432,((((Anolis:0.0903759561,podarcis:0.0558128407):0.0037985187,python:0.0988622085):0.0928260294,((Gallus:0.0481456713,Taeniopygia:0.0653501187):0.0692365914,((alligator:0.0038166013,caiman:0.0129042900):0.0688239634,(((emys_orbicularis:0.0069490412,chelonoidis_nigra:0.0120349524):0.0030896426,caretta:0.0109592625):0.0105210506,phrynops:0.0262473185):0.0369139979):0.0191325317):0.0148450521):0.0369383720,((Homo:0.1065420694,Monodelphis:0.1130128795):0.0301843555,Ornithorhynchus:0.1304096759):0.0558914596):0.0925118804,Xenopus:0.3111188093);
+
+
+USER TREES
+----------
+
+See data/turtle.test.trees for trees with branch lengths.
+
+Tree      logL    deltaL  bp-RELL    p-KH     p-SH       c-ELW       p-AU
+-------------------------------------------------------------------------
+  1 -115741.0735  4.9507   0.424 +  0.426 +  0.426 +     0.424 +    0.412 + 
+  2 -115736.1228       0   0.576 +  0.574 +      1 +     0.576 +    0.588 + 
+
+deltaL  : logL difference from the maximal logl in the set.
+bp-RELL : bootstrap proportion using RELL method (Kishino et al. 1990).
+p-KH    : p-value of one sided Kishino-Hasegawa test (1989).
+p-SH    : p-value of Shimodaira-Hasegawa test (2000).
+c-ELW   : Expected Likelihood Weight (Strimmer & Rambaut 2002).
+p-AU    : p-value of approximately unbiased (AU) test (Shimodaira, 2002).
+
+Plus signs denote the 95% confidence sets.
+Minus signs denote significant exclusion.
+All tests performed 10000 resamplings using the RELL method.
+
+TIME STAMP
+----------
+
+Date and time: Wed Apr 12 10:10:34 2023
+Total CPU time used: 6.99 seconds (0h:0m:6s)
+Total wall-clock time used: 17 seconds (0h:0m:17s)
+

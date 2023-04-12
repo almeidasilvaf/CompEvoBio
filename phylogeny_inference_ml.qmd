@@ -161,6 +161,7 @@ turtle_report[grepl("Best-fit model", turtle_report)]
 turtle_report[grepl("^Model  |^GTR\\+F\\+R3", turtle_report)]
 ```
 
+:::
 
 2. Visualise the tree in `data/turtle.fa.treefile`. What relationship among 
 three trees does this tree support? What is the ultrafast bootstrap 
@@ -400,6 +401,93 @@ Yes. Both trees agree on the "A" hypothesis, i.e., (Turtle, (Bird, Crocodile)).
 :::
 
 :::
+
+
+## Tree topology tests
+
+Tree topology tests can be used to find out if different trees have
+significant differences in log-likelihoods. To do that, you can use
+the SH test [@shimodaira1999multiple] or expected likelihood 
+weights [@strimmer2002inferring].
+
+
+Before running the tests, we first need to concatenate the trees in a single
+file:
+
+```{r}
+# Read tree inferred with a single model as plain text
+tree_single <- readLines(here("data", "turtle.fa.treefile"))
+
+# Read tree inferred with partition models as plain text
+tree_partitioned <- readLines(here("data", "turtle.nex.treefile"))
+
+# Combine trees and export to file
+tree_combined <- c(tree_single, tree_partitioned)
+writeLines(tree_combined, con = here("data", "turtle.trees"))
+```
+
+Now, we can pass the concatenated tree to IQ-TREE:
+
+```{bash}
+#| eval: false
+iqtree2 -s data/turtle.fa -p data/turtle.merge.best_scheme.nex -z data/turtle.trees -zb 10000 -au -n 0 --prefix data/turtle.test
+```
+
+::: {.callout-note}
+
+## Understanding the command-line arguments
+
+Besides the arguments we've already seen, the new arguments and 
+their meanings are:
+
+- `-z`: path to the file containing the concatenated trees.
+- `-zb`: number of replicates for *approximate* bootstrap for the tree
+topology tests (here, 10000).
+- `-au`: perform the Approximately Unbiased test.
+- `-n 0`: avoid tree search and just perform tree topology tests.
+:::
+
+The main report is a file ending in `.test.iqtree`, and the tree is 
+in a file ending in `.test.treefile`.
+
+The KH, SH and AU tests return p-values. Thus, a tree is rejected if 
+its p-value <0.05 (marked with a `-` sign).
+
+
+::: {.callout-tip}
+
+## Exercises
+
+1. Look at the "USER TREES" section in the report file 
+`data/turtle.test.iqtree` and answer the questions:
+
+    - Which tree has the worst log-likelihood?
+    - Can you reject this tree according to the Shimodaira Hasegawa test, 
+    assuming a p-value cutoff of 0.05?
+    - Can you reject this tree according to the Approximately Unbiased test, 
+    assuming a p-value cutoff of 0.05?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+# Read report and get the "USER TREES" section
+test_report <- readLines(here("data", "turtle.test.iqtree"))
+idx <- grep("USER TREES", test_report)
+idx <- seq(idx, length(test_report))
+
+test_report[idx]
+```
+
+1. The first tree has the worst log-likelihood.
+2. No, we cannot reject the tree (p = 0.426).
+3. No, we cannot reject the tree (p = 0.412).
+
+:::
+
+:::
+
 
 
 
