@@ -187,7 +187,7 @@ support of 82%.
 :::
 
 
-4. In the figure below, you can see the tree published 
+3. In the figure below, you can see the tree published 
 by @chiari2012phylogenomic. Does the inferred tree agree with the 
 published tree?
 
