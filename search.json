@@ -4,7 +4,14 @@
     "href": "index.html",
     "title": "Introduction to Computational Evolutionary Biology",
     "section": "",
-    "text": "Preface\nThis book aims to provide learners with a hands-on introduction to Computational Evolutionary Biology, and the materials here are used in the practical lessons of the courses C003709A - Evolutionary Biology and C000500A - Bioinformatics 2 at Universiteit Gent, taught by Dr. Yves Van de Peer and Fabricio Almeida-Silva.\nEach book chapter represents the contents of a practical lesson from the UGent courses, and they serve both as a guide during the lessons and as a reference to go back later.\nThe book will cover:\n\nIntroduction to the R programming language\nData structures for Evolutionary Biology in R\nMultiple Sequence Alignment (MSA) and distance-based phylogeny inference\nMaximum likelihood-based phylogeny inference\nAnalyses of gene and genome duplication"
+    "text": "Preface\nThis book aims to provide learners with a hands-on introduction to Computational Evolutionary Biology, and the materials here are used in the practical lessons of the courses C003709A - Evolutionary Biology and C000500A - Bioinformatics 2 at Universiteit Gent, taught by Dr. Yves Van de Peer and Fabricio Almeida-Silva.\nEach book chapter represents the contents of a practical lesson from the UGent courses, and they serve both as a guide during the lessons and as a reference to go back later.\nThe book will cover:"
+  },
+  {
+    "objectID": "index.html#setup",
+    "href": "index.html#setup",
+    "title": "Introduction to Computational Evolutionary Biology",
+    "section": "Setup",
+    "text": "Setup\nTo run the code in this book, you will need to install:\n\nR (>=4.2.0): go to the CRAN website, choose your OS (Windoes, Linux, or macOS), and follow the installation instructions.\nRStudio Desktop: go to the RStudio website and download the installer for your OS.\nIQ-TREE: go to the IQ-TREE download page and follow the installation instructions for your OS.\n\nAfter installing R and RStudio, you will need to install some required R packages. To do that, open RStudio and execute the code below in your console:\n\n# Install BiocManager\ninstall.packages(\"BiocManager\")\n\n# Use BiocManager to install required packages\npackages <- c(\n    \"treeio\", \n    \"ggtree\", \n    \"ggtree\", \n    \"ape\", \n    \"here\", \n    \"Biostrings\",\n    \"MSA2dist\", \n    \"msa\", \n    \"phangorn\", \n    \"seqinr\"\n)\n\nBiocManager::install(packages)\n\nAfter that, you should have everything ready."
   },
   {
     "objectID": "intro_to_R.html#goals-of-this-lesson",
