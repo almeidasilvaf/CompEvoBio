@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,48 +47,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -101,8 +73,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -150,11 +121,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Maximum likelihood-based phylogeny inference</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./phylogeny_inference_ml.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Maximum likelihood-based phylogeny inference</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -162,64 +138,71 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introduction to Computational Evolutionary Biology</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_to_R.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to R</span></a>
+  <a href="./intro_to_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_structures_genomics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R for evolutionary biology: data structures</span></a>
+  <a href="./data_structures_genomics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R for evolutionary biology: data structures</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./phylogeny_inference_distance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distance-based phylogeny inference</span></a>
+  <a href="./phylogeny_inference_distance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distance-based phylogeny inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./phylogeny_inference_ml.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Maximum likelihood-based phylogeny inference</span></a>
+  <a href="./phylogeny_inference_ml.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Maximum likelihood-based phylogeny inference</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./gene_genome_duplication.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Analysis of gene and genome duplication</span></a>
+  <a href="./gene_genome_duplication.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Analysis of gene and genome duplication</span></span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goals-of-this-lesson" id="toc-goals-of-this-lesson" class="nav-link active" data-scroll-target="#goals-of-this-lesson"><span class="toc-section-number">4.1</span>  Goals of this lesson</a></li>
-  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description"><span class="toc-section-number">4.2</span>  Data description</a></li>
-  <li><a href="#inferring-a-maximum-likelihood-tree" id="toc-inferring-a-maximum-likelihood-tree" class="nav-link" data-scroll-target="#inferring-a-maximum-likelihood-tree"><span class="toc-section-number">4.3</span>  Inferring a maximum likelihood tree</a></li>
-  <li><a href="#applying-partition-models" id="toc-applying-partition-models" class="nav-link" data-scroll-target="#applying-partition-models"><span class="toc-section-number">4.4</span>  Applying partition models</a></li>
-  <li><a href="#selecting-the-best-partitioning-scheme-with-partitionfinder" id="toc-selecting-the-best-partitioning-scheme-with-partitionfinder" class="nav-link" data-scroll-target="#selecting-the-best-partitioning-scheme-with-partitionfinder"><span class="toc-section-number">4.5</span>  Selecting the best partitioning scheme with PartitionFinder</a></li>
-  <li><a href="#tree-topology-tests" id="toc-tree-topology-tests" class="nav-link" data-scroll-target="#tree-topology-tests"><span class="toc-section-number">4.6</span>  Tree topology tests</a></li>
+  <li><a href="#goals-of-this-lesson" id="toc-goals-of-this-lesson" class="nav-link active" data-scroll-target="#goals-of-this-lesson"><span class="header-section-number">4.1</span> Goals of this lesson</a></li>
+  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description"><span class="header-section-number">4.2</span> Data description</a></li>
+  <li><a href="#inferring-a-maximum-likelihood-tree" id="toc-inferring-a-maximum-likelihood-tree" class="nav-link" data-scroll-target="#inferring-a-maximum-likelihood-tree"><span class="header-section-number">4.3</span> Inferring a maximum likelihood tree</a></li>
+  <li><a href="#applying-partition-models" id="toc-applying-partition-models" class="nav-link" data-scroll-target="#applying-partition-models"><span class="header-section-number">4.4</span> Applying partition models</a></li>
+  <li><a href="#selecting-the-best-partitioning-scheme-with-partitionfinder" id="toc-selecting-the-best-partitioning-scheme-with-partitionfinder" class="nav-link" data-scroll-target="#selecting-the-best-partitioning-scheme-with-partitionfinder"><span class="header-section-number">4.5</span> Selecting the best partitioning scheme with PartitionFinder</a></li>
+  <li><a href="#tree-topology-tests" id="toc-tree-topology-tests" class="nav-link" data-scroll-target="#tree-topology-tests"><span class="header-section-number">4.6</span> Tree topology tests</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -229,7 +212,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Maximum likelihood-based phylogeny inference</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Maximum likelihood-based phylogeny inference</span></h1>
 </div>
 
 
@@ -287,12 +270,12 @@ div.csl-indent {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> data/turtle.fa <span class="at">-B</span> 1000 <span class="at">-T</span> 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Understanding the command-line arguments
 </div>
 </div>
@@ -307,12 +290,12 @@ Understanding the command-line arguments
 </div>
 </div>
 <p>The main IQ-TREE report will be stored in a file ending in <code>.iqtree</code>, and the maximum likelihood tree (in Newick format) will be stored in a file ending in <code>.treefile</code>.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exercises
 </div>
 </div>
@@ -324,12 +307,12 @@ Exercises
 <li>What are the AIC/AICc/BIC scores of this model and tree?</li>
 </ul></li>
 </ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -358,12 +341,12 @@ Solution
 <ol start="2" type="1">
 <li>Visualise the tree in <code>data/turtle.fa.treefile</code>. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?</li>
 </ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -388,15 +371,15 @@ Solution
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figs/chiari_2012_species_tree.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Species tree inferred by Chiari <em>et al</em>, 2012</figcaption><p></p>
+<figcaption class="figure-caption">Species tree inferred by Chiari <em>et al</em>, 2012</figcaption>
 </figure>
 </div>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -416,12 +399,12 @@ Solution
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> data/turtle.fa <span class="at">-p</span> data/turtle.nex <span class="at">-B</span> 1000 <span class="at">-T</span> 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Understanding the command-line arguments
 </div>
 </div>
@@ -430,12 +413,12 @@ Understanding the command-line arguments
 </div>
 </div>
 <p>As in the simpler IQ-TREE run, the main report is in a file ending in <code>.nex.iqtree</code>, and the tree is in a file named <code>.nex.treefile</code>.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exercises
 </div>
 </div>
@@ -443,12 +426,12 @@ Exercises
 <ol type="1">
 <li>Look at the report file in <code>data/turtle.nex.iqtree</code>. What are the AIC/AICc/BIC scores of the partition model? Is it better than the previous model?</li>
 </ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -510,12 +493,12 @@ Solution
 <ol start="2" type="1">
 <li>Visualize the tree in <code>data/turtle.nex.treefile</code>. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?</li>
 </ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -537,12 +520,12 @@ Solution
 <ol start="3" type="1">
 <li>Does the inferred tree agree with the published tree <span class="citation" data-cites="chiari2012phylogenomic">(<a href="#ref-chiari2012phylogenomic" role="doc-biblioref">Chiari et al. 2012</a>)</span>?</li>
 </ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -562,12 +545,12 @@ Solution
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> data/turtle.fa <span class="at">-p</span> data/turtle.nex <span class="at">-B</span> 1000 <span class="at">-T</span> 2 <span class="at">-m</span> MFP+MERGE <span class="at">-rcluster</span> 10 <span class="at">--prefix</span> data/turtle.merge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Understanding the command-line arguments
 </div>
 </div>
@@ -581,12 +564,12 @@ Understanding the command-line arguments
 </div>
 </div>
 <p>The main report is a file ending in <code>.merge.iqtree</code>, and the tree is in a file ending in <code>.merge.treefile</code>.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exercises
 </div>
 </div>
@@ -598,12 +581,12 @@ Exercises
 <li>Look at the AIC/AICc/BIC scores. Compared with two previous models, is this model better or worse?</li>
 </ul></li>
 </ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -644,12 +627,12 @@ Solution
 <ol start="2" type="1">
 <li>Visualize the tree in <code>data/turtle.merge.treefile</code>. What relationship among three trees does this tree support? What is the ultrafast bootstrap support (%) for the relevant clade?</li>
 </ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -671,12 +654,12 @@ Solution
 <ol start="3" type="1">
 <li>Does this tree agree with the published tree <span class="citation" data-cites="chiari2012phylogenomic">(<a href="#ref-chiari2012phylogenomic" role="doc-biblioref">Chiari et al. 2012</a>)</span>?</li>
 </ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -709,12 +692,12 @@ Solution
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> data/turtle.fa <span class="at">-p</span> data/turtle.merge.best_scheme.nex <span class="at">-z</span> data/turtle.trees <span class="at">-zb</span> 10000 <span class="at">-au</span> <span class="at">-n</span> 0 <span class="at">--prefix</span> data/turtle.test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Understanding the command-line arguments
 </div>
 </div>
@@ -730,12 +713,12 @@ Understanding the command-line arguments
 </div>
 <p>The main report is a file ending in <code>.test.iqtree</code>, and the tree is in a file ending in <code>.test.treefile</code>.</p>
 <p>The KH, SH and AU tests return p-values. Thus, a tree is rejected if its p-value &lt;0.05 (marked with a <code>-</code> sign).</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exercises
 </div>
 </div>
@@ -748,12 +731,12 @@ Exercises
 <li>Can you reject this tree according to the Approximately Unbiased test, assuming a p-value cutoff of 0.05?</li>
 </ul></li>
 </ol>
-<div class="callout callout callout-style-simple no-icon callout-captioned">
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -813,29 +796,29 @@ Solution
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-chernomor2016terrace" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-chernomor2016terrace" class="csl-entry" role="listitem">
 Chernomor, Olga, Arndt Von Haeseler, and Bui Quang Minh. 2016. <span>“Terrace Aware Data Structure for Phylogenomic Inference from Supermatrices.”</span> <em>Systematic Biology</em> 65 (6): 997–1008.
 </div>
-<div id="ref-chiari2012phylogenomic" class="csl-entry" role="doc-biblioentry">
+<div id="ref-chiari2012phylogenomic" class="csl-entry" role="listitem">
 Chiari, Ylenia, Vincent Cahais, Nicolas Galtier, and Frédéric Delsuc. 2012. <span>“Phylogenomic Analyses Support the Position of Turtles as the Sister Group of Birds and Crocodiles (Archosauria).”</span> <em>Bmc Biology</em> 10: 1–15.
 </div>
-<div id="ref-lanfear2012partitionfinder" class="csl-entry" role="doc-biblioentry">
+<div id="ref-lanfear2012partitionfinder" class="csl-entry" role="listitem">
 Lanfear, Robert, Brett Calcott, Simon YW Ho, and Stephane Guindon. 2012. <span>“PartitionFinder: Combined Selection of Partitioning Schemes and Substitution Models for Phylogenetic Analyses.”</span> <em>Molecular Biology and Evolution</em> 29 (6): 1695–1701.
 </div>
-<div id="ref-lanfear2014selecting" class="csl-entry" role="doc-biblioentry">
+<div id="ref-lanfear2014selecting" class="csl-entry" role="listitem">
 Lanfear, Robert, Brett Calcott, David Kainer, Christoph Mayer, and Alexandros Stamatakis. 2014. <span>“Selecting Optimal Partitioning Schemes for Phylogenomic Datasets.”</span> <em>BMC Evolutionary Biology</em> 14: 1–14.
 </div>
-<div id="ref-minh2013ultrafast" class="csl-entry" role="doc-biblioentry">
+<div id="ref-minh2013ultrafast" class="csl-entry" role="listitem">
 Minh, Bui Quang, Minh Anh Thi Nguyen, and Arndt Von Haeseler. 2013. <span>“Ultrafast Approximation for Phylogenetic Bootstrap.”</span> <em>Molecular Biology and Evolution</em> 30 (5): 1188–95.
 </div>
-<div id="ref-minh2020iq" class="csl-entry" role="doc-biblioentry">
+<div id="ref-minh2020iq" class="csl-entry" role="listitem">
 Minh, Bui Quang, Heiko A Schmidt, Olga Chernomor, Dominik Schrempf, Michael D Woodhams, Arndt Von Haeseler, and Robert Lanfear. 2020. <span>“IQ-TREE 2: New Models and Efficient Methods for Phylogenetic Inference in the Genomic Era.”</span> <em>Molecular Biology and Evolution</em> 37 (5): 1530–34.
 </div>
-<div id="ref-shimodaira1999multiple" class="csl-entry" role="doc-biblioentry">
+<div id="ref-shimodaira1999multiple" class="csl-entry" role="listitem">
 Shimodaira, Hidetoshi, and Masami Hasegawa. 1999. <span>“Multiple Comparisons of Log-Likelihoods with Applications to Phylogenetic Inference.”</span> <em>Molecular Biology and Evolution</em> 16 (8): 1114.
 </div>
-<div id="ref-strimmer2002inferring" class="csl-entry" role="doc-biblioentry">
+<div id="ref-strimmer2002inferring" class="csl-entry" role="listitem">
 Strimmer, Korbinian, and Andrew Rambaut. 2002. <span>“Inferring Confidence Sets of Possibly Misspecified Gene Trees.”</span> <em>Proceedings of the Royal Society of London. Series B: Biological Sciences</em> 269 (1487): 137–42.
 </div>
 </div>
@@ -869,9 +852,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -936,6 +933,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
