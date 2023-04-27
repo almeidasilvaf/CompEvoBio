@@ -12,7 +12,7 @@
 
 ## Exercises ====
 
-#' Use the dna_seqs object created above to answer the following questions:
+#' Use the `dna_seqs` object created above to answer the following questions:
 #' 
 #' 
 #' 1. What is the length of the 3rd sequence?
