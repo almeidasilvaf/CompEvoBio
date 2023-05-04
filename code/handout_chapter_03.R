@@ -1,6 +1,8 @@
 
 # Multiple Sequence Alignment (MSA) ====
-
+library(msa)
+library(Biostrings)
+fasta_path <- system.file("examples", "HemoglobinAA.fasta", package="msa")
 
 
 
@@ -10,7 +12,8 @@
 
 
 # Calculating distance matrices =====
-
+library(MSA2dist)
+library(seqinr)
 
 
 
@@ -21,7 +24,7 @@
 
 
 # Inferring trees ====
-
+library(ape)
 
 
 

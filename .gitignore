@@ -6,3 +6,9 @@
 /.quarto/
 
 _book/
+
+data/*.bionj
+data/*.gz
+data/*.contree
+data/*.log
+data/*.mldist
