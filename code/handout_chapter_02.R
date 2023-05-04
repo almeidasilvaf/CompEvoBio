@@ -1,5 +1,9 @@
 
+
 # The {Biostrings} package and `XStringSet` objects ====
+library(Biostrings)
+
+
 
 
 
@@ -29,13 +33,8 @@
 
 
 
-
-
-
-
 # The {Biostrings} package and `XMultipleAlignment` objects ====
-
-
+aln_path <- system.file("extdata", "msx2_mRNA.aln", package = "Biostrings")
 
 
 
@@ -54,16 +53,9 @@
 
 
 
-
-
 # The {ape} package and `phylo` objects ====
-
-
-
-
-
-
-
+library(ape)
+text_tree <- "((((cow, pig),whale), (bat, (lemur, human))), iguana);"
 
 
 
@@ -79,7 +71,7 @@ set.seed(123) # for reproducibility
 sim_tree <- rtree(n = 20)
 
 #' 1. How many terminal taxa (i.e., tips) are there?
-#' 2. What the the names of terminal taxa?
+#' 2. What are the names of terminal taxa?
 #' 3. What taxon is more closely-related to the taxon “t1”?
     
 

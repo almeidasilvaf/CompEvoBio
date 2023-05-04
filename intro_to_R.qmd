@@ -1,39 +1,21 @@
-
 # Introduction to R
 
-The R programming language is a powerful tool for evolutionary biology 
-research, offering a vast array of statistical and visualization tools 
-that are essential for data analysis. With its extensive library of packages, 
-R allows researchers to quickly and easily perform complex statistical 
-analyses, including phylogenetic analyses, genome-wide association studies, 
-and population genetics. R also provides a range of plotting and visualization 
-functions that enable researchers to explore and present their data in a clear 
-and concise manner. Additionally, R can be used in conjunction with other 
-software tools, such as BEAST and IQ-TREE, to facilitate more complex 
-evolutionary analyses. Due to its versatility and user-friendly interface, 
-R has become an increasingly popular choice for evolutionary biologists 
-looking to conduct high-quality research.
+The R programming language is a powerful tool for evolutionary biology research, offering a vast array of statistical and visualization tools that are essential for data analysis. With its extensive library of packages, R allows researchers to quickly and easily perform complex statistical analyses, including phylogenetic analyses, genome-wide association studies, and population genetics. R also provides a range of plotting and visualization functions that enable researchers to explore and present their data in a clear and concise manner. Additionally, R can be used in conjunction with other software tools, such as BEAST and IQ-TREE, to facilitate more complex evolutionary analyses. Due to its versatility and user-friendly interface, R has become an increasingly popular choice for evolutionary biologists looking to conduct high-quality research.
 
 ## Goals of this lesson
 
-This lesson was designed to be a gentle introduction to R for evolutionary
-genomics. Thus, we will only cover the basics of the language. An alternative
-name for this lesson could be 
-*"all you need to know about R to start your evolutionary analyses"*. At
-the end of this lesson, you will be able to:
+This lesson was designed to be a gentle introduction to R for evolutionary genomics. Thus, we will only cover the basics of the language. An alternative name for this lesson could be *"all you need to know about R to start your evolutionary analyses"*. At the end of this lesson, you will be able to:
 
-- perform simple mathematical operations in R
-- create and modify objects
-- use functions and look for help
-- create vectors and understand the difference between vector types
-- create data frames
-- subset vectors and data frames
-
+-   perform simple mathematical operations in R
+-   create and modify objects
+-   use functions and look for help
+-   create vectors and understand the difference between vector types
+-   create data frames
+-   subset vectors and data frames
 
 ## Creating objects
 
-The simplest use of R is to perform mathematical operations, which can be 
-simply typed in the console:
+The simplest use of R is to perform mathematical operations, which can be simply typed in the console:
 
 ```{r}
 2 + 2
@@ -45,59 +27,44 @@ simply typed in the console:
 5 - 3
 ```
 
-However, simple mathematical operations are not very useful. Typically,
-you would want to assign *values* to *R objects*. R objects can be
-created by using `object_name` + `<-` + `value`. The `<-` symbol is called
-the "assignment operator", and it assigns values to objects. Example:
+However, simple mathematical operations are not very useful. Typically, you would want to assign *values* to *R objects*. R objects can be created by using `object_name` + `<-` + `value`. The `<-` symbol is called the "assignment operator", and it assigns values to objects. Example:
 
 ```{r}
 genome_size <- 2000000
 ```
 
-Note that when you assign a value to an object, nothing happens on the screen.
-In the example above, we created an object named `genome_size` that contains
-the value `2000000`, but the value is not printed to screen. To show
-the contents of an object, you must type its name and execute it. For example:
+Note that when you assign a value to an object, nothing happens on the screen. In the example above, we created an object named `genome_size` that contains the value `2000000`, but the value is not printed to screen. To show the contents of an object, you must type its name and execute it. For example:
 
 ```{r}
 genome_size
 ```
 
-Alternatively, we can assign values to objects *AND* print them at the same time
-by surrounding the assignment code with parentheses. For example:
+Alternatively, we can assign values to objects *AND* print them at the same time by surrounding the assignment code with parentheses. For example:
 
 ```{r}
 (genome_size <- 2000000)
 ```
 
-::: {.callout-tip}
-
+::: callout-tip
 ### Naming objects
 
-Although you can give your objects whatever name you want, some
-general best practices include:
+Although you can give your objects whatever name you want, some general best practices include:
 
-1. Choose a **descriptive** name, but **not too long**.
-2. Do not use dots (`.`).
-3. Use nouns.
-4. Be consistent with your styling. Styles include **snake case** 
-(e.g., `phylo_tree`) and **camel case** (e.g., `phyloTree`.)
+1.  Choose a **descriptive** name, but **not too long**.
+2.  Do not use dots (`.`).
+3.  Use nouns.
+4.  Be consistent with your styling. Styles include **snake case** (e.g., `phylo_tree`) and **camel case** (e.g., `phyloTree`.)
 
 Note that object names **cannot start with numbers**.
-
 :::
 
-Now that we have an object `genome_size` with a value, we can use the
-object to perform mathematical operations. For example, let's suppose
-we want to see the genome size in many thousands of base pairs 
-(i.e., kbp, which stands for kilobase pairs):
+Now that we have an object `genome_size` with a value, we can use the object to perform mathematical operations. For example, let's suppose we want to see the genome size in many thousands of base pairs (i.e., kbp, which stands for kilobase pairs):
 
 ```{r}
 genome_size / 1000
 ```
 
-We can also change the value of an object by assigning a new value to it.
-For instance, let's update the `genome_size` object with the size in kbp:
+We can also change the value of an object by assigning a new value to it. For instance, let's update the `genome_size` object with the size in kbp:
 
 ```{r}
 genome_size # original object
@@ -108,45 +75,29 @@ genome_size
 
 As you can see, the object `genome_size` now contains the value `2000`.
 
-
 ## Functions and arguments
 
-Functions are scripts that automate a particular task, and they typically have
-verbs in their names. They are made available to users as part of *packages*,
-and there are several R packages with specialized functions for each field.
-When you download and install R, it already comes with some packages installed,
-such as **base** and **utils**, but you can also install other packages
-depending on your needs.
+Functions are scripts that automate a particular task, and they typically have verbs in their names. They are made available to users as part of *packages*, and there are several R packages with specialized functions for each field. When you download and install R, it already comes with some packages installed, such as **base** and **utils**, but you can also install other packages depending on your needs.
 
-
-A function takes one or many arguments as input and return something as output.
-To execute a function in R, you need to write the function name followed by
-the arguments inside parenthesis. For example, let's execute the function 
-`sqrt()`, which takes a numeric value as input and return its square root:
+A function takes one or many arguments as input and return something as output. To execute a function in R, you need to write the function name followed by the arguments inside parenthesis. For example, let's execute the function `sqrt()`, which takes a numeric value as input and return its square root:
 
 ```{r}
 sqrt(100)
 ```
 
-You can also pass objects as input to functions. For example, let's pass our
-object `genome_size` to the `sqrt()` function:
+You can also pass objects as input to functions. For example, let's pass our object `genome_size` to the `sqrt()` function:
 
 ```{r}
 sqrt(genome_size)
 ```
 
-To see all the possible arguments a function takes, use the function `args()`
-with the function name as input. For example, let's see all possible arguments
-for the `round()` function (which rounds up numbers):
+To see all the possible arguments a function takes, use the function `args()` with the function name as input. For example, let's see all possible arguments for the `round()` function (which rounds up numbers):
 
 ```{r}
 args(round)
 ```
 
-We can see that the `round()` function can take two arguments as input: 
-`x`, which is a numeric value, and `digits`, which indicates how many digits
-should be used when rounding values. Let's try to execute the `round()` function
-with different options to `digits`.
+We can see that the `round()` function can take two arguments as input: `x`, which is a numeric value, and `digits`, which indicates how many digits should be used when rounding values. Let's try to execute the `round()` function with different options to `digits`.
 
 ```{r}
 pi <- 3.14159
@@ -155,36 +106,25 @@ round(pi, digits = 2)
 round(pi, digits = 3)
 ```
 
-Finally, if you want to learn more about what a function does and how to use it,
-you can type the function name preceded by a question mark. For example:
+Finally, if you want to learn more about what a function does and how to use it, you can type the function name preceded by a question mark. For example:
 
 ```{r}
 ?round
 ```
 
-This will open up a help page with detailed information on what the function 
-does, its arguments, and examples.
+This will open up a help page with detailed information on what the function does, its arguments, and examples.
 
-::: {.callout-tip}
-
+::: callout-tip
 ### Exercises
 
-The genome of the plant *Arabidopsis thaliana* contains *33768* genes, of
-which *27655* are protein-coding and *6113* encode non-coding RNAs.
-Calculate the percentage of coding and non-coding genes in this genome
-using the following steps:
+The genome of the plant *Arabidopsis thaliana* contains *33768* genes, of which *27655* are protein-coding and *6113* encode non-coding RNAs. Calculate the percentage of coding and non-coding genes in this genome using the following steps:
 
-1. Create a variable named `ath_genes` that stores the numeric value *33768*.
-2. Create 2 objects named `n_coding` and `n_noncoding` that store
-the numeric values *27655* and *6113*, respectively.
-3. Create 2 objects named `perc_coding` and `perc_noncoding` by 
-dividing `n_coding` and `n_noncoding` by `ath_genes`.
-4. Update the objects by multiplying their contents by 100 (to represent 
-in percentages, from 0 to 100) and rounding the percentages to 1 significant
-digit only.
+1.  Create a variable named `ath_genes` that stores the numeric value *33768*.
+2.  Create 2 objects named `n_coding` and `n_noncoding` that store the numeric values *27655* and *6113*, respectively.
+3.  Create 2 objects named `perc_coding` and `perc_noncoding` by dividing `n_coding` and `n_noncoding` by `ath_genes`.
+4.  Update the objects by multiplying their contents by 100 (to represent in percentages, from 0 to 100) and rounding the percentages to 1 significant digit only.
 
 ::: {.callout collapse="true" appearance="minimal"}
-
 ### Solution
 
 ```{r}
@@ -205,32 +145,24 @@ perc_noncoding <- round(perc_noncoding * 100, 1)
 perc_coding
 perc_noncoding
 ```
-
 :::
-
 :::
-
 
 ## Data structures
 
-Now, we will explore two data structures in R that we will use all the time
-throughout the lessons (and in our research routine): vectors and data frames.
+Now, we will explore two data structures in R that we will use all the time throughout the lessons (and in our research routine): vectors and data frames.
 
 ### Vectors
 
-Vector are the most common data structures in R, and they are used
-to **store multiple values**. There are 6 kinds of values that can be stored
-in a vector, but the ones we typically use are:
+Vector are the most common data structures in R, and they are used to **store multiple values**. There are 6 kinds of values that can be stored in a vector, but the ones we typically use are:
 
-1. `numeric`: numbers.
-2. `character`: text strings.
-3. `logical`: either `TRUE` or `FALSE`.
+1.  `numeric`: numbers.
+2.  `character`: text strings.
+3.  `logical`: either `TRUE` or `FALSE`.
 
-The other types are `integer`, `complex`, and `raw`, but they are not important
-here.
+The other types are `integer`, `complex`, and `raw`, but they are not important here.
 
-To create a vector, you will use the `c()` function to **combine** values.
-For example:
+To create a vector, you will use the `c()` function to **combine** values. For example:
 
 ```{r}
 # Creating a numeric vector
@@ -244,9 +176,9 @@ species
 
 You can inspect vectors with the functions:
 
-- `class()`: shows the class of a vector.
-- `length()`: shows the number of elements in a vector.
-- `str()`: summarizes the structure of a vector.
+-   `class()`: shows the class of a vector.
+-   `length()`: shows the number of elements in a vector.
+-   `str()`: summarizes the structure of a vector.
 
 ```{r}
 class(genome_sizes)
@@ -263,10 +195,7 @@ combined_species <- c(species1, species2)
 combined_species
 ```
 
-**NOTE:** Vectors can only store values of the same type (i.e., character, 
-numeric, etc). If you try to create a vector that contains values of different
-types, R converts them to all be the same type. This conversion of one class
-to another is called *coercion*. For example:
+**NOTE:** Vectors can only store values of the same type (i.e., character, numeric, etc). If you try to create a vector that contains values of different types, R converts them to all be the same type. This conversion of one class to another is called *coercion*. For example:
 
 ```{r}
 # Creating a vector with numeric and character values
@@ -278,12 +207,7 @@ In the example above, R converted the numeric value *1* to a character.
 
 ### Data frames
 
-Data frames is the name R uses to call **tables**. To create a new data frame, 
-you will use the `data.frame()` function. Each column of a data frame
-is a vector, so you can create a data frame by passing each vector to
-each column. For example, let's recreate the `genome_sizes` and `species` 
-vectors we created in the previous section and store them in columns 
-**genome_size** and **species** of a data frame:
+Data frames is the name R uses to call **tables**. To create a new data frame, you will use the `data.frame()` function. Each column of a data frame is a vector, so you can create a data frame by passing each vector to each column. For example, let's recreate the `genome_sizes` and `species` vectors we created in the previous section and store them in columns **genome_size** and **species** of a data frame:
 
 ```{r}
 # Create vectors again
@@ -310,10 +234,7 @@ genome_size_df <- data.frame(
 genome_size_df
 ```
 
-To add a column to an existing data frame, you have to add `$` followed by the
-new column name in front of the object name. For example, let's add a column
-named `is_model` to the `genome_size_df` data frame that indicates whether
-or not a species is a model species:
+To add a column to an existing data frame, you have to add `$` followed by the new column name in front of the object name. For example, let's add a column named `is_model` to the `genome_size_df` data frame that indicates whether or not a species is a model species:
 
 ```{r}
 # Add `is_model` column
@@ -323,28 +244,22 @@ genome_size_df
 
 Finally, to inspect a data frame, you can use the following functions:
 
-- `dim()`: shows the dimensions of the data frame (i.e., number of rows and
-columns, respectively).
-- `nrow()`: shows the number of rows in a data frame.
-- `ncol()`: shows the number of columns in a data frame.
-- `head()`: shows the first 6 rows of a data frame.
-- `tail()`: shows the last 6 rows of a data frame.
-- `names()`: shows the column names.
-- `rownames()`: shows the row names
-- `str()`: summarizes the structure of a data frame.
-- `summary()`: shows summary statistics for each column.
+-   `dim()`: shows the dimensions of the data frame (i.e., number of rows and columns, respectively).
+-   `nrow()`: shows the number of rows in a data frame.
+-   `ncol()`: shows the number of columns in a data frame.
+-   `head()`: shows the first 6 rows of a data frame.
+-   `tail()`: shows the last 6 rows of a data frame.
+-   `names()`: shows the column names.
+-   `rownames()`: shows the row names
+-   `str()`: summarizes the structure of a data frame.
+-   `summary()`: shows summary statistics for each column.
 
-::: {.callout-tip}
-
+::: callout-tip
 ### Exercises
 
-1. The plants Brussels sprout, grapevine and apple belong to the 
-families Brassicaceae, Vitaceae, and Rosaceae. Create a data
-frame named `species_families` with 2 columns named **species** and **family**
-representing such information.
+1.  The plants Brussels sprout, grapevine and apple belong to the families Brassicaceae, Vitaceae, and Rosaceae. Create a data frame named `species_families` with 2 columns named **species** and **family** representing such information.
 
 ::: {.callout collapse="true" appearance="minimal"}
-
 ### Solution
 
 ```{r}
@@ -355,44 +270,31 @@ species_families <- data.frame(
 
 species_families
 ```
-
 :::
 
+2.  When you install R, it already comes with some example data sets. One of them is `airquality`, a data frame containing New York air quality measurements from May to September 1973. Inspect this data frame and answer the following questions:
 
-2. When you install R, it already comes with some example data sets. One of 
-them is `airquality`, a data frame containing New York air quality 
-measurements from May to September 1973. Inspect this data frame
-and answer the following questions:
-
-    - How many rows are there?
-    - How many columns are there?
-    - What are the column names?
-    - What are the classes of each column?
-
+    -   How many rows are there?
+    -   How many columns are there?
+    -   What are the column names?
+    -   What are the classes of each column?
 
 ::: {.callout collapse="true" appearance="minimal"}
-
 ### Solution
 
 ```{r}
 str(airquality)
 ```
-
 :::
-
 :::
-
 
 ## Indexing and subsetting
 
-Here, you will learn how to extract specific elements of vectors and data 
-frames, which is called **subsetting**.
+Here, you will learn how to extract specific elements of vectors and data frames, which is called **subsetting**.
 
 ### Vectors
 
-To subset vectors, you need to pass the index of the element you want to extract
-inside square brackets (`[]`). If you want to extract multiple elements,
-you have to pass a vector of indices inside the square brackets. For example:
+To subset vectors, you need to pass the index of the element you want to extract inside square brackets (`[]`). If you want to extract multiple elements, you have to pass a vector of indices inside the square brackets. For example:
 
 ```{r}
 plants <- c("rice", "maize", "duckweed")
@@ -407,8 +309,7 @@ plants[c(1, 2)]
 plants[c(3, 2)]
 ```
 
-You can also remove a given element by adding a minus (`-`) symbol before the
-index:
+You can also remove a given element by adding a minus (`-`) symbol before the index:
 
 ```{r}
 # Get all elements, except the 1st
@@ -418,10 +319,7 @@ plants[-1]
 plants[-c(1, 3)]
 ```
 
-Another very common way to subset vectors is by using **logical vectors**.
-When using logical vectors, `TRUE` and `FALSE` will indicate whether to
-**extract** or **not extract** the element. For example, let's use logical
-vectors to subset the `plants` vector we created above:
+Another very common way to subset vectors is by using **logical vectors**. When using logical vectors, `TRUE` and `FALSE` will indicate whether to **extract** or **not extract** the element. For example, let's use logical vectors to subset the `plants` vector we created above:
 
 ```{r}
 plants
@@ -433,11 +331,7 @@ plants[c(TRUE, FALSE, FALSE)]
 plants[c(TRUE, FALSE, TRUE)]
 ```
 
-Now, you might be thinking: 
-*using logical vectors seems complicated. Why would someone do this instead of using indices?*. The answer is **conditional subsetting**. In R, you can use logical
-expressions that return `TRUE` or `FALSE` to extract elements. For example,
-let's create a vector of genome sizes for fictional species and check
-if they more than 20,000 genes:
+Now, you might be thinking: *using logical vectors seems complicated. Why would someone do this instead of using indices?*. The answer is **conditional subsetting**. In R, you can use logical expressions that return `TRUE` or `FALSE` to extract elements. For example, let's create a vector of genome sizes for fictional species and check if they more than 20,000 genes:
 
 ```{r}
 ngenes <- c(52000, 35000, 18000, 17000, 22000, 11000, 13000)
@@ -446,19 +340,14 @@ ngenes <- c(52000, 35000, 18000, 17000, 22000, 11000, 13000)
 ngenes > 20000
 ```
 
-You can see that the logical expression returns a vector of `TRUE`s 
-and `FALSE`s. Since `TRUE` means **extract** and `FALSE` means 
-**do not extract** when subsetting, we can use logical expressions to subset
-vectors as follows:
+You can see that the logical expression returns a vector of `TRUE`s and `FALSE`s. Since `TRUE` means **extract** and `FALSE` means **do not extract** when subsetting, we can use logical expressions to subset vectors as follows:
 
 ```{r}
 # Extract elements with >=20000 genes
 ngenes[ngenes > 20000]
 ```
 
-You can combine multiple tests in logical expressions using `&` (which means 
-**AND**, both conditions are true) and `|` (which means **OR**, at least
-one of the conditions is true).
+You can combine multiple tests in logical expressions using `&` (which means **AND**, both conditions are true) and `|` (which means **OR**, at least one of the conditions is true).
 
 ```{r}
 # Extract elements with number of genes between 20000 and 40000
@@ -468,8 +357,7 @@ ngenes[ngenes > 20000 & ngenes < 40000]
 ngenes[ngenes == 13000 | ngenes == 11000]
 ```
 
-You can also subset a vector based on the presence of some pre-defined
-elements using the `%in%` operator. For example:
+You can also subset a vector based on the presence of some pre-defined elements using the `%in%` operator. For example:
 
 ```{r}
 animals <- c("dog", "cat", "rat", "pig", "horse")
@@ -479,15 +367,7 @@ animals[animals %in% c("cat", "dog")]
 
 ### Data frames
 
-Subsetting data frames in very similar to subsetting vectors. The only 
-difference is that data frames have 2 dimensions (rows and columns), while
-vectors have only 1 dimension. Thus, when you subset a data frame,
-you have to specify which dimension you want to use. For instance, if you
-execute `vec[2]`, you will extract the 2nd element of the vector `vec`. However,
-if you pass the index 2 to a data frame, you can mean either the 2nd row or the
-second column. To subset data frames, you will use commas (`,`) inside square
-brackets to distinguish rows (which come **before** the comma) from 
-columns (which come **after** the comma. For example:
+Subsetting data frames in very similar to subsetting vectors. The only difference is that data frames have 2 dimensions (rows and columns), while vectors have only 1 dimension. Thus, when you subset a data frame, you have to specify which dimension you want to use. For instance, if you execute `vec[2]`, you will extract the 2nd element of the vector `vec`. However, if you pass the index 2 to a data frame, you can mean either the 2nd row or the second column. To subset data frames, you will use commas (`,`) inside square brackets to distinguish rows (which come **before** the comma) from columns (which come **after** the comma. For example:
 
 ```{r}
 # See the first 6 rows the `airquality` data frame
@@ -527,21 +407,17 @@ airquality[airquality$Month == 5, ]
 airquality[airquality$Temp > 90, c("Month", "Day")]
 ```
 
-
-
-::: {.callout-tip}
-
+::: callout-tip
 ### Exercises
 
 Subset the `airquality` data set to answer the following questions:
 
-1. How many days (rows) observations have ozone levels >40 ppb?
-2. How many days have wind speed between 10 and 15 mph?
-3. What are the minimum and maximum temperature?
-4. How many days have solar radiation <100 Langleys?
+1.  How many days (rows) observations have ozone levels \>40 ppb?
+2.  How many days have wind speed between 10 and 15 mph?
+3.  What are the minimum and maximum temperature?
+4.  How many days have solar radiation \<100 Langleys?
 
 ::: {.callout collapse="true" appearance="minimal"}
-
 ### Solution
 
 ```{r}
@@ -557,8 +433,5 @@ summary(airquality)
 # Q4: Solar radiation <100 Langleys
 nrow(airquality[airquality$Solar.R < 100, ])
 ```
-
 :::
-
 :::
-

@@ -5,7 +5,14 @@
 
 
 
+
+
+
 # Functions and arguments ====
+
+
+
+
 
 
 
@@ -35,7 +42,16 @@
 
 
 
+
+
+
+
+
 # Vectors ====
+
+
+
+
 
 
 
@@ -50,6 +66,8 @@
 
 
 
+
+
 ## Exercises ====
 
 #' The plants Brussels sprout, grapevine and apple belong to the 
@@ -57,6 +75,9 @@
 #' Create a data frame named `species_families` with 2 columns named 
 #' `species` and `family` representing such information.
 #' 
+
+
+
 
 
 
@@ -76,7 +97,6 @@
 
 
 
-
 # Indexing and subsetting vectors
 
 
@@ -85,9 +105,7 @@
 
 
 
-
 # Indexing and subsetting data frames
-
 
 
 
