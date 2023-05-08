@@ -1,4 +1,292 @@
-
 # Analysis of gene and genome duplication
 
-TBA.
+Gene and genome duplications are a source of raw genetic material for 
+evolution [@ohno2013evolution]. However, whole-genome duplications (WGD) and 
+small-scale duplications (SSD) contribute to genome evolution in 
+different manners. In this lesson, you will learn how to identify
+duplicated genes derived from WGD and SSD from whole-genome sequence data.
+
+## Goals of this lesson
+
+In this lesson, you will learn to:
+
+- Identify duplicated gene pairs from whole-genome protein sequences.
+- Classify duplicated genes based on their mode of duplication.
+- Calculate substitution rates ($K_a$ and $K_s$) per substitution site.
+- Identify whole-genome duplication events in Ks distributions.
+
+
+## Identifying duplicated gene pairs
+
+Here, we will use the example data sets that come with the {doubletrouble}
+package, which contain sequences and annotation for the yeast
+species *Saccharomyces cerevisiae* and *Candida glabrata*. The example data are:
+
+1. `yeast_seq`: A list of `AAStringSet` objects (length 2, *Scerevisiae* and 
+*Cglabrata*) containing whole-genome protein sequences.
+
+2. `yeast_annot`: A `GRangesList` object (length 2, *Scerevisiae* and 
+*Cglabrata*) containing gene annotation (i.e., gene ranges).
+
+3. `diamond_intra`: A list of data frames (length 1, *Scerevisiae_Scerevisiae*)
+with the output of DIAMOND similarity searches between *S. cerevisiae* against
+itself.
+
+4. `diamond_inter`: A list of data frames (length 1, *Scerevisiae_Cglabrata*)
+with the output of DIAMOND similarity searches between *S. cerevisiae* and
+*C. glabrata*.
+
+```{r data}
+library(doubletrouble)
+
+# Load data
+data(yeast_seq)
+data(yeast_annot)
+data(diamond_intra)
+data(diamond_inter)
+
+# Take a look at the data
+head(yeast_seq)
+head(yeast_annot)
+
+head(diamond_intra$Scerevisiae_Scerevisiae)
+head(diamond_inter$Scerevisiae_Cglabrata)
+```
+
+::: callout-tip
+
+### Exercises
+
+Explore the example data sets to answer the following questions:
+
+1. Is the number of sequences in `yeast_seq` the same as the number of 
+gene ranges in `yeast_annot` for *S. cerevisiae*?
+
+2. How many genes are there in *S. cerevisiae*'s chromosome 1?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r message=FALSE, warning=FALSE}
+# Q1
+length(yeast_seq$Scerevisiae)
+length(yeast_annot$Scerevisiae)
+
+# Q2
+table(GenomicRanges::seqnames(yeast_annot$Scerevisiae))
+```
+
+:::
+:::
+
+
+## Classifying duplicate pairs
+
+{doubletrouble} classifies duplicated gene pairs into the following modes:
+whole-genome duplication (WGD), tandem duplication (TD), 
+proximal duplication (PD), transposed duplication (TRD, optional), and
+dispersed duplication (DD). 
+
+To find WGD-derived genes, {doubletrouble} relies on synteny information 
+identified with {syntenet} [@almeida2023syntenet]. Thus, we first need to 
+process the input sequences and annotation to a format that {syntenet}
+understands. We do that with the `process_input()` function.
+
+```{r process_data}
+library(syntenet)
+
+# Process input data
+pdata <- process_input(yeast_seq, yeast_annot)
+
+# Inspect the output
+names(pdata)
+
+pdata$seq
+pdata$annotation
+```
+
+The processed data can be used as input to `run_diamond()`, which performs
+similarity searches with DIAMOND to identify intra and interspecies homologous
+genes. Here, as we already have pre-computed DIAMOND results in `diamond_intra`
+and `diamond_inter`, we will not execute `run_diamond()`, but you can see
+its usage in the {doubletrouble}'s vignette.
+
+
+Now, let's classify the duplicated gene pairs of *S. cerevisiae*.
+
+```{r classify_pairs}
+# Classify duplicated genes using the full scheme
+c_full <- classify_gene_pairs(
+    blast_list = diamond_intra,
+    annotation = pdata$annotation,
+    binary = FALSE,
+    blast_inter = diamond_inter
+)
+
+# Inspecting the output
+names(c_full)
+head(c_full$Scerevisiae)
+```
+
+
+::: callout-tip
+
+### Exercises
+
+How many gene pairs are there per mode? Hint: you can use the `table()`
+function.
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+table(c_full$Scerevisiae$type)
+```
+
+:::
+:::
+
+
+## Assigning genes into unique modes of duplication
+
+Because a gene can be duplicated multiple times by different mechanisms,
+the same gene can appear in multiple duplicated gene pairs. However,
+{doubletrouble} lets you classify genes into unique modes of duplication
+using the following hierarchy: *WGD > TD > PD > TRD > DD*. Let's do that
+with the function `classify_genes()`.
+
+```{r}
+# Classify genes into unique modes of duplication
+c_genes <- classify_genes(c_full)
+
+# Inspecting the output
+names(c_genes)
+head(c_genes$Scerevisiae)
+```
+
+
+::: callout-tip
+
+### Exercises
+
+Use the data frame with classified genes to answer the questions below.
+
+1. How many duplicated genes are there for each mode?
+2. What is the duplication mode of the gene "YOR326W"? 
+3. What is the proportion (in %) of duplicated genes in the *S. cerevisiae*
+genome?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+# Q1
+table(c_genes$Scerevisiae$type)
+
+# Q2
+c_genes$Scerevisiae[grep("YOR326W", c_genes$Scerevisiae$gene), ]
+
+# Q3
+(length(c_genes$Scerevisiae$gene) / length(pdata$seq$Scerevisiae)) * 100
+```
+
+:::
+:::
+
+
+## Calculating substitution rates
+
+Now, you can use the function `pairs2kaks()` to calculate rates of nonsynonymous substitutions per nonsynonymous site ($K_a$), synonymouys substitutions per 
+synonymous site ($K_s$), and their ratios ($\frac{K_a}{K_s}$). Rates are 
+calculated using the codon models in 
+KaKs_Calculator 2.0 [@wang2010kaks_calculator], which are implemented in the
+Bioconductor package {MSA2dist}.
+
+For that, we will need the CDS (DNA sequences) for all *S. cerevisiae* genes,
+which are stored in {doubletrouble}'s example data set `cds_scerevisiae`.
+
+```{r ka_ks}
+# Load data
+data(cds_scerevisiae)
+head(cds_scerevisiae)
+
+# Store CDS in a list
+cds_list <- list(Scerevisiae = cds_scerevisiae)
+
+# Calculate Ka, Ks, and Ka/Ks for the first 5 gene pairs for demonstration only
+selected_pairs <- list(Scerevisiae = c_full$Scerevisiae[1:5, ])
+kaks <- pairs2kaks(selected_pairs, cds_list)
+
+# Inspect the output
+kaks
+```
+
+Peaks in $K_s$ distributions indicate WGD events. However, because 
+of saturation at high $K_s$ values, only recent WGD events can be
+reliably identified from $K_s$ distributions. Here, to demonstrate how to
+identify such peaks, we will use pre-computed $K_s$ values for all soybean
+paralogous pairs, which is also part of the example data in {doubletrouble}.
+
+```{r}
+# Load data
+data(gmax_ks)
+head(gmax_ks)
+
+# Find peaks
+peaks <- find_ks_peaks(gmax_ks$Ks, npeaks = c(2, 3), verbose = TRUE)
+
+# Inspect output
+names(peaks)
+str(peaks)
+
+# Visualize peaks
+plot_ks_peaks(peaks)
+```
+
+Finally, since GMMs can lead to overfitting and overclustering in some cases,
+let's assess the significance of the identified peaks with SiZer maps.
+
+```{r}
+feature::SiZer(gmax_ks$Ks)
+```
+
+We can see that the 3 peaks are indeed supported, as indicated by the blue 
+regions.
+
+::: callout-tip
+
+### Exercises
+
+Use the output of `find_ks_peaks()` with the soybean data set to answer
+the following questions:
+
+1. What are the mean and standard deviation for the peaks?
+2. How many gene pairs have Ks values between 0 and 0.4? What does that mean
+about the age of such gene pairs?
+
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+# Q1
+peaks$mean
+peaks$sd
+
+# Q2
+length(peaks$ks[peaks$ks < 0.4])
+```
+
+Genes with $K_s$ between 0 and 0.4 are young, and those in this range that
+are present in syntenic regions have likely originated from a recent WGD event.
+
+:::
+:::
+
+
+## References {.unnumbered}
+

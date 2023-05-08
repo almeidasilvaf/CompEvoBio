@@ -40,6 +40,8 @@ jobs:
             any::msa
             any::phangorn
             any::seqinr
+            any::doubletrouble
+            any::feature
             
 
       # add software dependencies here

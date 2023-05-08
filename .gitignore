@@ -12,3 +12,5 @@ data/*.gz
 data/*.contree
 data/*.log
 data/*.mldist
+
+code/*_class.R
