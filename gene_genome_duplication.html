@@ -702,12 +702,12 @@ Solution
 <div class="cell-output cell-output-stdout">
 <pre><code>Bayesian Information Criterion (BIC): 
           E         V
-2 -86950.25 -67759.62
-3 -86978.17 -54202.96
+2 -86950.21 -67759.55
+3 -86977.96 -54203.15
 
 Top 3 models based on the BIC criterion: 
       V,3       V,2       E,2 
--54202.96 -67759.62 -86950.25 </code></pre>
+-54203.15 -67759.55 -86950.21 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect output</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(peaks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -719,7 +719,7 @@ Top 3 models based on the BIC criterion:
 <pre><code>List of 4
  $ mean  : Named num [1:3] 0.118 0.531 1.481
   ..- attr(*, "names")= chr [1:3] "1" "2" "3"
- $ sd    : num [1:3] 0.0549 0.2443 0.3134
+ $ sd    : num [1:3] 0.0549 0.2442 0.3136
  $ lambda: num [1:3] 0.352 0.433 0.215
  $ ks    : num [1:71231] 0.375 0.0453 0.1041 0.4733 1.2292 ...</code></pre>
 </div>
@@ -772,11 +772,11 @@ Solution
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>peaks<span class="sc">$</span>mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        1         2         3 
-0.1177526 0.5309744 1.4814453 </code></pre>
+0.1177495 0.5308772 1.4811982 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>peaks<span class="sc">$</span>sd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.05488814 0.24425743 0.31341988</code></pre>
+<pre><code>[1] 0.05488597 0.24418649 0.31357988</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Q2</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(peaks<span class="sc">$</span>ks[peaks<span class="sc">$</span>ks <span class="sc">&lt;</span> <span class="fl">0.4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
