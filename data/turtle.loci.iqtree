@@ -1,0 +1,177 @@
+IQ-TREE 2.0.7 built Jan 21 2022
+
+Partition file name: data/turtle.nex
+Input file name: data/turtle.fa
+Type of analysis: ModelFinder + tree reconstruction
+Random seed number: 540626
+
+REFERENCES
+----------
+
+To cite IQ-TREE please use:
+
+Bui Quang Minh, Heiko A. Schmidt, Olga Chernomor, Dominik Schrempf,
+Michael D. Woodhams, Arndt von Haeseler, and Robert Lanfear (2020)
+IQ-TREE 2: New models and efficient methods for phylogenetic inference
+in the genomic era. Mol. Biol. Evol., in press.
+https://doi.org/10.1093/molbev/msaa015
+
+To cite ModelFinder please use: 
+
+Subha Kalyaanamoorthy, Bui Quang Minh, Thomas KF Wong, Arndt von Haeseler,
+and Lars S Jermiin (2017) ModelFinder: Fast model selection for
+accurate phylogenetic estimates. Nature Methods, 14:587–589.
+https://doi.org/10.1038/nmeth.4285
+
+Since you used partition models please also cite:
+
+Olga Chernomor, Arndt von Haeseler, and Bui Quang Minh (2016)
+Terrace aware data structure for phylogenomic inference from
+supermatrices. Syst. Biol., 65:997-1008.
+https://doi.org/10.1093/sysbio/syw037
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 16 taxa with 29 partitions and 20820 total sites (27.6216% missing data)
+
+  ID  Name                             Type	Seq	Site	Unique	Infor	Invar	Const
+   1  ENSGALG00000000223.macse_DNA_gb  DNA	11	846	427	282	382	382
+   2  ENSGALG00000001529.macse_DNA_gb  DNA	10	522	281	193	227	227
+   3  ENSGALG00000002002.macse_DNA_gb  DNA	10	672	264	194	351	351
+   4  ENSGALG00000002514.macse_DNA_gb  DNA	14	732	326	222	422	422
+   5  ENSGALG00000003337.macse_DNA_gb  DNA	15	966	419	313	556	556
+   6  ENSGALG00000003700.macse_DNA_gb  DNA	14	885	363	257	525	525
+   7  ENSGALG00000003702.macse_DNA_gb  DNA	10	1545	572	359	833	833
+   8  ENSGALG00000003907.macse_DNA_gb  DNA	12	480	262	176	225	225
+   9  ENSGALG00000005820.macse_DNA_gb  DNA	12	576	259	176	318	318
+  10  ENSGALG00000005834.macse_DNA_gb  DNA	15	696	232	129	483	483
+  11  ENSGALG00000005902.macse_DNA_gb  DNA	13	570	201	124	334	334
+  12  ENSGALG00000008338.macse_DNA_gb  DNA	12	792	437	283	334	334
+  13  ENSGALG00000008517.macse_DNA_gb  DNA	11	540	190	129	329	329
+  14  ENSGALG00000008916.macse_DNA_gb  DNA	12	546	257	231	262	262
+  15  ENSGALG00000009085.macse_DNA_gb  DNA	11	930	366	243	547	547
+  16  ENSGALG00000009879.macse_DNA_gb  DNA	13	597	344	239	261	261
+  17  ENSGALG00000011323.macse_DNA_gb  DNA	9	900	434	290	406	406
+  18  ENSGALG00000011434.macse_DNA_gb  DNA	10	447	240	201	211	211
+  19  ENSGALG00000011917.macse_DNA_gb  DNA	12	981	268	172	659	659
+  20  ENSGALG00000011966.macse_DNA_gb  DNA	10	468	228	169	191	191
+  21  ENSGALG00000012244.macse_DNA_gb  DNA	13	753	339	233	387	387
+  22  ENSGALG00000012379.macse_DNA_gb  DNA	13	519	225	149	292	292
+  23  ENSGALG00000012568.macse_DNA_gb  DNA	9	630	231	158	382	382
+  24  ENSGALG00000013227.macse_DNA_gb  DNA	10	1302	415	279	815	815
+  25  ENSGALG00000014038.macse_DNA_gb  DNA	11	561	242	176	297	297
+  26  ENSGALG00000014648.macse_DNA_gb  DNA	9	498	166	96	314	314
+  27  ENSGALG00000015326.macse_DNA_gb  DNA	10	597	289	187	238	238
+  28  ENSGALG00000015397.macse_DNA_gb  DNA	12	594	272	175	281	281
+  29  ENSGALG00000016241.macse_DNA_gb  DNA	13	675	348	249	323	323
+
+Column meanings:
+  Unique: Number of unique site patterns
+  Infor:  Number of parsimony-informative sites
+  Invar:  Number of invariant sites
+  Const:  Number of constant sites (can be subset of invariant sites)
+
+ModelFinder
+-----------
+
+Best-fit model according to BIC: TNe+R3:ENSGALG00000000223.macse_DNA_gb,K2P+G4:ENSGALG00000001529.macse_DNA_gb,TN+F+G4:ENSGALG00000002002.macse_DNA_gb,TVM+F+I+G4:ENSGALG00000002514.macse_DNA_gb,TIM2e+I+G4:ENSGALG00000003337.macse_DNA_gb,TIM2+F+G4:ENSGALG00000003700.macse_DNA_gb,TN+F+G4:ENSGALG00000003702.macse_DNA_gb,K2P+G4:ENSGALG00000003907.macse_DNA_gb,TNe+I:ENSGALG00000005820.macse_DNA_gb,TIM2+F+G4:ENSGALG00000005834.macse_DNA_gb,TNe+G4:ENSGALG00000005902.macse_DNA_gb,TIM3e+G4:ENSGALG00000008338.macse_DNA_gb,TPM2+F+G4:ENSGALG00000008517.macse_DNA_gb,TIM2+F+R2:ENSGALG00000008916.macse_DNA_gb,TIM2+F+R3:ENSGALG00000009085.macse_DNA_gb,TN+F+G4:ENSGALG00000009879.macse_DNA_gb,TPM3+F+R2:ENSGALG00000011323.macse_DNA_gb,TIM3e+I+G4:ENSGALG00000011434.macse_DNA_gb,TIM2e+G4:ENSGALG00000011917.macse_DNA_gb,K2P+G4:ENSGALG00000011966.macse_DNA_gb,SYM+G4:ENSGALG00000012244.macse_DNA_gb,K2P+G4:ENSGALG00000012379.macse_DNA_gb,TIM3e+G4:ENSGALG00000012568.macse_DNA_gb,TPM2+F+G4:ENSGALG00000013227.macse_DNA_gb,TN+F+G4:ENSGALG00000014038.macse_DNA_gb,TN+F+G4:ENSGALG00000014648.macse_DNA_gb,TIM+F+G4:ENSGALG00000015326.macse_DNA_gb,TIM2+F+G4:ENSGALG00000015397.macse_DNA_gb,TPM2+F+I+G4:ENSGALG00000016241.macse_DNA_gb
+
+List of best-fit models per partition:
+
+  ID  Model                  LogL         AIC      w-AIC        AICc     w-AICc         BIC      w-BIC
+   1  TNe+R3            -5016.586   10083.173 - 6.59e-310   10084.758 + 6.59e-310   10201.685 + 1.26e-71
+   2  K2P+G4            -3392.481    6822.963 - 6.59e-310    6824.477 + 6.59e-310    6903.858 + 1.26e-71
+   3  TN+F+G4           -3576.605    7199.210 - 6.59e-310    7200.914 + 6.59e-310    7302.946 + 1.26e-71
+   4  TVM+F+I+G4        -4263.041    8594.082 - 6.59e-310    8597.497 + 6.59e-310    8750.339 + 1.26e-71
+   5  TIM2e+I+G4        -6165.082   12394.163 - 6.59e-310   12396.427 + 6.59e-310   12550.105 + 1.26e-71
+   6  TIM2+F+G4         -4694.340    9452.680 - 6.59e-310    9455.159 + 6.59e-310    9605.819 + 1.26e-71
+   7  TN+F+G4           -7553.044   15152.087 - 6.59e-310   15152.813 + 6.59e-310   15274.971 + 1.26e-71
+   8  K2P+G4            -2921.783    5889.566 - 6.59e-310    5891.987 + 6.59e-310    5985.563 + 1.26e-71
+   9  TNe+I             -3100.206    6248.412 - 6.59e-310    6250.590 + 6.59e-310    6352.959 + 1.26e-71
+  10  TIM2+F+G4         -3012.289    6092.577 - 6.59e-310    6096.178 + 6.59e-310    6247.119 + 1.26e-71
+  11  TNe+G4            -2780.305    5612.611 - 6.59e-310    5615.196 + 6.59e-310    5725.597 + 1.26e-71
+  12  TIM3e+G4          -5098.350   10246.700 - 6.59e-310   10248.398 + 6.59e-310   10363.564 + 1.26e-71
+  13  TPM2+F+G4         -2680.087    5410.174 - 6.59e-310    5412.703 + 6.59e-310    5517.463 + 1.26e-71
+  14  TIM2+F+R2         -3349.399    6756.799 - 6.59e-310    6760.171 + 6.59e-310    6881.575 + 1.26e-71
+  15  TIM2+F+R3         -4504.293    9066.586 - 6.59e-310    9068.519 + 6.59e-310    9206.806 + 1.26e-71
+  16  TN+F+G4           -4150.577    8359.153 - 6.59e-310    8362.222 + 6.59e-310    8486.519 + 1.26e-71
+  17  TPM3+F+R2         -5220.328   10484.656 - 6.59e-310   10485.810 + 6.59e-310   10590.309 + 1.26e-71
+  18  TIM3e+I+G4        -2869.680    5783.361 - 6.59e-310    5785.748 + 6.59e-310    5873.617 + 1.26e-71
+  19  TIM2e+G4          -4021.705    8093.409 - 6.59e-310    8094.771 + 6.59e-310    8215.624 + 1.26e-71
+  20  K2P+G4            -2947.571    5933.142 - 6.59e-310    5934.838 + 6.59e-310    6011.963 + 1.26e-71
+  21  SYM+G4            -4335.504    8729.007 - 6.59e-310    8731.414 + 6.59e-310    8863.105 + 1.26e-71
+  22  K2P+G4            -2850.145    5750.290 - 6.59e-310    5752.927 + 6.59e-310    5856.587 + 1.26e-71
+  23  TIM3e+G4          -2885.898    5809.797 - 6.59e-310    5811.043 + 6.59e-310    5894.266 + 1.26e-71
+  24  TPM2+F+G4         -5557.071   11160.141 - 6.59e-310   11161.005 + 6.59e-310   11279.089 + 1.26e-71
+  25  TN+F+G4           -3272.138    6594.276 - 6.59e-310    6596.706 + 6.59e-310    6702.519 + 1.26e-71
+  26  TN+F+G4           -2075.288    4192.576 - 6.59e-310    4194.517 + 6.59e-310    4280.998 + 1.26e-71
+  27  TIM+F+G4          -3645.396    7338.793 - 6.59e-310    7340.891 + 6.59e-310    7444.199 + 1.26e-71
+  28  TIM2+F+G4         -3560.663    7177.325 - 6.59e-310    7180.200 + 6.59e-310    7300.158 + 1.26e-71
+  29  TPM2+F+I+G4       -4364.516    8789.032 - 6.59e-310    8791.920 + 6.59e-310    8924.473 + 1.26e-71
+
+AIC, w-AIC   : Akaike information criterion scores and weights.
+AICc, w-AICc : Corrected AIC scores and weights.
+BIC, w-BIC   : Bayesian information criterion scores and weights.
+
+Plus signs denote the 95% confidence sets.
+Minus signs denote significant exclusion.
+
+SUBSTITUTION PROCESS
+--------------------
+
+Topology-unlinked partition model with separate substitution models and separate rates across sites
+
+  ID  Model         TreeLen  Parameters
+   1  TNe+R3         2.4316  TNe{3.70002,5.76138}+FQ+R3{0.3778,0.00408327,0.545535,0.989427,0.0766653,5.98303}
+   2  K2P+G4         1.9218  K2P{3.8117}+FQ+G4{0.556762}
+   3  TN+F+G4        1.7381  TN{3.04216,6.60701}+F{0.295046,0.228942,0.28145,0.194562}+G4{0.393418}
+   4  TVM+F+I+G4     1.9083  TVM{2.15457,4.63339,0.963813,0.3813}+F{0.303011,0.189302,0.257314,0.250374}+I{0.398648}+G4{0.740399}
+   5  TIM2e+I+G4     2.2058  TIM2e{1.76125,5.6263,8.64386}+FQ+I{0.472989}+G4{1.00071}
+   6  TIM2+F+G4      1.5931  TIM2{1.97494,7.46567,16.6284}+F{0.356824,0.17346,0.217723,0.251994}+G4{0.268363}
+   7  TN+F+G4        1.4006  TN{3.13316,4.73529}+F{0.323651,0.223159,0.227063,0.226126}+G4{0.45592}
+   8  K2P+G4         1.9537  K2P{4.08134}+FQ+G4{0.447947}
+   9  TNe+I          1.7178  TNe{4.38114,7.06769}+FQ+I{0.516527}
+  10  TIM2+F+G4      0.9483  TIM2{2.95752,9.17683,15.3141}+F{0.295667,0.198,0.253222,0.253111}+G4{0.193344}
+  11  TNe+G4         1.5391  TNe{3.5743,8.28393}+FQ+G4{0.318002}
+  12  TIM3e+G4       2.1236  TIM3e{1.58206,3.83816,5.17974}+FQ+G4{0.623555}
+  13  TPM2+F+G4      1.3301  TPM2{2.30865,9.68576}+F{0.342687,0.177041,0.207313,0.272959}+G4{0.278212}
+  14  TIM2+F+R2      2.0030  TIM2{2.03584,5.62783,8.92448}+F{0.334109,0.216225,0.227082,0.222584}+R2{0.549604,0.0833547,0.450396,2.11855}
+  15  TIM2+F+R3      1.9235  TIM2{1.81047,6.15538,13.6896}+F{0.315346,0.193327,0.237172,0.254156}+R3{0.518208,0.00268999,0.440006,1.2063,0.0417863,11.1957}
+  16  TN+F+G4        2.2573  TN{4.69048,2.89901}+F{0.211475,0.222482,0.20831,0.357733}+G4{0.507467}
+  17  TPM3+F+R2      1.7688  TPM3{1.49504,5.13165}+F{0.302356,0.206116,0.22968,0.261848}+R2{0.53356,0.140226,0.46644,1.9835}
+  18  TIM3e+I+G4     2.0335  TIM3e{2.17358,5.00002,5.44454}+FQ+I{0.385973}+G4{2.13475}
+  19  TIM2e+G4       0.9209  TIM2e{2.30276,6.39132,8.91084}+FQ+G4{0.245381}
+  20  K2P+G4         2.2891  K2P{4.21691}+FQ+G4{0.544405}
+  21  SYM+G4         1.8175  SYM{4.22026,6.70258,1.86498,1.42408,10.8041}+FQ+G4{0.410467}
+  22  K2P+G4         1.6585  K2P{5.83853}+FQ+G4{0.294898}
+  23  TIM3e+G4       1.0734  TIM3e{1.96189,4.21988,7.33717}+FQ+G4{0.370548}
+  24  TPM2+F+G4      1.0851  TPM2{1.79122,7.71528}+F{0.317968,0.211059,0.200754,0.270218}+G4{0.30708}
+  25  TN+F+G4        1.7889  TN{3.36095,6.78548}+F{0.310468,0.188394,0.210663,0.290475}+G4{0.34995}
+  26  TN+F+G4        0.9235  TN{2.64657,8.66555}+F{0.387571,0.119548,0.246554,0.246328}+G4{0.365897}
+  27  TIM+F+G4       1.9398  TIM{3.89649,2.58154,8.67482}+F{0.290466,0.22572,0.31021,0.173604}+G4{0.724622}
+  28  TIM2+F+G4      1.7791  TIM2{1.7896,5.12987,10.951}+F{0.321115,0.186,0.227397,0.265488}+G4{0.503552}
+  29  TPM2+F+I+G4    2.1553  TPM2{1.86859,7.47064}+F{0.262492,0.226151,0.22566,0.285697}+I{0.371792}+G4{1.57021}
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -113833.5321 (s.e. 640.3974)
+Unconstrained log-likelihood (without tree): -96087.9311
+Number of free parameters (#branches + #model parameters): 744
+Akaike information criterion (AIC) score: 229155.0642
+Corrected Akaike information criterion (AICc) score: 229210.2851
+Bayesian information criterion (BIC) score: 235065.1542
+
+Total tree length (sum of branch lengths): 50.2290
+Sum of internal branch lengths: 12.0784 (24.0467% of tree length)
+
+Tree topologies are unlinked across partitions, thus no drawing will be displayed here
+
+TIME STAMP
+----------
+
+Date and time: Sun May 12 20:02:58 2024
+Total CPU time used: 22.97 seconds (0h:0m:22s)
+Total wall-clock time used: 11.87 seconds (0h:0m:11s)
+
