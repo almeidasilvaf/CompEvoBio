@@ -442,7 +442,7 @@ iqtree2 -t data/turtle.nex.treefile \
     --scf 100
 ```
 
-The code below calculates two kinds of concordance factors:
+The code above calculates two kinds of concordance factors:
 
 - **Gene concordance factor (gCF):** percentage of *decisive* gene trees 
 concordant with a particular branch of the species tree (0% <= gCF(b) <= 100%).
