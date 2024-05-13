@@ -109,7 +109,7 @@ iqtree2 -s data/turtle.fa -B 1000 -T 2
 ```
 
 
-::: {.callout-note}
+::: {.callout-note collapse="true"}
 
 ## Understanding the command-line arguments
 
@@ -146,63 +146,41 @@ the R session.
     - What is the best-fit model name?
     - What are the AIC/AICc/BIC scores of this model and tree?
 
-::: {.callout collapse="true" appearance="minimal"}
-
-### Solution
-
-```{r q1_answer}
-# Read file
-turtle_report <- readLines(here("data", "turtle.fa.iqtree"))
-
-# Q1: Best-fit model
-turtle_report[grepl("Best-fit model", turtle_report)]
-
-# Q2: AIC/AICc/BIC scores for the best model
-turtle_report[grepl("^Model  |^GTR\\+F\\+R3", turtle_report)]
-```
-
-:::
-
 2. Visualise the tree in `data/turtle.fa.treefile`. What relationship among 
 three trees does this tree support? What is the ultrafast bootstrap 
 support (%) for the relevant clade?
-
-::: {.callout collapse="true" appearance="minimal"}
-
-### Solution
-
-```{r fig.height=5, fig.width=9}
-#| fig-height: 5
-#| fig-width: 9
-tree <- read.tree(here("data", "turtle.fa.treefile"))
-
-plot(tree, show.node.label = TRUE)
-```
-
-This tree supports the "C" hypothesis, which positions turtles as a sister 
-group to crocodiles. i.e., ((Turtle, Crocodile), Bird). The branch showing 
-that turtles are a sister group to crocodiles has a bootstrap
-support of 82%.
-
-:::
-
 
 3. In the figure below, you can see the tree published 
 by @chiari2012phylogenomic. Does the inferred tree agree with the 
 published tree?
 
-![Species tree inferred by Chiari *et al*, 2012](figs/chiari_2012_species_tree.png)
+![Species tree inferred by Chiari *et al*, 2012](chiari_2012_species_tree.png)
+
 
 ::: {.callout collapse="true" appearance="minimal"}
 
 ### Solution
 
-No. The published tree shows turtles as a sister group to birds and 
-crocodiles (hypothesis A), while the inferred shows turtles as 
-a sister group to crocodiles (hypothesis C).
+```{r q1_answer}
+#| fig-height: 5
+#| fig-width: 9
+
+# Read file
+turtle_report <- readLines(here("data", "turtle.fa.iqtree"))
+
+# Q1A: Best-fit model
+turtle_report[grepl("Best-fit model", turtle_report)]
+
+# Q1B: AIC/AICc/BIC scores for the best model
+turtle_report[grepl("^Model  |^GTR\\+F\\+R3", turtle_report)]
+
+
+# Q2
+tree <- read.tree(here("data", "turtle.fa.treefile"))
+plot(tree, show.node.label = TRUE)
+```
 
 :::
-
 :::
 
 
@@ -218,7 +196,7 @@ iqtree2 -s data/turtle.fa -p data/turtle.nex -B 1000 -T 2
 ```
 
 
-::: {.callout-note}
+::: {.callout-note collapse="true"}
 
 ## Understanding the command-line arguments
 
@@ -226,7 +204,6 @@ The only new argument here is `-p turtle.nex`, which is used to specify
 an *edge-linked proportional* partition model, so that each partition can
 have shorter or longer tree length (i.e., slower or faster evolutionary rates,
 respectively).
-
 :::
 
 
@@ -242,65 +219,35 @@ As in the simpler IQ-TREE run, the main report is in a file ending in
 AIC/AICc/BIC scores of the partition model? Is it better than 
 the previous model?
 
+2. Visualize the tree in `data/turtle.nex.treefile`. 
+What relationship among three trees does this tree support?
+What is the ultrafast bootstrap support (%) for the relevant clade?
+
+3. Does the inferred tree agree with the published 
+tree [@chiari2012phylogenomic]?
 
 ::: {.callout collapse="true" appearance="minimal"}
 
 ### Solution
 
 ```{r}
-# Read file
+#| fig-height: 6
+#| fig-width: 9
+
+# Q1 
 part_report <- readLines(here("data", "turtle.nex.iqtree"))
-
-# Take a look at the best models per partition
 part_report[grepl("Best-fit model", part_report)]
-
-# See the AIC/AICc/BIC scores per partition
 idx <- grep("List of best-fit models", part_report)
 idx <- seq(idx, idx + 30)
 
 part_report[idx]
-```
 
-Scores are better (lower BIC scores, for instance).
-
-:::
-
-2. Visualize the tree in `data/turtle.nex.treefile`. 
-What relationship among three trees does this tree support?
-What is the ultrafast bootstrap support (%) for the relevant clade?
-
-::: {.callout collapse="true" appearance="minimal"}
-
-### Solution
-
-```{r fig.height=6, fig.width=9}
-#| fig-height: 6
-#| fig-width: 9
+# Q2
 tree <- read.tree(here("data", "turtle.nex.treefile"))
-
 plot(tree, show.node.label = TRUE)
 ```
 
-The tree supports the "A" hypothesis, which positions turtles as a sister
-group to birds and crocodiles.
-The branch showing that turtles are a sister group to crocodiles has a bootstrap
-support of 100%.
-
 :::
-
-
-3. Does the inferred tree agree with the published 
-tree [@chiari2012phylogenomic]?
-
-
-::: {.callout collapse="true" appearance="minimal"}
-
-### Solution
-
-Yes. Both trees agree on the "A" hypothesis.
-
-:::
-
 :::
 
 
@@ -314,7 +261,7 @@ partitions and reduce the potential over-parameterization.
 iqtree2 -s data/turtle.fa -p data/turtle.nex -B 1000 -T 2 -m MFP+MERGE -rcluster 10 --prefix data/turtle.merge
 ```
 
-::: {.callout-note}
+::: {.callout-note collapse="true"}
 
 ## Understanding the command-line arguments
 
@@ -345,61 +292,41 @@ file ending in `.merge.treefile`.
 
     - How many partitions do we have now?
     - Look at the AIC/AICc/BIC scores. Compared with two previous models, is this model better or worse?
+    
+2. Visualize the tree in `data/turtle.merge.treefile`. What relationship 
+among three trees does this tree support? What is the ultrafast bootstrap 
+support (%) for the relevant clade?
+
+3. Does this tree agree with the published tree [@chiari2012phylogenomic]?
+
 
 ::: {.callout collapse="true" appearance="minimal"}
 
 ### Solution
 
 ```{r}
+#| fig-height: 6
+#| fig-width: 9
+
 # Read report
 merge_report <- readLines(here("data", "turtle.merge.iqtree"))
 
-# Q1: number of partitions
+# Q1A: number of partitions
 merge_report[grepl("Input data:", merge_report)]
 
-# Q2: compare AIC/AICc/BIC scores
+# Q1B: compare AIC/AICc/BIC scores
 idx <- grep("List of best-fit models per partition", merge_report)
 idx <- seq(idx, idx + 10)
 
 merge_report[idx]
-```
 
-:::
-
-
-2. Visualize the tree in `data/turtle.merge.treefile`. What relationship 
-among three trees does this tree support? What is the ultrafast bootstrap 
-support (%) for the relevant clade?
-
-::: {.callout collapse="true" appearance="minimal"}
-
-### Solution
-
-```{r fig.height=6, fig.width=9}
-#| fig-height: 6
-#| fig-width: 9
+# Q2
 tree <- read.tree(here("data", "turtle.merge.treefile"))
-
 plot(tree, show.node.label = TRUE)
+
 ```
 
-The tree supports the hypothesis A, which positions turtles as a sister
-group to birds and crocodiles. The relevant clade has a bootstrap support
-of 99%.
-
 :::
-
-
-3. Does this tree agree with the published tree [@chiari2012phylogenomic]?
-
-::: {.callout collapse="true" appearance="minimal"}
-
-### Solution
-
-Yes. Both trees agree on the "A" hypothesis, i.e., (Turtle, (Bird, Crocodile)).
-
-:::
-
 :::
 
 
@@ -430,10 +357,13 @@ Now, we can pass the concatenated tree to IQ-TREE:
 
 ```{bash}
 #| eval: false
-iqtree2 -s data/turtle.fa -p data/turtle.merge.best_scheme.nex -z data/turtle.trees -zb 10000 -au -n 0 --prefix data/turtle.test
+iqtree2 -s data/turtle.fa -p data/turtle.merge.best_scheme.nex \
+    -z data/turtle.trees \
+    -zb 10000 -au -n 0 \
+    --prefix data/turtle.test
 ```
 
-::: {.callout-note}
+::: {.callout-note collapse="true"}
 
 ## Understanding the command-line arguments
 
@@ -446,6 +376,7 @@ topology tests (here, 10000).
 - `-au`: perform the Approximately Unbiased test.
 - `-n 0`: avoid tree search and just perform tree topology tests.
 :::
+
 
 The main report is a file ending in `.test.iqtree`, and the tree is 
 in a file ending in `.test.treefile`.
@@ -480,14 +411,88 @@ idx <- seq(idx, length(test_report))
 test_report[idx]
 ```
 
-1. The first tree has the worst log-likelihood.
-2. No, we cannot reject the tree (p = 0.426).
-3. No, we cannot reject the tree (p = 0.412).
-
 :::
 
 :::
 
+
+## Concordance factors
+
+In previous analyses, we were assuming that gene trees and species tree
+are the same. However, in empirical data, gene trees are often different
+from species trees, which we call *discordance*. Now, we will infer different
+gene trees for each partition separately, and then quantify the concordance
+between gene trees and species tree with **concordance factors**.
+
+First, let's infer one gene tree for each partition.
+
+```{bash}
+#| eval: false
+iqtree2 -s data/turtle.fa -S data/turtle.nex --prefix data/turtle.loci -T 2
+```
+
+Now, we can calculate concordance factors using the list of trees in file
+`turtle.loci.treefile`. 
+
+```{bash}
+#| eval: false
+iqtree2 -t data/turtle.nex.treefile \
+    --gcf data/turtle.loci.treefile \
+    -s data/turtle.fa \
+    --scf 100
+```
+
+The code below calculates two kinds of concordance factors:
+
+- **Gene concordance factor (gCF):** percentage of *decisive* gene trees 
+concordant with a particular branch of the species tree (0% <= gCF(b) <= 100%).
+- **Site concordance factor (sCF):** percentage of *decisive* alignment sites 
+supporting a particular branch of the species tree (~33% <= sCF(b) <= 100%). 
+sCF <33% means that another discordant branch b’ is more supported, 
+whereas sCF=100% means that branch b is supported by all sites.
+
+
+::: {.callout-tip}
+
+## Exercises
+
+1. Visualize the tree in `data/turtle.nex.treefile.cf.tree`. How do gCF and
+sCF look compared with bootstrap support values?
+
+2. **Challenge:** read concordance factors stats in 
+file `data/turtle.nex.treefile.cf.stat` and create a scatterplot 
+using {ggplot2} showing gCF in the x-axis, sCF in the y-axis, and points
+colored by bootstrap support values. What do you conclude?
+
+::: {.callout collapse="true" appearance="minimal"}
+
+### Solution
+
+```{r}
+#| fig-height: 8
+#| fig-width: 10
+
+# Q1
+tree <- read.tree(here("data", "turtle.nex.treefile.cf.tree"))
+plot(tree, show.node.label = TRUE)
+
+# Q2
+cf_stats <- read.table(
+    here("data", "turtle.nex.treefile.cf.stat"), header = TRUE
+)
+
+# Q2
+library(ggplot2)
+ggplot(cf_stats, aes(x = gCF, y = sCF, color = Label)) +
+    geom_point(size = 3) +
+    scale_color_viridis_c(direction = -1) +
+    xlim(0, 100) + 
+    ylim(0, 100) +
+    geom_abline(slope = 1, intercept = 0, linetype = "dashed")
+```
+
+:::
+:::
 
 
 

@@ -7,13 +7,15 @@ book:
   date: "2023"
   chapters:
     - index.qmd
-    - intro_to_R.qmd
-    - data_structures_genomics.qmd
-    - phylogeny_inference_distance.qmd
-    - phylogeny_inference_ml.qmd
-    - gene_genome_duplication.qmd
+    - chapters/intro_to_R.qmd
+    - chapters/data_structures_genomics.qmd
+    - chapters/phylogeny_inference_distance.qmd
+    - chapters/phylogeny_inference_ml.qmd
 
 bibliography: references.bib
+
+execute:
+  freeze: auto
 
 format:
   html:

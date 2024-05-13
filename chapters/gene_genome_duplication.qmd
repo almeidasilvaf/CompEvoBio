@@ -120,7 +120,6 @@ Now, let's classify the duplicated gene pairs of *S. cerevisiae*.
 c_full <- classify_gene_pairs(
     blast_list = diamond_intra,
     annotation = pdata$annotation,
-    binary = FALSE,
     blast_inter = diamond_inter
 )
 
